@@ -1,0 +1,1 @@
+Keine Frameworks erlaubt im Projekt nur Packages!
