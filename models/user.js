@@ -27,6 +27,10 @@ const Address = {
 };
 
 const PrivateUserSchema = new Schema({
+  userId: {
+    type: String,
+    required: true
+  },
   firstName: {
     type: String,
     required: true
@@ -47,6 +51,10 @@ const PrivateUserSchema = new Schema({
 });
 
 const CompanyUserSchema = new Schema({
+  userId: {
+    type: String,
+    required: true
+  },
   name: {
     type: String,
     required: true

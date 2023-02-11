@@ -4,6 +4,10 @@ import { Schema } from "mongoose"
  * MongoDB schema for products on the
  */
 const ProductSchema = new Schema({
+  productId: {
+    type: String,
+    required: true
+  },
   productName: {
     type: String,
     required: true
