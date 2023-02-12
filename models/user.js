@@ -47,7 +47,12 @@ const PrivateUserSchema = new Schema({
     type: String,
     required: true
   },
-  address: Address
+  address: Address,
+
+  shoppingCart: { 
+    type: [{type: String, required: true}], 
+    required: false
+  },
 });
 
 const CompanyUserSchema = new Schema({
