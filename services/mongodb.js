@@ -18,18 +18,18 @@ function addNewUser() {
 
 function getUserCredentialValidity() {
 
-  // 1. Get user by email from database
-  // 2. Check if password and password in database are the same.
-  // 3. (Optional) Hash the passwords when creating or reading a user
+    // 1. Get user by email from database
+    // 2. Check if password and password in database are the same.
+    // 3. (Optional) Hash the passwords when creating or reading a user
 }
 
 
 export {
-  getProducts,
-  getProductById,
-  addNewProduct,
+    getProducts,
+    getProductById,
+    addNewProduct,
 
-  getUserById,
-  addNewUser,
-  getUserCredentialValidity
+    getUserById,
+    addNewUser,
+    getUserCredentialValidity
 }

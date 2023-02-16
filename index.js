@@ -11,12 +11,12 @@ const MONGODB_URI = process.env.DB_URI;
 main().catch(err => console.error(err));
 
 const main = async () => {
-  const app = express();
+    const app = express();
 
-  await mongoose.connect(MONGODB_URI);
+    await mongoose.connect(MONGODB_URI);
 
-  app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`);
-  });
+    app.listen(PORT, () => {
+        console.log(`Server started on port ${PORT}`);
+    });
 }
 

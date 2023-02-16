@@ -1,40 +1,40 @@
 async function getProducts(req, res) {
 
-  const { search } = req.params;
+    const {search} = req.params;
 
-  // const products = ...; // List
+    // const products = ...; // List
 
-  if (search) {
-    // Return all products matching the search
-  } else {
-    // Return all products
-  }
+    if (search) {
+        // Return all products matching the search
+    } else {
+        // Return all products
+    }
 
-  // res.json(products) // [ { ... }, { ... } ]
+    // res.json(products) // [ { ... }, { ... } ]
 
 }
 
 async function getProductById(req, res) {
-  const { id } = res.params;
+    const {id} = res.params;
 
-  // const product = ...;
+    // const product = ...;
 
-  // res.json(product);
+    // res.json(product);
 }
 
 async function addNewProduct(req, res) {
-  const product = req.body;
+    const product = req.body;
 
-  try {
-    // product = service.createProduct(product);
-    // res.json(product)
-  } catch (err) {
-    // TODO: Error handaling, 400 if format is wrong, else 500
-  }
+    try {
+        // product = services.createProduct(product);
+        // res.json(product)
+    } catch (err) {
+        // TODO: Error handaling, 400 if format is wrong, else 500
+    }
 }
 
 export {
-  getProducts,
-  getProductById,
-  addNewProduct
+    getProducts,
+    getProductById,
+    addNewProduct
 }
