@@ -2,6 +2,7 @@
 Repository zur Web Engineering Vorlesung
 
 ## Weitere Aufgaben
+* Ändern zu Webshop für Business Notebooks
 * Background zu darkgrey anpassen (wie Discord)
 * Suche als Produktseite mit Filter umsetzen (eventuell auch Suchtags bei der Erstellung von Produkteinträgen)
 * Ausklapbare Informationen auch einklappen oder ganz  weglassen
@@ -9,3 +10,4 @@ Repository zur Web Engineering Vorlesung
 * Auf Homepage Caroussel mit den Stock Images
 * Blättern auf Produktseite
 * Icon für Produktseite anpassen?
+* Seite für einzelne Produkte
