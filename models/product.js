@@ -1,13 +1,9 @@
-import { Schema } from "mongoose"
+import mongoose from "mongoose"
 
 /**
  * MongoDB schema for products on the
  */
-const ProductSchema = new Schema({
-  productId: {
-    type: String,
-    required: true
-  },
+const productSchema = new mongoose.Schema({
   productName: {
     type: String,
     required: true
@@ -20,6 +16,7 @@ const ProductSchema = new Schema({
     type: Number,
     required: true
   },
+  // Maybe change the productSpecifications to just a list of tags
   productSpecification: {
     operatingSystem: {
       type: String,
@@ -48,6 +45,10 @@ const ProductSchema = new Schema({
   }
 });
 
+productSchema.query.bySearch() = function (search) { return undefined; }
+
+const Product = mongoose.model("Product", productSchema);
+
 export {
-  ProductSchema
+  Product
 }

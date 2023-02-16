@@ -31,7 +31,7 @@ async function getUserShoppingCart(req, res) {
 
 }
 
-async function addItemToUserShoppingCart(req, res) {
+async function addToUserShoppingCart(req, res) {
 
 }
 
@@ -40,5 +40,5 @@ export {
   addNewUser,
   getUserCredentialValidity,
   getUserShoppingCart,
-  addItemToUserShoppingCart
+  addToUserShoppingCart
 }

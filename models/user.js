@@ -1,4 +1,4 @@
-import { Schema } from "mongoose"
+import mongoose from "mongoose"
 
 const Address = {
   type: {
@@ -26,11 +26,7 @@ const Address = {
   required: false
 };
 
-const PrivateUserSchema = new Schema({
-  userId: {
-    type: String,
-    required: true
-  },
+const privateUserSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true
@@ -49,17 +45,13 @@ const PrivateUserSchema = new Schema({
   },
   address: Address,
 
-  shoppingCart: { 
-    type: [{type: String, required: true}], 
+  shoppingCart: {
+    type: [{ type: String, required: true }],
     required: false
   },
 });
 
-const CompanyUserSchema = new Schema({
-  userId: {
-    type: String,
-    required: true
-  },
+const companyUserSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -75,7 +67,10 @@ const CompanyUserSchema = new Schema({
   address: Address
 });
 
+const PrivateUser = mongoose.model("CompanyUser", privateUserSchema);
+const CompanyUser = mongoose.model("CompanyUser", companyUserSchema);
+
 export {
-  PrivateUserSchema,
-  CompanyUserSchema
+  PrivateUser,
+  CompanyUser
 }
