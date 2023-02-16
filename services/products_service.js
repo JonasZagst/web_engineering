@@ -1,5 +1,9 @@
-function getProducts(id) {
+function getProducts() {
     // return repo.getAllProducts()
+}
+
+function getProductsQuerry(searchString) {
+
 }
 
 function getProductById(id) {
