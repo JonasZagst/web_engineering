@@ -8,14 +8,24 @@ import {
   getUserShoppingCart
 } from "../controllers/api_users_controller.js"
 
-const router = express.Router();
+const apiRouter = express.Router();
 
-router.get("/api/products", getProducts);
-router.get("/api/products/:id", getProductById);
-router.post("/api/products")
+// API Routs
+apiRouter.get("/api/products", getProducts);
+apiRouter.get("/api/products/:id", getProductById);
+apiRouter.post("/api/products")
 
-router.get("/api/user/password", getUserCredentialValidity);
-router.get("/api/user/:id", getUserById);
+apiRouter.get("/api/user/password", getUserCredentialValidity);
+apiRouter.get("/api/user/:id", getUserById);
 
-router.get("/api/user/:id/shoppingCart", getUserShoppingCart);
-router.post("/api/user/:id/shoppingCart", addItemToUserShoppingCart);
+apiRouter.get("/api/user/:id/shoppingCart", getUserShoppingCart);
+apiRouter.post("/api/user/:id/shoppingCart", addItemToUserShoppingCart);
+
+// HTML Document Routs
+apiRouter.get("/", (req, res) => {
+  res.render("index")
+});
+
+export {
+  apiRouter
+}
