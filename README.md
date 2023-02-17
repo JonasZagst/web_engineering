@@ -1,6 +1,16 @@
 # web_engineering
 Repository zur Web Engineering Vorlesung
 
+## Regeln für Devs
+* Pullrequests mit **inline CSS** werden nicht akzeptiert (bitte alle rausnehmen die noch da sind)
+* Pullrequests die nicht der **BEM Convention** folgen werden nicht akzeptiert
+* Pullrequests mit JS Code **ohne ";" am Ende von Lines** werden nicht akzeptiert
+
+## Neuer Weg für Erstellung von HTML Seiten (nach der Template Engine)
+* Erstellt ein ejs File in views in dem ihr ganz normal euer HTML schreibt, jedoch nur das was im Body stehen würde, das standard Layout wird automatisch eingefügt
+* Anschließend wird im File *api.js* eine Route erstellt mit der auf das Dokument zugegriffen werden soll. 
+* Alle Links zu Ressourcen sind relativ zum *public ordner*. Legt neue öffentliche Ressourcen auch darin an.
+
 ## Weitere Aufgaben
 * Ändern zu Webshop für Business Notebooks
 * Background zu darkgrey anpassen (wie Discord)

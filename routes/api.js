@@ -25,6 +25,15 @@ apiRouter.post("/api/user/:id/shoppingCart", addItemToUserShoppingCart);
 apiRouter.get("/", (req, res) => {
   res.render("index")
 });
+apiRouter.get("/register", (req, res) => {
+  res.render("register")
+})
+apiRouter.get("/login", (req, res) => {
+  res.render("login")
+})
+apiRouter.get("/products", (req, res) => {
+  res.render("productPage")
+})
 
 export {
   apiRouter
