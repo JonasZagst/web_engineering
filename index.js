@@ -1,17 +1,24 @@
 // TODO: Basic authentication (NGINX Authbasic)?
 
-import "dotenv"
-
 import express from "express"
 import mongoose from "mongoose"
+import expressLayouts from "express-ejs-layouts"
+import dotenv from "dotenv";
 
+import {apiRouter} from "./routes/api.js"
+
+dotenv.config();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.DB_URI;
 
-main().catch(err => console.error(err));
-
 const main = async () => {
     const app = express();
+    app.set("view engine", "ejs");
+    app.set("views", "views");
+    app.set("layout", "layouts/layout.ejs");
+    app.use(expressLayouts);
+    app.use(express.static("public"));
+    app.use(apiRouter);
 
     await mongoose.connect(MONGODB_URI);
 
@@ -20,3 +27,4 @@ const main = async () => {
     });
 }
 
+main().catch(err => console.error(err));
