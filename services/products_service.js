@@ -1,20 +1,50 @@
-function getProducts() {
-    // return repo.getAllProducts()
+import {Product} from "../models/product.js";
+import DbGetError from "../errors/dbGetError.js";
+import JSONMappingError from "../errors/JSONMappingError.js";
+import DbPostError from "../errors/dbPostError.js";
+
+async function getProducts() {
+    try {
+        return await Product.find({});
+    } catch (error) {
+        throw new DbGetError(`Could not get all products. Error: ${error}`);
+    }
 }
 
-function getProductsQuerry(searchString) {
-
+async function getProductsQuery(searchString) {
+    try {
+        return await Product.find({$text: {$search: searchString}});
+    } catch (error) {
+        throw new DbGetError(`Could not get all products by querry string. Error: ${error}`);
+    }
 }
 
-function getProductById(id) {
+async function getProductById(id) {
+    try {
+        return await Product.findById(id);
+    } catch (error) {
+        throw new DbGetError(`Could not get product by id. Error: ${error}`);
+    }
 }
 
-function addNewProduct(product) {
-    // Implementation mit Try Catch
+async function addNewProduct(productJSON) {
+    const productModel = new Product(productJSON);
+    const validationError = productModel.validateSync();
+
+    if (Object.keys(validationError).length > 0) {
+        throw new JSONMappingError(`Please enter a valid product json representation.`);
+    }
+
+    try {
+        return await productModel.save();
+    } catch (error) {
+        throw new DbPostError(`Could no create product. Error: ${error}`);
+    }
 }
 
 export {
     getProducts,
     getProductById,
-    addNewProduct
+    addNewProduct,
+    getProductsQuery
 }

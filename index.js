@@ -21,6 +21,9 @@ const main = async () => {
     app.use(apiRouter);
 
     await mongoose.connect(MONGODB_URI);
+    const mongooseDb = mongoose.connection;
+    mongooseDb.on("error", error => console.error(error));
+    mongooseDb.once("open", () => console.log("Connected to mongoose database"))
 
     app.listen(PORT, () => {
         console.log(`Server started on port ${PORT}`);

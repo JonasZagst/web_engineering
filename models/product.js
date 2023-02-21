@@ -16,6 +16,10 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    image: { // Link to images in public folder
+        type: [String],
+        required: false
+    },
     // Maybe change the productSpecifications to just a list of tags
     productSpecification: {
         operatingSystem: {
@@ -44,10 +48,12 @@ const productSchema = new mongoose.Schema({
         }
     }
 });
+productSchema.index({'$**': 'text'});
 
-productSchema.query.bySearch = function (search) {
-    return undefined;
-}
+// productSchema.query.bySearch = function (searchString) {
+//
+//     return undefined;
+// }
 
 const Product = mongoose.model("Product", productSchema);
 
