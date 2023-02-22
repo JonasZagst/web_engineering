@@ -1,6 +1,6 @@
 import express from "express"
 
-import {getProductById, getProducts} from "../controllers/api_products_controller.js"
+import {addNewProduct, getProductById, getProducts} from "../controllers/api_products_controller.js"
 import {
   addItemToUserShoppingCart,
   getUserById,
@@ -13,7 +13,7 @@ const apiRouter = express.Router();
 // API Routs
 apiRouter.get("/api/products", getProducts);
 apiRouter.get("/api/products/:id", getProductById);
-apiRouter.post("/api/products")
+apiRouter.post("/api/products", addNewProduct);
 
 apiRouter.get("/api/user/password", getUserCredentialValidity);
 apiRouter.get("/api/user/:id", getUserById);
