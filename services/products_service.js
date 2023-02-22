@@ -23,6 +23,9 @@ async function getProductById(id) {
     try {
         return await Product.findById(id);
     } catch (error) {
+        if (error.name === "CastError") {   // CastError is thrown when mongodb doesn't find a product of this id, so we return null.
+            return null;
+        }
         throw new DbGetError(`Could not get product by id. Error: ${error}`);
     }
 }

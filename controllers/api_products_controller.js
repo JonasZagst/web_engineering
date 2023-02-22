@@ -15,7 +15,7 @@ async function getProducts(req, res) {
 
         if (!queryResult.length) {
             res.statusCode = 404;
-            res.send("Bad Request")
+            res.send("Not found");
         } else {
             res.statusCode = 200;
             res.json(queryResult);
@@ -33,7 +33,7 @@ async function getProductById(req, res) {
             const queryResult = await products_service.getProductById(id);
             if (!queryResult) {
                 res.statusCode = 404;
-                res.send("Bad Request")
+                res.send("Not found");
             } else {
                 res.statusCode = 200;
                 res.json(queryResult);
@@ -47,7 +47,7 @@ async function getProductById(req, res) {
 
     } else {
         res.statusCode = 400;
-        res.send("Bad Request")
+        res.send("Bad Request");
     }
 }
 
