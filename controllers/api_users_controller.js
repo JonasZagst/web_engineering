@@ -1,7 +1,7 @@
 import * as users_service from "../services/users_service.js"
 
 async function getUserById(req, res) {
-    const {id} = res.params;
+    const {id} = req.params;
 
     if (id !== null) {
         try {
@@ -51,11 +51,48 @@ async function getUserCredentialValidity(req, res) {
 }
 
 async function getUserShoppingCart(req, res) {
+    const {id} = req.params;
 
+    if (id !== null) {
+        try {
+            const queryResult = await users_service.getUserShoppingCart(id);
+            if (!queryResult) {
+                res.statusCode = 404;
+                res.send("Not found");
+            } else {
+                res.statusCode = 200;
+                res.json(queryResult);
+            }
+        } catch (error) {
+            res.statusCode = 500;
+            console.error(error);
+            res.send(error.message);
+        }
+    } else {
+        res.statusCode = 400;
+        res.send("Bad Request");
+    }
 }
 
 async function addItemToUserShoppingCart(req, res) {
+    const {id} = req.params;
 
+    if (!req.body || id === null){
+        res.statusCode = 400;
+        res.send("Bad Request");
+        return;
+    }
+    const {productId} = req.body;
+
+    try {
+        const newShoppingCart = await users_service.addItemToUserShoppingCart(id, productId);
+        res.statusCode = 201;
+        res.json(newShoppingCart);
+    } catch (error){
+        res.statusCode = 500;
+        console.error(error);
+        res.send(error.message);
+    }
 }
 
 export {

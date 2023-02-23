@@ -66,6 +66,10 @@ async function addItemToUserShoppingCart(userId, productId) {
         const updatedUser = PrivateUser.findById(userId);
         return updatedUser.shoppingCart;
     } catch (error) {
+        if (error.name === "CastError"){
+            return null;
+        }
+
         throw new DbPutError(`Could not update user shopping cart by id. Error: ${error}`);
     }
 }
