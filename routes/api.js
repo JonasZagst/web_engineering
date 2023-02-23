@@ -15,11 +15,11 @@ apiRouter.get("/api/products", getProducts);
 apiRouter.get("/api/products/:id", getProductById);
 apiRouter.post("/api/products", addNewProduct);
 
-apiRouter.get("/api/user/password", getUserCredentialValidity);
-apiRouter.get("/api/user/:id", getUserById);
+apiRouter.get("/api/users/password", getUserCredentialValidity);
+apiRouter.get("/api/users/:id", getUserById);
 
-apiRouter.get("/api/user/:id/shoppingCart", getUserShoppingCart);
-apiRouter.post("/api/user/:id/shoppingCart", addItemToUserShoppingCart);
+apiRouter.get("/api/users/:id/shoppingCart", getUserShoppingCart);
+apiRouter.put("/api/users/:id/shoppingCart", addItemToUserShoppingCart);
 
 // HTML Document Routs
 apiRouter.get("/", (req, res) => {

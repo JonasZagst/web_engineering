@@ -28,6 +28,7 @@ async function getProducts(req, res) {
 
 async function getProductById(req, res) {
     const {id} = req.params;
+
     if (id !== null) {
         try {
             const queryResult = await products_service.getProductById(id);
