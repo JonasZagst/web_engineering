@@ -19,7 +19,7 @@ apiRouter.get("/api/user/password", getUserCredentialValidity);
 apiRouter.get("/api/user/:id", getUserById);
 
 apiRouter.get("/api/user/:id/shoppingCart", getUserShoppingCart);
-apiRouter.post("/api/user/:id/shoppingCart", addItemToUserShoppingCart);
+apiRouter.put("/api/user/:id/shoppingCart", addItemToUserShoppingCart);
 
 // HTML Document Routs
 apiRouter.get("/", (req, res) => {

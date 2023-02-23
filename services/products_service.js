@@ -26,6 +26,7 @@ async function getProductById(id) {
         if (error.name === "CastError") {   // CastError is thrown when mongodb doesn't find a product of this id, so we return null.
             return null;
         }
+
         throw new DbGetError(`Could not get product by id. Error: ${error}`);
     }
 }
@@ -35,13 +36,14 @@ async function addNewProduct(productJSON) {
     const validationError = productModel.validateSync();
 
     if (Object.keys(validationError).length > 0) {
+        // Throws Error if the input doesn't map to any product model
         throw new JSONMappingError(`Please enter a valid product json representation.`);
     }
 
     try {
         return await productModel.save();
     } catch (error) {
-        throw new DbPostError(`Could no create product. Error: ${error}`);
+        throw new DbPostError(`Could not create product. Error: ${error}`);
     }
 }
 

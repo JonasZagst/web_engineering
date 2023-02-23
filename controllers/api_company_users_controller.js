@@ -1,11 +1,11 @@
-import * as users_service from "../services/users_service.js"
+import * as company_users_service from "../services/company_users_service.js";
 
-async function getUserById(req, res) {
+async function getCompanyUserById(req, res) {
     const {id} = res.params;
 
     if (id !== null) {
         try {
-            const queryResult = await users_service.getUserById(id);
+            const queryResult = await company_users_service.getCompanyUserById(id);
             if (!queryResult) {
                 res.statusCode = 404;
                 res.send("Not found");
@@ -24,11 +24,11 @@ async function getUserById(req, res) {
     }
 }
 
-async function addNewUser(req, res) {
-    const user = req.body;
+async function addNewCompanyUser(req, res) {
+    const companyUser = req.body;
 
     try {
-        const newUser = await users_service.addNewUser(user);
+        const newUser = await company_users_service.addNewCompanyUser(companyUser);
         res.statusCode = 201;
         res.json(newUser);
     } catch (error) {
@@ -42,7 +42,7 @@ async function addNewUser(req, res) {
     }
 }
 
-async function getUserCredentialValidity(req, res) {
+async function getCompanyUserCredentialValidity(req, res) {
     const {email, password} = req.body;
 
     // 1. Get user by email from database
@@ -50,18 +50,8 @@ async function getUserCredentialValidity(req, res) {
     // 3. (Optional) Hash the passwords when creating or reading a user
 }
 
-async function getUserShoppingCart(req, res) {
-
-}
-
-async function addItemToUserShoppingCart(req, res) {
-
-}
-
 export {
-    getUserById,
-    addNewUser,
-    getUserCredentialValidity,
-    getUserShoppingCart,
-    addItemToUserShoppingCart
+    getCompanyUserById,
+    addNewCompanyUser,
+    getCompanyUserCredentialValidity
 }
