@@ -19,10 +19,23 @@ async function getUserById(id) {
     }
 }
 
+async function getUserByName(name) {
+    try {
+        const privateUser = await PrivateUser.find({email: name})
+        // Delete password from the representation before returning it
+        delete privateUser.password;
+        return privateUser;
+    } catch (error) {
+        if (error.name === "CastError") {   // CastError is thrown when mongodb doesn't find a product of this id, so we return null.
+            return null;
+        }
+
+        throw new DbGetError(`Could not get user by name. Error: ${error}`);
+    }
+}
 async function addNewUser(userJSON) {
     const userModel = new PrivateUser(userJSON);
     const userModelValidationError = userModel.validateSync();
-
     if (Object.keys(userModelValidationError).length > 0) {
         // Throws Error if the input doesn't map to the user model
         throw new JSONMappingError(`Please enter a valid user json representation.`);
@@ -76,6 +89,7 @@ async function addItemToUserShoppingCart(userId, productId) {
 
 export {
     getUserById,
+    getUserByName,
     addNewUser,
     checkUserCredentialsValidity,
     getUserShoppingCart,

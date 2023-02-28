@@ -1,0 +1,49 @@
+#LandingBanner {
+    background-color:#5866f2 ;margin-bottom: 0%;height: 100%;
+}
+#LandingBannerImage
+{
+    width: 1500px;
+    height: 750px;
+    border-radius: 30px;
+}
+#containerMotto{
+    margin-top:0;color: black;background-color:#5866f2;text-align: center;padding:10px
+}
+
+#containerMotto p{
+margin-top:0;color: black;background-color:#5866f2;text-align: center;font-size: x-large;;
+}
+
+#gridContainerInfo {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    text-align: center;
+    align-items: center;
+}
+
+#gridContentLeft{
+    display:grid; 
+    width: 100%;
+}
+
+#gridContentLeft img{
+    border-top: 50px; border-radius: 10%;height: 100%;float: left;margin-right: 0;margin-left: 10%;width: 20px;
+    width: 75%;
+}
+
+#gridContentRight {
+    background-color:#1e1f22;
+    color:white;
+    border-radius: 20%;
+    margin-top: 6%;
+    display:grid;
+    width: 100%;
+}
+
+#gridContentRight p{
+    background-color:transparent;color:white; width: 30%;border-radius: 20%;margin-top: 6%; width: 75%;font-size: x-large;
+}
+
+
