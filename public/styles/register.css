@@ -1,0 +1,32 @@
+.containerLoginForm {
+    height:700px;
+    width: 850px;
+    text-align: center;
+}
+.containerLoginForm input{
+    text-align: center;
+}
+
+.containerLoginInline {
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.containerLoginInline input{
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 200px;
+}
+
+.LoginInline input{
+    width: 21%;
+}
+#registerInputPassword{
+    margin-bottom: 5px;
+}
+.Details {
+    visibility:hidden;
+}

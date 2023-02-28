@@ -4,36 +4,44 @@ import {addNewProduct, getProductById, getProducts} from "../controllers/api_pro
 import {
   addItemToUserShoppingCart,
   getUserById,
+  getUserByName,
   getUserCredentialValidity,
+  addNewUser,
   getUserShoppingCart
 } from "../controllers/api_users_controller.js"
 
 const apiRouter = express.Router();
 
-// API Routs
+// API Routes
 apiRouter.get("/api/products", getProducts);
 apiRouter.get("/api/products/:id", getProductById);
 apiRouter.post("/api/products", addNewProduct);
 
-apiRouter.get("/api/user/password", getUserCredentialValidity);
-apiRouter.get("/api/user/:id", getUserById);
+apiRouter.get("/api/users/password", getUserCredentialValidity);
+apiRouter.get("/api/users/id/:id", getUserById);
+apiRouter.get("/api/users/name/:name", getUserByName);
+apiRouter.post("/api/users", addNewUser);
 
-apiRouter.get("/api/user/:id/shoppingCart", getUserShoppingCart);
-apiRouter.post("/api/user/:id/shoppingCart", addItemToUserShoppingCart);
+apiRouter.get("/api/users/:id/shoppingCart", getUserShoppingCart);
+apiRouter.put("/api/users/:id/shoppingCart", addItemToUserShoppingCart);
 
-// HTML Document Routs
+// HTML Document Routes
 apiRouter.get("/", (req, res) => {
   res.render("index")
 });
 apiRouter.get("/register", (req, res) => {
   res.render("register")
-})
+});
 apiRouter.get("/login", (req, res) => {
   res.render("login")
-})
+});
 apiRouter.get("/products", (req, res) => {
   res.render("productPage")
-})
+});
+apiRouter.get("/productCreation", (req, res) => {
+  res.render("productCreation")
+});
+
 
 export {
   apiRouter

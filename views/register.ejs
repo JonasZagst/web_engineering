@@ -1,26 +1,26 @@
+<link rel="stylesheet" href="styles/login.css">
+<link rel="stylesheet" href="styles/register.css">
 <main>
-    <div class="LoginForm">
+    <div class="containerLoginForm">
         <form>
-            <div class="LoginText">
-                <h3 style="display: inline-block;font-size: x-large;border-bottom: 3px;border-bottom-style: solid;">
-                    Create an Account</h3></br>
-                <div class="LoginInline">
-                    <label for="input-first-name" style="margin-right: 10px">First Name:</label></br>
-                    <input type="text" id="input-first-name" name="first-name">
-                    <label for="input-last-name" style="margin-left: 10px;margin-right: 10px;">Last Name:</label></br>
-                    <input type="text" id="input-last-name" name="last-name"></br>
+            <div class="containerLoginText">
+                <h3 id="containerLoginCaption">Create an Account</h3></br>
+                <div class="containerLoginInline">
+                    <label for="registerInputFirstName" id="registerLabelFirstName">First Name:</label></br>
+                    <input type="text" id="registerInputFirstName" name="first-name">
+                    <label for="registerInputLastName" id="registerLabelFirstName">Last Name:</label></br>
+                    <input type="text" id="registerInputLastName" name="last-name"></br>
                 </div>
                 <label for="birthday">Birthday:</label></br>
-                <input type="date" id="birthday" name="birthday" style="text-align: center"></br>
-                <label for="input-email">Email Adress:</label></br>
-                <input type="text" id="input-email" name="email"></br>
-                <label for="input-password">Password:</label></br>
-                <input type="password" id="input-password" name="password" style="margin-bottom: 5px;"></br>
-                <button type="submit" value="Submit" class="LoginButton"><a href="/"><img src="img/LoginFormButton.png"></a>
+                <input type="date" id="registerInputBirthday" name="birthday"></br>
+                <label for="registerInputEmail">Email Adress:</label></br>
+                <input type="text" id="registerInputEmail" name="email"></br>
+                <label for="registerInputPassword">Password:</label></br>
+                <input type="password" id="registerInputPassword" name="password"></br>
+                <button type="submit" value="Submit" class="loginButton"><a href="/"><img src="img/LoginFormButton.png"></a>
                 </button>
                 </br>
-                <img src="img/Logo.png"
-                     style=" width: 300px;height: 60px;margin-top: 30px;border-top: 3px;border-top-style: solid;">
+                <img src="img/Logo.png" id="loginFooterLogo">
             </div>
         </form>
     </div>

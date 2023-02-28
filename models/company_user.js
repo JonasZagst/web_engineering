@@ -26,12 +26,8 @@ const address = {
     required: false
 };
 
-const privateUserSchema = new mongoose.Schema({
-    firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
+const companyUserSchema = new mongoose.Schema({
+    name: {
         type: String,
         required: true
     },
@@ -43,16 +39,11 @@ const privateUserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    address: address,
-
-    shoppingCart: {
-        type: [{type: String, required: true}],
-        required: false
-    },
+    address: address
 });
 
-const PrivateUser = mongoose.model("PrivateUser", privateUserSchema);
+const CompanyUser = mongoose.model("CompanyUser", companyUserSchema);
 
 export {
-    PrivateUser
+    CompanyUser
 }
