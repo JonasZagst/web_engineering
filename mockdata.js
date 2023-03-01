@@ -4,8 +4,17 @@
 
 import mongoose from "mongoose"
 import {Product} from "./models/product.js"
+import {PrivateUser} from "./models/user.js";
+import {CompanyUser} from "./models/company_user.js";
 
 async function createMockProducts() {
+    // remove old data to reset the database
+    Product.remove({}, () => {
+        console.log("Database dropped. Creating new data");
+    })
+    PrivateUser.remove({});
+    CompanyUser.remove({});
+
     for (const product of mockProducts) {
         await new Product(product).save();
     }

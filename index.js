@@ -21,13 +21,14 @@ const main = async () => {
     app.set("layout", "layouts/layout.ejs");
     app.use(expressLayouts);
     app.use(express.static("public"));
+    app.use(express.json());
     app.use(apiRouter);
 
     await mongoose.connect(MONGODB_URI);
     const mongooseDb = mongoose.connection;
 
     // Setup mock data based on .env mock flag
-    if (process.env.SETUP_MOCK_DATA) {
+    if (process.env.SETUP_MOCK_DATA === "true") {
         await createMockProducts();
     }
 

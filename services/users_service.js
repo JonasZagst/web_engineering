@@ -7,9 +7,12 @@ import DbPutError from "../errors/dbPutError.js";
 async function getUserById(id) {
     try {
         const privateUser = await PrivateUser.findById(id)
-        // Delete password from the representation before returning it
-        delete privateUser.password;
-        return privateUser;
+        // Separate the password from the json representation before returning it
+        if (privateUser != null) {
+            const { password, ...rest} = privateUser;
+            return rest;
+        }
+        return null;
     } catch (error) {
         if (error.name === "CastError") {   // CastError is thrown when mongodb doesn't find a product of this id, so we return null.
             return null;
@@ -23,7 +26,7 @@ async function addNewUser(userJSON) {
     const userModel = new PrivateUser(userJSON);
     const userModelValidationError = userModel.validateSync();
 
-    if (Object.keys(userModelValidationError).length > 0) {
+    if (userModelValidationError != null) {
         // Throws Error if the input doesn't map to the user model
         throw new JSONMappingError(`Please enter a valid user json representation.`);
     }
@@ -46,7 +49,7 @@ async function checkUserCredentialsValidity(email, password) {
 
 async function getUserShoppingCart(userId) {
     try {
-        const privateUser = await PrivateUser.findById(id)
+        const privateUser = await PrivateUser.findById(userId)
         return privateUser.shoppingCart;
     } catch (error) {
         if (error.name === "CastError") {
