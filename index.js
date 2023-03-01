@@ -12,8 +12,6 @@ dotenv.config();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.DB_URI;
 
-
-
 const main = async () => {
     const app = express();
     app.set("view engine", "ejs");

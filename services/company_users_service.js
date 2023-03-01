@@ -5,7 +5,7 @@ import {CompanyUser} from "../models/company_user";
 
 async function getCompanyUserById(id) {
     try {
-        const companyUser = await CompanyUser.findById(id)
+        const companyUser = await CompanyUser.findById(id);
         // Delete password from the representation before returning it
         delete companyUser.password;
         return companyUser;

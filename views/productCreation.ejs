@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="styles/productCreation.css">
+<script src="scripts/productCreation.js"></script>
+<main>
+    <div class="productCreationBlock">
+            <div class="productGridBox">
+                <div class="productCreationForm">
+                    <h3 class="productCreationFormCaption">Design your own Product:</h3>
+                    <form id="formLeft">
+                        <p>Product Image:</p>
+                        <label for="uploadimage" class="fileUpload">
+                            <span class="dropTitle">Drop file here</span></br>
+                            <span class="dropTitleSecond">or</span>
+                            <div class="uploadImageBox">
+                                <input id="uploadImage" type="file" accept="image/*" onchange="preview_image(event)" required>
+                            </div>
+                        </label></br>
+
+                        <label for="productTitle">Product Title:</label></br>
+                        <input id="productTitle" type="text"></br>
+
+                        <label for="productDescription">Product Description:</label></br>
+                        <textarea id="productDescription" type="text"></textarea></br>
+
+                        <label for="productPrice">Product Price:</label></br>
+                        <input id="productPrice" type="number"></br>
+
+                        <button id="productButton" type="button" onclick="preview_text()"><strong>Preview</strong></button>
+                    </form>
+                    <form id="formRight">
+                        <label for="productTitle">Product Title:</label></br>
+                        <input id="productTitle" type="text"></br>
+                    </form>
+                </div>
+                <div class="productCreationPreview">
+                    <div class="productItem">
+                        <img id="uploadedImage" alt="">
+                        <div class="productPreviewBox" id="productPreviewBox">
+                            <strong id="productPreviewTitle" style="color: whitesmoke;font-size: large">Amazon Web Services</strong></br></br>
+                            <strong id="productPreviewDescription">Amazon Web Services (AWS) is a comprehensive, evolving cloud computing platform provided by Amazon that offers a mix of infrastructure as a service (IaaS), platform as a service (PaaS) and packaged software as a service (SaaS) offerings.</strong></br></br></br>
+                            <strong id="productPreviewPrice"></strong></br></br></br>
+                        </div>
+                    </div>  
+                </div>
+            </div>  
+    </div>
+</main>

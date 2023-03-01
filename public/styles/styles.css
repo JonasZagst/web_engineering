@@ -1,4 +1,5 @@
-body {background-color: black;margin: 0;}  
+/*General Designs*/
+body {background-color: #1e1f22;margin: 0;}  
 main {
     text-align: center;
 }
@@ -10,7 +11,7 @@ h2 img {
     width: 300px;
     height: 60px;
 }
-nav {width: 100%;overflow: auto;background-color:#4ed679;}
+nav {width: 100%;overflow: auto;background-color:#5866f2}
 nav ul {
     text-align: right;
     margin-right: 5%;
@@ -48,7 +49,8 @@ padding: 15px;
 height: 100%;
 }
 
-.grid {
+/*Product Page Designs*/
+.productGrid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1em;
@@ -60,10 +62,11 @@ height: 100%;
 .grid-item {
     color:black;
     background: #595959;
-    border-radius: 15%;
-    height: 850px;
+    border-radius: 18%;
+    height: 600px;
     border-width: 2px;
     word-break: break-word;
+    margin-bottom: 20px;
 }
 
 .grid-item img {
@@ -79,39 +82,16 @@ height: 100%;
 }
 
 .grid-text {
-    /*height:500px; Größe der Box, wenn Details angezeigt werden!*/
-    height: 200px;
+    height: 250px;
     border-bottom-left-radius: 29%;
     border-bottom-right-radius: 29%;
-    background-color: #4ed679;
+    background-color:#5866f2;
     padding-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
 }
 
-ul.Pros {
-    list-style-type: "+  ";
-    font-weight: bold;
-    list-style-position: outside;
-    text-align: left;
-    color: green;
-}
-ul.Pros li::marker{
-    font-weight: bold;
-}
-
-ul.Cons {
-    list-style-type: "-  ";
-    font-weight: bold;
-    list-style-position: outside;
-    text-align: left;
-    color: red;
-}
-
-ul.Cons li::marker{
-    font-weight: bold;
-}
-
+/*Login Page Designs
 .LoginForm {
     width: 700px;
     height: 700px;
@@ -180,12 +160,7 @@ input{
 
 .Details {
     visibility:hidden;
-}
+}*/
 
-/*Funktion um Textsuchfeld anzuzeigen!
-ul li a .textfeld {
-    visibility: hidden;
-}
-*/
 
 
