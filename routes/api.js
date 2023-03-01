@@ -2,7 +2,7 @@ import express from "express"
 
 import {addNewProduct, getProductById, getProducts} from "../controllers/api_products_controller.js"
 import {
-  addItemToUserShoppingCart, addNewUser,
+  addItemToUserShoppingCart,
   getUserById,
   getUserByName,
   getUserCredentialValidity,

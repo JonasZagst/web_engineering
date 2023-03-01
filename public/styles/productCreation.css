@@ -3,8 +3,6 @@
     height:800px;
     display: inline-block;
     border-radius: 5%;
-    margin-top: 2%;
-   
 }
 
 .productCreationFormCaption {
@@ -18,10 +16,15 @@
     display: grid;
     grid-template-columns: 3fr 2fr;
     grid-gap: 1em;
-    margin-top: 5%; 
+    margin-top: 50px; 
     margin-left: 2%;
     margin-right: 2%;
-    height: 10px;
+    height: 5px;
+}
+
+.productSelectionGridBox{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
 }
 
 .productItem{
@@ -55,12 +58,10 @@
 
 #formLeft{
     margin-left: 50px;
-    text-align: left;
 }
 
 #formRight{
     margin-right: 50px;
-    text-align: right;
 }
 
 .productCreationPreview{
@@ -71,11 +72,6 @@
     font-size: large;
     margin-block-end: 0.5em;
     color: black;
-}
-
-.productCreationForm p{
-    font-size: large;
-    margin-block-end: 0.5em;
 }
 
 .productCreationForm input{
@@ -89,7 +85,7 @@
     text-align: center;
 }
 #productDescription{
-    height: 150px;
+    height: 175px;
     text-align: start;
     width: 420px;
     border-radius: 10px;
@@ -111,6 +107,7 @@
     border-color: black;
     width: 400px;
     color: whitesmoke;
+    margin-top: 0.5em;
 }
 
 .fileUpload span {

@@ -20,7 +20,6 @@ function craeateProductForms(body){
     for(let i=0; i<=body.length;i++)
     {
         const productImage = body[i].image[0];
-        console.log(productImage);
         const productName = body[i].productName;
         const productDescription = body[i].productDescription;
         const productPrice = body[i].price;

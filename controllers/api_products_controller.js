@@ -54,7 +54,7 @@ async function getProductById(req, res) {
 
 async function addNewProduct(req, res) {
     const product = req.body;
-
+    console.log("arrived");
     try {
         const newProduct = await products_service.addNewProduct(product);
         res.statusCode = 201;
