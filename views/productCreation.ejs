@@ -4,8 +4,8 @@
     <div class="productCreationBlock">
             <div class="productGridBox">
                 <div class="productCreationForm">
-                    <form>
-                        <h3 class="productCreationFormCaption">Design your own Product:</h3>
+                    <h3 class="productCreationFormCaption">Design your own Product:</h3>
+                    <form id="formLeft">
                         <p>Product Image:</p>
                         <label for="uploadimage" class="fileUpload">
                             <span class="dropTitle">Drop file here</span></br>
@@ -25,6 +25,10 @@
                         <input id="productPrice" type="number"></br>
 
                         <button id="productButton" type="button" onclick="preview_text()"><strong>Preview</strong></button>
+                    </form>
+                    <form id="formRight">
+                        <label for="productTitle">Product Title:</label></br>
+                        <input id="productTitle" type="text"></br>
                     </form>
                 </div>
                 <div class="productCreationPreview">

@@ -49,9 +49,20 @@
     background: #5866f2;    
     height: 700px;
     margin-right: 50px;
-    width: 600px;
+    width: 1000px;
     color: black;
 }
+
+#formLeft{
+    margin-left: 50px;
+    text-align: left;
+}
+
+#formRight{
+    margin-right: 50px;
+    text-align: right;
+}
+
 .productCreationPreview{
     height:100%;
 }

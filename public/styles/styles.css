@@ -50,7 +50,7 @@ height: 100%;
 }
 
 /*Product Page Designs*/
-.grid {
+.productGrid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 1em;
@@ -62,10 +62,11 @@ height: 100%;
 .grid-item {
     color:black;
     background: #595959;
-    border-radius: 15%;
-    height: 550px;
+    border-radius: 18%;
+    height: 600px;
     border-width: 2px;
     word-break: break-word;
+    margin-bottom: 20px;
 }
 
 .grid-item img {
@@ -81,7 +82,7 @@ height: 100%;
 }
 
 .grid-text {
-    height: 200px;
+    height: 250px;
     border-bottom-left-radius: 29%;
     border-bottom-right-radius: 29%;
     background-color:#5866f2;
