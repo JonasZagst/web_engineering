@@ -1,6 +1,10 @@
 # web_engineering
 Repository zur Web Engineering Vorlesung
 
+## Server starten
+* *node index.js* ausführen oder in WebStorm die Index.js starten.
+* Die .env so bearbeiten wie man es haben will (siehe Erstellen von Mock Daten unten)
+
 ## Regeln für Devs
 * Pullrequests mit **inline CSS** werden nicht akzeptiert (bitte alle rausnehmen die noch da sind)
 * Pullrequests die nicht der **BEM Convention** folgen werden nicht akzeptiert
@@ -20,9 +24,6 @@ Repository zur Web Engineering Vorlesung
 * Ändern zu Webshop für Business Notebooks
 * Background zu darkgrey anpassen (wie Discord)
 * Suche als Produktseite mit Filter umsetzen (eventuell auch Suchtags bei der Erstellung von Produkteinträgen)
-* Ausklapbare Informationen auch einklappen oder ganz  weglassen
-* Bei Klick auf das Logo (Oben Mittig) link zu Homepage
-* Auf Homepage Caroussel mit den Stock Images
 * Blättern auf Produktseite
 * Icon für Produktseite anpassen?
 * Seite für einzelne Produkte

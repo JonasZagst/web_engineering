@@ -35,7 +35,7 @@ async function addNewProduct(productJSON) {
     const productModel = new Product(productJSON);
     const validationError = productModel.validateSync();
 
-    if (Object.keys(validationError).length > 0) {
+    if (validationError != null) {
         // Throws Error if the input doesn't map to any product model
         throw new JSONMappingError(`Please enter a valid product json representation.`);
     }

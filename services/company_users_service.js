@@ -22,7 +22,7 @@ async function addNewCompanyUser(userJSON) {
     const userModel = new CompanyUser(userJSON);
     const userModelValidationError = userModel.validateSync();
 
-    if (Object.keys(userModelValidationError).length > 0) {
+    if (userModelValidationError != null) {
         // Throws Error if the input doesn't map to the user model
         throw new JSONMappingError(`Please enter a valid company user json representation.`);
     }
