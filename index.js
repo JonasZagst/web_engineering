@@ -5,8 +5,9 @@ import mongoose from "mongoose"
 import expressLayouts from "express-ejs-layouts"
 import dotenv from "dotenv"
 
-import {apiRouter} from "./routes/api.js"
-import {createMockProducts} from "./mockdata.js";
+import { apiRouter } from "./routes/api.js"
+import { websiteRouter } from "./routes/site.js"
+import { createMockProducts } from "./mockdata.js";
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
@@ -21,6 +22,7 @@ const main = async () => {
     app.use(express.static("public"));
     app.use(express.json());
     app.use(apiRouter);
+    app.use(websiteRouter);
 
     await mongoose.connect(MONGODB_URI);
     const mongooseDb = mongoose.connection;
