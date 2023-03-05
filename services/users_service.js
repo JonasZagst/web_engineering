@@ -6,15 +6,14 @@ import DbPutError from "../errors/dbPutError.js";
 
 async function getUserById(id) {
     try {
-        const privateUser = await PrivateUser.findById(id)
+        const privateUser = await PrivateUser.findById(id).select("-password");
         // Separate the password from the json representation before returning it
         if (privateUser != null) {
-            const { password, ...rest} = privateUser;
-            return rest;
+            return privateUser;
         }
         return null;
     } catch (error) {
-        if (error.name === "CastError") {   // CastError is thrown when mongodb doesn't find a product of this id, so we return null.
+        if (error.name === "CastError") {   // CastError is thrown when mongodb doesn't find a user of this id, so we return null.
             return null;
         }
 
@@ -22,20 +21,6 @@ async function getUserById(id) {
     }
 }
 
-async function getUserByName(name) {
-    try {
-        const privateUser = await PrivateUser.find({email: name})
-        // Delete password from the representation before returning it
-        delete privateUser.password;
-        return privateUser;
-    } catch (error) {
-        if (error.name === "CastError") {   // CastError is thrown when mongodb doesn't find a product of this id, so we return null.
-            return null;
-        }
-
-        throw new DbGetError(`Could not get user by name. Error: ${error}`);
-    }
-}
 async function addNewUser(userJSON) {
     const userModel = new PrivateUser(userJSON);
     const userModelValidationError = userModel.validateSync();
@@ -55,10 +40,24 @@ async function addNewUser(userJSON) {
     }
 }
 
-async function checkUserCredentialsValidity(email, password) {
-    // 1. Get user by email from database
-    // 2. Check if password and password in database are the same.
-    // 3. (Optional) Hash the passwords when creating or reading a user
+async function checkUserCredentialsValidity(userEmail, password) {
+    try {
+        const privateUser = await PrivateUser.findOne({email: userEmail});
+
+        if (password.length === 0) {
+            return null;
+        } else if (password === privateUser[0].password) {
+            return true;
+        }
+
+        return false;
+    } catch (error) {
+        if (error.name === "CastError") {   // CastError is thrown when mongodb doesn't find a user by this email, so we return null.
+            return null;
+        }
+
+        throw new DbGetError(`Could check user credentials. Could not find user per email. Error: ${error}`);
+    }
 }
 
 async function getUserShoppingCart(userId) {
@@ -83,7 +82,7 @@ async function addItemToUserShoppingCart(userId, productId) {
         const updatedUser = PrivateUser.findById(userId);
         return updatedUser.shoppingCart;
     } catch (error) {
-        if (error.name === "CastError"){
+        if (error.name === "CastError") {
             return null;
         }
 
@@ -93,7 +92,6 @@ async function addItemToUserShoppingCart(userId, productId) {
 
 export {
     getUserById,
-    getUserByName,
     addNewUser,
     checkUserCredentialsValidity,
     getUserShoppingCart,

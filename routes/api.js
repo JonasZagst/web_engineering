@@ -4,7 +4,6 @@ import { addNewProduct, getProductById, getProducts } from "../controllers/api_p
 import {
   addItemToUserShoppingCart,
   getUserById,
-  getUserByName,
   getUserCredentialValidity,
   addNewUser,
   getUserShoppingCart
@@ -18,8 +17,7 @@ apiRouter.get("/api/products/:id", getProductById);
 apiRouter.post("/api/products", addNewProduct);
 
 apiRouter.get("/api/users/password", getUserCredentialValidity);
-apiRouter.get("/api/users/id/:id", getUserById);
-apiRouter.get("/api/users/name/:name", getUserByName);
+apiRouter.get("/api/users/id", getUserById);
 apiRouter.post("/api/users", addNewUser);
 
 apiRouter.get("/api/users/:id/shoppingCart", getUserShoppingCart);
