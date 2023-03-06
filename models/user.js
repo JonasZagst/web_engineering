@@ -45,7 +45,6 @@ const privateUserSchema = new mongoose.Schema({
         required: true
     },
     address: address,
-
     shoppingCart: {
         type: [{ type: String, required: true }],
         required: false

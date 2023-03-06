@@ -1,7 +1,7 @@
 import DbGetError from "../errors/dbGetError.js";
 import JSONMappingError from "../errors/JSONMappingError.js";
 import DbPostError from "../errors/dbPostError.js";
-import {CompanyUser} from "../models/company_user";
+import { CompanyUser } from "../models/company_user";
 
 async function getCompanyUserById(id) {
     try {
@@ -38,9 +38,17 @@ async function addNewCompanyUser(userJSON) {
 }
 
 async function checkCompanyUserCredentialsValidity(email, password) {
-    // 1. Get user by email from database
-    // 2. Check if password and password in database are the same.
-    // 3. (Optional) Hash the passwords when creating or reading a user
+    try {
+        return await CompanyUser.findOne({ email: email, password: password });
+    } catch (error) {
+        // CastError is thrown when mongodb doesn't find a user of this id, so we return null.
+        if (error.name === "CastError") {
+            return null;
+        }
+
+        // FIXME: Why this error message?
+        throw new DbGetError(`Could check user credentials. Could not find user per email. Error: ${error}`);
+    }
 }
 
 export {
