@@ -1,4 +1,4 @@
-import {Product} from "../models/product.js";
+import { Product } from "../models/product.js";
 import DbGetError from "../errors/dbGetError.js";
 import JSONMappingError from "../errors/JSONMappingError.js";
 import DbPostError from "../errors/dbPostError.js";
@@ -13,7 +13,7 @@ async function getProducts() {
 
 async function getProductsQuery(searchString) {
     try {
-        return await Product.find({$text: {$search: searchString}});
+        return await Product.find({ $text: { $search: searchString } });
     } catch (error) {
         throw new DbGetError(`Could not get all products by querry string. Error: ${error}`);
     }

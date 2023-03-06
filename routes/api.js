@@ -17,7 +17,7 @@ apiRouter.get("/api/products/:id", getProductById);
 apiRouter.post("/api/products", addNewProduct);
 
 apiRouter.get("/api/users/password", getUserCredentialValidity);
-apiRouter.get("/api/users/id", getUserById);
+apiRouter.get("/api/users/:id", getUserById);
 apiRouter.post("/api/users", addNewUser);
 
 apiRouter.get("/api/users/:id/shoppingCart", getUserShoppingCart);

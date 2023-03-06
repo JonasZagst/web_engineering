@@ -1,4 +1,4 @@
-import {PrivateUser} from "../models/user.js";
+import { PrivateUser } from "../models/user.js";
 import DbGetError from "../errors/dbGetError.js";
 import JSONMappingError from "../errors/JSONMappingError.js";
 import DbPostError from "../errors/dbPostError.js";
@@ -42,7 +42,7 @@ async function addNewUser(userJSON) {
 
 async function checkUserCredentialsValidity(userEmail, password) {
     try {
-        const privateUser = await PrivateUser.findOne({email: userEmail});
+        const privateUser = await PrivateUser.findOne({ email: userEmail });
 
         if (password.length === 0) {
             return null;
@@ -76,8 +76,8 @@ async function getUserShoppingCart(userId) {
 async function addItemToUserShoppingCart(userId, productId) {
     try {
         PrivateUser.update(
-            {_id: userId},
-            {$push: {shoppingCart: productId}}
+            { _id: userId },
+            { $push: { shoppingCart: productId } }
         );
         const updatedUser = PrivateUser.findById(userId);
         return updatedUser.shoppingCart;

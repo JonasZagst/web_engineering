@@ -1,7 +1,8 @@
 import * as users_service from "../services/users_service.js"
 
 async function getUserById(req, res) {
-    const {id} = req.params;
+    const { id } = req.params;
+
     if (id !== null) {
         try {
             const queryResult = await users_service.getUserById(id);
@@ -25,6 +26,7 @@ async function getUserById(req, res) {
 
 async function addNewUser(req, res) {
     const user = req.body;
+
     try {
         const newUser = await users_service.addNewUser(user);
         res.statusCode = 201;
@@ -41,12 +43,13 @@ async function addNewUser(req, res) {
 }
 
 async function getUserCredentialValidity(req, res) {
-    const {username,passcode} = req.headers;
+    const { username, passcode } = req.headers;
+
     if (username, passcode !== null) {
         try {
             const credentialValidity = users_service.checkUserCredentialsValidity(username, passcode);
 
-            if (credentialValidity === true ) {
+            if (credentialValidity === true) {
                 res.statusCode = 200;
                 res.send(true);
             } else if (credentialValidity === false) {
@@ -68,7 +71,7 @@ async function getUserCredentialValidity(req, res) {
 }
 
 async function getUserShoppingCart(req, res) {
-    const {id} = req.params;
+    const { id } = req.params;
 
     if (id !== null) {
         try {
@@ -92,20 +95,20 @@ async function getUserShoppingCart(req, res) {
 }
 
 async function addItemToUserShoppingCart(req, res) {
-    const {id} = req.params;
+    const { id } = req.params;
 
-    if (!req.body || id === null){
+    if (!req.body || id === null) {
         res.statusCode = 400;
         res.send("Bad Request");
         return;
     }
-    const {productId} = req.body;
+    const { productId } = req.body;
 
     try {
         const newShoppingCart = await users_service.addItemToUserShoppingCart(id, productId);
         res.statusCode = 201;
         res.json(newShoppingCart);
-    } catch (error){
+    } catch (error) {
         res.statusCode = 500;
         console.error(error);
         res.send(error.message);
