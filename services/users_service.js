@@ -42,15 +42,7 @@ async function addNewUser(userJSON) {
 
 async function checkUserCredentialsValidity(userEmail, password) {
     try {
-        const privateUser = await PrivateUser.findOne({ email: userEmail });
-
-        if (password.length === 0) {
-            return null;
-        } else if (password === privateUser[0].password) {
-            return true;
-        }
-
-        return false;
+        return await PrivateUser.findOne({ email: userEmail, password: password });
     } catch (error) {
         if (error.name === "CastError") {   // CastError is thrown when mongodb doesn't find a user by this email, so we return null.
             return null;

@@ -45,19 +45,15 @@ async function addNewUser(req, res) {
 async function getUserCredentialValidity(req, res) {
     const { username, passcode } = req.headers;
 
-    if (username, passcode !== null) {
+    if (username !== null && passcode !== null) {
         try {
-            const credentialValidity = users_service.checkUserCredentialsValidity(username, passcode);
+            const user = users_service.checkUserCredentialsValidity(username, passcode);
 
-            if (credentialValidity === true) {
+            if (user) {
                 res.statusCode = 200;
-                res.send(true);
-            } else if (credentialValidity === false) {
-                res.statusCode = 401;
-                res.send("Unauthorized");
+                res.json({ userId: user.id });
             } else {
-                res.statusCode = 404;
-                res.send("Not found");
+                res.statusCode = 401;
             }
         } catch (error) {
             res.statusCode = 500;
