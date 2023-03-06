@@ -101,7 +101,7 @@ async function addItemToUserShoppingCart(req, res) {
     const { productId } = req.body;
 
     try {
-        const newShoppingCart = await users_service.addItemToUserShoppingCart(id, productId);
+        const newShoppingCart = users_service.addItemToUserShoppingCart(id, productId);
         res.statusCode = 201;
         res.json(newShoppingCart);
     } catch (error) {
