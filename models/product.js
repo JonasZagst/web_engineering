@@ -49,7 +49,7 @@ const productSchema = new mongoose.Schema({
     }
 });
 
-// productSchema.index({ productName: "text", /* "$**": "text" */ });
+productSchema.index({ "$**": "text" });
 
 const Product = mongoose.model("Product", productSchema);
 
