@@ -47,6 +47,17 @@ apiRouter.get("/api/users/:id/shoppingCart", getUserShoppingCart);
  * The ID of the product must be passed in the body of the request with the name `productId`. */
 apiRouter.put("/api/users/:id/shoppingCart", addItemToUserShoppingCart);
 
+/** Create a new company user.
+ *
+ */
+/**
+apiRouter.get("api/companies");
+
+apiRouter.get("/api/companies/:id");
+
+apiRouter.post("/api/companies");
+ **/
+
 export {
   apiRouter
 }
