@@ -1,11 +1,12 @@
-import * as company_users_service from "../services/company_users_service.js";
+import { CompanyUser } from "../models/company_user.js"
+import * as users_service from "../services/users_service.js"
 
 async function getCompanyUserById(req, res) {
-    const {id} = res.params;
+    const { id } = res.params;
 
     if (id !== null) {
         try {
-            const queryResult = await company_users_service.getCompanyUserById(id);
+            const queryResult = await users_service.getUserById(CompanyUser, id);
             if (!queryResult) {
                 res.statusCode = 404;
                 res.send("Not found");
@@ -28,7 +29,7 @@ async function addNewCompanyUser(req, res) {
     const companyUser = req.body;
 
     try {
-        const newUser = await company_users_service.addNewCompanyUser(companyUser);
+        const newUser = await users_service.addNewUser(companyUser);
         res.statusCode = 201;
         res.json(newUser);
     } catch (error) {
@@ -43,7 +44,7 @@ async function addNewCompanyUser(req, res) {
 }
 
 async function getCompanyUserCredentialValidity(req, res) {
-    const {email, password} = req.body;
+    const { email, password } = req.body;
 
     // 1. Get user by email from database
     // 2. Check if password and password in database are the same.

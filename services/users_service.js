@@ -31,13 +31,14 @@ import DbPutError from "../errors/dbPutError.js";
  * @typedef {string} ProductID */
 
 /** Retrieves a private user by their ID from the database.
+ * @param {any} model The Mongoose user model of which the user is
  * @param {string} id The id of the user of which the information should be returned
  *
  * @returns {Object|null} The Mongoose model for PrivateUser with the according id */
-async function getUserById(id) {
+async function getUserById(model, id) {
     try {
         // Find the user by id and remove the password from the result before returning
-        return await PrivateUser.findById(id).select("-password");
+        return await model.findById(id).select("-password");
     } catch (error) {
         // CastError is thrown when mongodb doesn't find a user of this id, so we return null.
         if (error.name === "CastError") {
@@ -49,11 +50,12 @@ async function getUserById(id) {
 }
 
 /** Adds a new private user.
+ * @param {any} model The Mongoose user model of which the user is
  * @param {PrivateUser} userJSON
  *
  * @returns {Object|null} The new Mongoose model for PrivateUser */
-async function addNewUser(userJSON) {
-    const userModel = new PrivateUser(userJSON);
+async function addNewUser(model, userJSON) {
+    const userModel = new model(userJSON);
     const userModelValidationError = userModel.validateSync();
 
     if (userModelValidationError != null) {
@@ -72,13 +74,14 @@ async function addNewUser(userJSON) {
 }
 
 /** Checks whether details provided by a user login are valid.
+ * @param {any} model The Mongoose user model of which the user is
  * @param {string} email The email specified by the user
  * @param {string} password The password provided by the user
  *
  * @returns {PrivateUser|null} returns the user if E-Mail and password match an user in the database and null if no match could be found.*/
-async function checkUserCredentialsValidity(email, password) {
+async function checkUserCredentialsValidity(model, email, password) {
     try {
-        return await PrivateUser.findOne({ email: email, password: password }).select("-password");
+        return await model.findOne({ email: email, password: password }).select("-password");
     } catch (error) {
         // CastError is thrown when mongodb doesn't find a user of this id, so we return null.
         if (error.name === "CastError") {

@@ -1,3 +1,4 @@
+import { PrivateUser } from "../models/user.js"
 import * as users_service from "../services/users_service.js"
 
 async function getUserById(req, res) {
@@ -5,7 +6,7 @@ async function getUserById(req, res) {
 
     if (id !== null) {
         try {
-            const user = await users_service.getUserById(id);
+            const user = await users_service.getUserById(PrivateUser, id);
             if (!user) {
                 res.statusCode = 404;
                 res.send("Not found");
@@ -28,7 +29,7 @@ async function addNewUser(req, res) {
     const user = req.body;
 
     try {
-        const newUser = await users_service.addNewUser(user);
+        const newUser = await users_service.addNewUser(PrivateUser, user);
         res.statusCode = 201;
         res.json(newUser);
     } catch (error) {
@@ -47,7 +48,7 @@ async function getUserCredentialValidity(req, res) {
 
     if (username !== null && passcode !== null) {
         try {
-            const user = users_service.checkUserCredentialsValidity(username, passcode);
+            const user = users_service.checkUserCredentialsValidity(PrivateUser, username, passcode);
 
             if (user) {
                 res.statusCode = 200;
