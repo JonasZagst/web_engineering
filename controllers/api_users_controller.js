@@ -5,13 +5,13 @@ async function getUserById(req, res) {
 
     if (id !== null) {
         try {
-            const queryResult = await users_service.getUserById(id);
-            if (!queryResult) {
+            const user = await users_service.getUserById(id);
+            if (!user) {
                 res.statusCode = 404;
                 res.send("Not found");
             } else {
                 res.statusCode = 200;
-                res.json(queryResult)
+                res.json(user)
             }
         } catch (error) {
             res.statusCode = 500;
@@ -51,7 +51,7 @@ async function getUserCredentialValidity(req, res) {
 
             if (user) {
                 res.statusCode = 200;
-                res.json({ userId: user.id });
+                res.json(user);
             } else {
                 res.statusCode = 401;
             }

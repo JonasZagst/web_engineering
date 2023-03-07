@@ -78,7 +78,7 @@ async function addNewUser(userJSON) {
  * @returns {PrivateUser|null} returns the user if E-Mail and password match an user in the database and null if no match could be found.*/
 async function checkUserCredentialsValidity(email, password) {
     try {
-        return await PrivateUser.findOne({ email: email, password: password });
+        return await PrivateUser.findOne({ email: email, password: password }).select("-password");
     } catch (error) {
         // CastError is thrown when mongodb doesn't find a user of this id, so we return null.
         if (error.name === "CastError") {
