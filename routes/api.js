@@ -26,7 +26,7 @@ apiRouter.get("/api/users/name/:name", getUserByName);
 apiRouter.post("/api/users", addNewUser);
 
 apiRouter.get("/api/users/:id/shoppingCart", getUserShoppingCart);
-apiRouter.put("/api/users/:id/shoppingCart", addItemToUserShoppingCart);
+apiRouter.post("/api/users/:id/shoppingCart/:productID", addItemToUserShoppingCart);
 
 //Image Upload
 apiRouter.post('/api/upload', (req, res) => {

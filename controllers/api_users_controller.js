@@ -126,17 +126,15 @@ async function getUserShoppingCart(req, res) {
 }
 
 async function addItemToUserShoppingCart(req, res) {
-    const {id} = req.params;
+    const {id,productID} = req.params;
 
     if (!req.body || id === null){
         res.statusCode = 400;
         res.send("Bad Request");
         return;
     }
-    const {productId} = req.body;
-
     try {
-        const newShoppingCart = await users_service.addItemToUserShoppingCart(id, productId);
+        const newShoppingCart = await users_service.addItemToUserShoppingCart(id, productID);
         res.statusCode = 201;
         res.json(newShoppingCart);
     } catch (error){
@@ -149,7 +147,7 @@ async function addItemToUserShoppingCart(req, res) {
 export {
     getUserById,
     getUserByName,
-    addNewUser,
+    addNewUser, 
     getUserCredentialValidity,
     getUserShoppingCart,
     addItemToUserShoppingCart

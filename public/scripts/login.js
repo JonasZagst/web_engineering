@@ -10,7 +10,8 @@ function sendLoginRequest(username,password){
         var xhttp = new XMLHttpRequest();   
         xhttp.open("GET", "api/users/password", true);
         xhttp.onload = () => {
-            showLogin(xhttp.responseText);
+            showLogin(xhttp.responseText,username);
+            getUserID(username);
         };
         xhttp.setRequestHeader("username",username);
         xhttp.setRequestHeader("passcode",password);
@@ -23,7 +24,7 @@ function sendLoginRequest(username,password){
 }
 
 
-function showLogin(data){
+function showLogin(data,username,userID){
     if(data=="Login succesfull!")
     {
         document.getElementById("loginInputUsername").style.borderColor ="#4ed679";
@@ -31,6 +32,7 @@ function showLogin(data){
         setTimeout(() => {
             window.location.href = "/";
           }, "1000")
+          window.sessionStorage.setItem("userName",username);
     }
     else{
         document.getElementById("loginInputUsername").style.borderColor ="red";
@@ -41,3 +43,21 @@ function showLogin(data){
     }
 }
 
+
+function getUserID(username)
+{
+    try{
+        var xhttp = new XMLHttpRequest();   
+        xhttp.open("GET", "api/users/name/"+username, true);
+        xhttp.onload = () => {
+            let data = JSON.parse(xhttp.responseText);
+            const userID = data[0]["_id"];
+            window.sessionStorage.setItem("userID",userID);
+        };
+        xhttp.send();
+        //console.log(data);
+    }
+    catch{
+        console.log("something didn't work!");
+    }
+}

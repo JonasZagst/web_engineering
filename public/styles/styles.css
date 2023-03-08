@@ -59,6 +59,12 @@ height: 100%;
     margin-right: 2%;
 }
 
+/*Product Page Designs*/
+.productGrid img {
+   width:2px;
+   height: 2px;
+}
+
 .grid-item {
     color:black;
     background: #595959;
@@ -91,76 +97,24 @@ height: 100%;
     padding-right: 15px;
 }
 
-/*Login Page Designs
-.LoginForm {
-    width: 700px;
-    height: 700px;
-    display: inline-block;
-    background-color: #4ed679;
-    border-radius: 10%;
-    margin-top: 5%;
-   
+#searchIcon {
+    visibility: visible;
 }
-
-.LoginText {
-    margin-top:15px;
-    font-size: x-large;
-}
-
-label{
-    font-size: x-large;
-}
-
-input{
-    margin-bottom: 20px;
-    margin-top: 10px;
-    text-align: left;
-    background-color: black;
-    color: whitesmoke;
-    width: 80%;
+input[type="search"] {
+    width: 300px;
     height: 40px;
-    border-radius: 5%;
+    border-radius: 10px;
+    background-color: black;
+    visibility: hidden;
+    margin-right: -40px;
+    color: whitesmoke;
+    text-align:center;
     font-weight: bold;
-    font-size: large    ;
-}
+    padding: 10px;
+    vertical-align: bottom;
+    }
 
-.LoginInline {
-    flex-direction: row;
-    align-items: center;
-    margin-right: 0;
-    display: flex;
-    justify-content: center;
-    vertical-align: middle;
-}
-
-.LoginInline label{
-
-}
-
-.LoginInline input{
-    width: 21%;
-}
-
-.LoginButton {
-    background-color: transparent;
+#searchInput:hover{
     border: none;
 }
-
-.LoginButton img{
-    width: 60px;
-    height:60px;
-    margin-top: 35px;
-}
-
-.LoginButton:hover {
-    background-color:transparent;
-    border-style: solid;
-    border-color: transparent;
-}
-
-.Details {
-    visibility:hidden;
-}*/
-
-
 
