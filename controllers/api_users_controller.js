@@ -35,17 +35,14 @@ async function addNewUser(req, res) {
     } catch (error) {
         if (error.name === "JSONMappingError") {
             res.statusCode = 400;
-            res.json({error: error.code,
-            message: error.message});
         } else if (error.name === "DuplicateKeyError") {
             res.statusCode = 403;
-            res.json({error: error.code,
-            message: error.message});
         } else {
             res.statusCode = 500;
             console.error(error);
         }
-        res.send(error.message);
+        res.json({error: error.code,
+        message: error.message});
     }
 }
 
@@ -103,12 +100,12 @@ async function addItemToUserShoppingCart(req, res) {
     if (!req.body || id === null) {
         res.statusCode = 400;
         res.send("Bad Request");
-        return;
+        return null;
     }
     const {productId} = req.body;
 
     try {
-        const newShoppingCart = users_service.addItemToUserShoppingCart(id, productId);
+        const newShoppingCart = await users_service.addItemToUserShoppingCart(id, productId);
         res.statusCode = 201;
         res.json(newShoppingCart);
     } catch (error) {

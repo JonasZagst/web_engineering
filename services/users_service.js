@@ -121,11 +121,10 @@ async function getUserShoppingCart(userId) {
  * @returns {[ProductID]|null} The updated shopping cart of the user */
 async function addItemToUserShoppingCart(userId, productId) {
     try {
-        await PrivateUser.update(
-            { id: userId },
-            { $push: { shoppingCart: productId } }
-        );
         const updatedUser = await PrivateUser.findById(userId);
+        updatedUser.shoppingCart.push(productId);
+        await updatedUser.save();
+
         return updatedUser.shoppingCart;
     } catch (error) {
         if (error.name === "CastError") {
