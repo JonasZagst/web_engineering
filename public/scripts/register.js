@@ -32,12 +32,12 @@ function generateJSON(){
         "lastName": lastName,
         "email": email,
         "password": password,
-        "adress": {
+        "address": {
             "country": country,
             "city": city,
             "zip": zip,
             "street": street,
-            "houseNumber":houseNumber,
+            "houseNumber":houseNumber
         },
         "shoppingCart": []
     };

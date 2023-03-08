@@ -1,18 +1,18 @@
 #LandingBanner {
-    background-color:#5866f2 ;margin-bottom: 0%;height: 100%;
+    background-color:#4ed679 ;margin-bottom: 0%;height: 100%;
 }
 #LandingBannerImage
 {
-    width: 1500px;
-    height: 750px;
+    width: 90%;
+    height: 700px;
     border-radius: 30px;
 }
 #containerMotto{
-    margin-top:0;color: black;background-color:#5866f2;text-align: center;padding:10px
+    margin-top:0;color: black;background-color:#4ed679;text-align: center;padding:10px
 }
 
 #containerMotto p{
-margin-top:0;color: black;background-color:#5866f2;text-align: center;font-size: x-large;;
+margin-top:0;color: black;background-color:#4ed679;text-align: center;font-size: x-large;;
 }
 
 #gridContainerInfo {

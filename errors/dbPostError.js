@@ -6,6 +6,7 @@ class DbPostError extends Error {
             super("An Error occurred while writing to the database");
         }
         this.name = "DbPostError";
+        this.code = 2;
     }
 }
 

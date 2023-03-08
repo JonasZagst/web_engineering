@@ -4,16 +4,11 @@
 
 import mongoose from "mongoose"
 import {Product} from "./models/product.js"
-import {PrivateUser} from "./models/user.js";
-import {CompanyUser} from "./models/company_user.js";
 
 async function createMockProducts() {
     // remove old data to reset the database
-    Product.remove({}, () => {
-        console.log("Database dropped. Creating new data");
-    })
-    PrivateUser.remove({});
-    CompanyUser.remove({});
+    await mongoose.connection.db.dropDatabase();
+    console.log("Database dropped! Creating new Data!")
 
     for (const product of mockProducts) {
         await new Product(product).save();
@@ -165,7 +160,7 @@ const mockProducts = [
         "productName": "ASUS ExpertBook B9",
         "productDescription": "The ASUS ExpertBook B9 is a lightweight and ultra-portable business laptop with a 14-inch display, 16 GB of RAM, and an Intel Core i7 processor. It also features a long battery life and a variety of security features.",
         "price": 1699.99,
-        "image": ["img/productImages/ASUS_ExpertBook_b9_1.jpg","img/productImages/ASUS_ExpertBook_b9_2.jpg", "img/productImages/ASUS_ExpertBook_b9_3.jpg"],
+        "image": ["img/productImages/ASUS_ExpertBook_b9_1.jpg", "img/productImages/ASUS_ExpertBook_b9_2.jpg", "img/productImages/ASUS_ExpertBook_b9_3.jpg"],
         "productSpecification": {
             "operatingSystem": "Windows 10 Pro",
             "amountRAM": 16,
