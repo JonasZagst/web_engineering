@@ -1,5 +1,6 @@
 import { CompanyUser } from "../models/company_user.js"
 import * as users_service from "../services/users_service.js"
+import {PrivateUser} from "../models/user.js";
 
 async function getCompanyUserById(req, res) {
     const { id } = res.params;
@@ -50,11 +51,27 @@ async function addNewCompanyUser(req, res) {
 }
 
 async function getCompanyUserCredentialValidity(req, res) {
-    const { email, password } = req.body;
+    const {username, passcode} = req.headers;
 
-    // 1. Get user by email from database
-    // 2. Check if password and password in database are the same.
-    // 3. (Optional) Hash the passwords when creating or reading a user
+    if (username !== null && passcode !== null) {
+        try {
+            const user = users_service.checkUserCredentialsValidity(CompanyUser, username, passcode);
+
+            if (user) {
+                res.statusCode = 200;
+                res.json(user);
+            } else {
+                res.statusCode = 401;
+            }
+        } catch (error) {
+            res.statusCode = 500;
+            console.error(error);
+            res.send(error.message);
+        }
+    } else {
+        res.statusCode = 400;
+        res.send("Bad Request");
+    }
 }
 
 export {
