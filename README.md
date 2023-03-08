@@ -1,6 +1,14 @@
 # web_engineering
 Repository zur Web Engineering Vorlesung
 
+Prüfungsleistung für die Vorlesung Web Engineering des Kurses TIK22 und TIM22
+der DHBW Ravensburg (Campus Friedrichshafen)
+
+Diese Datei dient auch als Anleitung für die Installation der Software.
+
+## Inhalt
+* [Server starten](#Server starten)
+
 ## Server starten
 * *node index.js* ausführen oder in WebStorm die Index.js starten.
 * Die .env so bearbeiten wie man es haben will (siehe Erstellen von Mock Daten unten)
@@ -12,7 +20,7 @@ Repository zur Web Engineering Vorlesung
 
 ## Neuer Weg für Erstellung von HTML Seiten (nach der Template Engine)
 * Erstellt ein ejs File in views in dem ihr ganz normal euer HTML schreibt, jedoch nur das was im Body stehen würde, das standard Layout wird automatisch eingefügt
-* Anschließend wird im File *api.js* eine Route erstellt mit der auf das Dokument zugegriffen werden soll. 
+* Anschließend wird im File *api.js* eine Route erstellt, mit der auf das Dokument zugegriffen werden soll. 
 * Alle Links zu Ressourcen sind relativ zum *public ordner*. Legt neue öffentliche Ressourcen auch darin an.
 
 ## Erstellen von Mock Daten
