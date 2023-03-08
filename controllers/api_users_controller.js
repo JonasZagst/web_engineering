@@ -1,8 +1,8 @@
-import { PrivateUser } from "../models/user.js"
+import {PrivateUser} from "../models/user.js"
 import * as users_service from "../services/users_service.js"
 
 async function getUserById(req, res) {
-    const { id } = req.params;
+    const {id} = req.params;
 
     if (id !== null) {
         try {
@@ -35,6 +35,12 @@ async function addNewUser(req, res) {
     } catch (error) {
         if (error.name === "JSONMappingError") {
             res.statusCode = 400;
+            res.json({error: error.code,
+            message: error.message});
+        } else if (error.name === "DuplicateKeyError") {
+            res.statusCode = 403;
+            res.json({error: error.code,
+            message: error.message});
         } else {
             res.statusCode = 500;
             console.error(error);
@@ -44,7 +50,7 @@ async function addNewUser(req, res) {
 }
 
 async function getUserCredentialValidity(req, res) {
-    const { username, passcode } = req.headers;
+    const {username, passcode} = req.headers;
 
     if (username !== null && passcode !== null) {
         try {
@@ -68,7 +74,7 @@ async function getUserCredentialValidity(req, res) {
 }
 
 async function getUserShoppingCart(req, res) {
-    const { id } = req.params;
+    const {id} = req.params;
 
     if (id !== null) {
         try {
@@ -92,14 +98,14 @@ async function getUserShoppingCart(req, res) {
 }
 
 async function addItemToUserShoppingCart(req, res) {
-    const { id } = req.params;
+    const {id} = req.params;
 
     if (!req.body || id === null) {
         res.statusCode = 400;
         res.send("Bad Request");
         return;
     }
-    const { productId } = req.body;
+    const {productId} = req.body;
 
     try {
         const newShoppingCart = users_service.addItemToUserShoppingCart(id, productId);

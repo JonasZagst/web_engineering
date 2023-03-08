@@ -35,6 +35,12 @@ async function addNewCompanyUser(req, res) {
     } catch (error) {
         if (error.name === "JSONMappingError") {
             res.statusCode = 400;
+            res.json({error: error.code,
+                message: error.message});
+        } else if (error.name === "DuplicateKeyError") {
+            res.statusCode = 403;
+            res.json({error: error.code,
+                message: error.message});
         } else {
             res.statusCode = 500;
             console.error(error);

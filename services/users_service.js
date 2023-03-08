@@ -3,6 +3,7 @@ import DbGetError from "../errors/dbGetError.js";
 import JSONMappingError from "../errors/JSONMappingError.js";
 import DbPostError from "../errors/dbPostError.js";
 import DbPutError from "../errors/dbPutError.js";
+import DuplicateKeyError from "../errors/duplicateKeyError.js";
 
 // TODO: Merge company user and private user services in one file and add the model as a first arguemnt to all functions acting on those models.
 // TODO: Try to remove most of the null-returns from the functions
@@ -69,7 +70,11 @@ async function addNewUser(model, userJSON) {
         delete privateUser.password;
         return privateUser;
     } catch (error) {
-        throw new DbPostError(`Could not create user. Error: ${error}`)
+        if (error.code === 11000) {
+            throw new DuplicateKeyError();
+        }
+
+        throw new DbPostError(`Could not create user. Error: ${error}`);
     }
 }
 
