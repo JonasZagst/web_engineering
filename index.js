@@ -5,9 +5,9 @@ import mongoose from "mongoose"
 import expressLayouts from "express-ejs-layouts"
 import dotenv from "dotenv"
 
-import { apiRouter } from "./routes/api.js"
-import { websiteRouter } from "./routes/site.js"
-import { createMockProducts } from "./mockdata.js";
+import {apiRouter} from "./routes/api.js"
+import {websiteRouter} from "./routes/site.js"
+import {createMockProducts} from "./mockdata.js";
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
