@@ -1,13 +1,18 @@
 import express from "express"
 
-import { addNewProduct, getProductById, getProducts } from "../controllers/api_products_controller.js"
+import {addNewProduct, getProductById, getProducts} from "../controllers/api_products_controller.js"
 import {
-  addItemToUserShoppingCart,
-  getUserById,
-  getUserCredentialValidity,
-  addNewUser,
-  getUserShoppingCart
+    addItemToUserShoppingCart,
+    addNewUser,
+    getUserById,
+    getUserCredentialValidity,
+    getUserShoppingCart
 } from "../controllers/api_users_controller.js"
+import {
+    addNewCompanyUser,
+    getCompanyUserById,
+    getCompanyUserCredentialValidity
+} from "../controllers/api_company_users_controller.js";
 
 const apiRouter = express.Router();
 
@@ -24,8 +29,6 @@ apiRouter.get("/api/products/:id", getProductById);
  * The layout of the JSON must match the description of the Mongoose Schema in /models/product.js */
 apiRouter.post("/api/products", addNewProduct);
 
-
-// FIXME: Routes for company users.
 
 /** Check whether the credentials of a user are valid.
  * E-Mail and password are passed in headers.  */
@@ -47,17 +50,19 @@ apiRouter.get("/api/users/:id/shoppingCart", getUserShoppingCart);
  * The ID of the product must be passed in the body of the request with the name `productId`. */
 apiRouter.put("/api/users/:id/shoppingCart", addItemToUserShoppingCart);
 
+/** Check whether he credentials of a company user are valid.
+ * E-Mail and password are passed in headers. */
+apiRouter.get("/api/companies/password", getCompanyUserCredentialValidity);
+
+/** Returns all information for a compnay user by their `id`.
+ * The password is not returned. */
+apiRouter.get("/api/companies/:id", getCompanyUserById);
+
 /** Create a new company user.
- *
- */
-/**
-apiRouter.get("api/companies");
-
-apiRouter.get("/api/companies/:id");
-
-apiRouter.post("/api/companies");
- **/
+ * The information for the company user are passed in the body of the POST request as JSON.
+ * The layout of the JSON must match the description of the Mongoose Schema in /models/company_user.js */
+apiRouter.post("/api/companies", addNewCompanyUser);
 
 export {
-  apiRouter
+    apiRouter
 }
