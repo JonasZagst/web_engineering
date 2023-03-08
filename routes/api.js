@@ -41,6 +41,9 @@ apiRouter.get("/products", (req, res) => {
 apiRouter.get("/productCreation", (req, res) => {
   res.render("productCreation")
 });
+apiRouter.get("/productDetailPage", (req, res) => {
+  res.render("productDetailPage")
+});
 
 
 export {
