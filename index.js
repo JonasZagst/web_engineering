@@ -33,7 +33,7 @@ const main = async () => {
     }
 
     mongooseDb.on("error", error => console.error(error));
-    mongooseDb.once("open", () => console.log("Connected to mongoose database"))
+    mongooseDb.once("open", () => console.log("Connected to mongoose database"));
 
     app.listen(PORT, () => {
         console.log(`Server started on port ${PORT}`);
