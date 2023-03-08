@@ -1,24 +1,24 @@
 function login(event) {
     username = document.getElementById("loginInputUsername").value;
     password = document.getElementById("loginInputPassword").value;
-    sendLoginRequest(username,password);
-  }
+    sendLoginRequest(username, password);
+}
 
-function sendLoginRequest(username,password){
+function sendLoginRequest(username, password) {
     var data;
-    try{
-        var xhttp = new XMLHttpRequest();   
+    try {
+        var xhttp = new XMLHttpRequest();
         xhttp.open("GET", "api/users/password", true);
         xhttp.onload = () => {
             showLogin(xhttp.responseText,username);
             getUserID(username);
         };
-        xhttp.setRequestHeader("username",username);
-        xhttp.setRequestHeader("passcode",password);
+        xhttp.setRequestHeader("username", username);
+        xhttp.setRequestHeader("passcode", password);
         xhttp.send();
         //console.log(data);
     }
-    catch{
+    catch {
         console.log("something didn't work!");
     }
 }
@@ -34,10 +34,10 @@ function showLogin(data,username,userID){
           }, "1000")
           window.sessionStorage.setItem("userName",username);
     }
-    else{
-        document.getElementById("loginInputUsername").style.borderColor ="red";
-        document.getElementById("loginInputPassword").style.borderColor ="red";
-        let windowParams ="scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=400,height=200";
+    else {
+        document.getElementById("loginInputUsername").style.borderColor = "red";
+        document.getElementById("loginInputPassword").style.borderColor = "red";
+        let windowParams = "scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=400,height=200";
         let newWin = window.open("about:blank", "Login Failed", windowParams);
         newWin.document.write("Login Failed, Username or Password wrong!");
     }

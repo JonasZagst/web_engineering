@@ -33,20 +33,20 @@ const privateUserSchema = new mongoose.Schema({
     },
     lastName: {
         type: String,
-        required: true
+        required: true,
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type: String,
         required: true
     },
     address: address,
-
     shoppingCart: {
-        type: [{type: String, required: true}],
+        type: [{ type: String, required: true }],
         required: false
     },
 });

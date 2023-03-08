@@ -6,6 +6,7 @@ class JSONMappingError extends Error {
             super("Could not map the provided json data to the database model.");
         }
         this.name = "JSONMappingError";
+        this.code = 5;
     }
 }
 

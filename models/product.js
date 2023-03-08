@@ -48,12 +48,8 @@ const productSchema = new mongoose.Schema({
         }
     }
 });
-productSchema.index({'$**': 'text'});
 
-// productSchema.query.bySearch = function (searchString) {
-//
-//     return undefined;
-// }
+productSchema.index({ "$**": "text" });
 
 const Product = mongoose.model("Product", productSchema);
 
