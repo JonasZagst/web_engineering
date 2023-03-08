@@ -63,9 +63,6 @@ nicht angegeben wurde der PORT: 3000.
 * Dann SETUP_MOCK_DATA="false" setzen
 
 ## Weitere Aufgaben
-* Ändern zu Webshop für Business Notebooks
-* Background zu darkgrey anpassen (wie Discord)
-* Suche als Produktseite mit Filter umsetzen (eventuell auch Suchtags bei der Erstellung von Produkteinträgen)
-* Blättern auf Produktseite
-* Icon für Produktseite anpassen?
 * Seite für einzelne Produkte
+* Bestätigungen beim Erstellen und Einloggen von Usern und Erstellen von Produkten.
+Fehler wenn falsche Eingeaben gemacht werden.
