@@ -45,17 +45,17 @@ async function addNewUser(req, res) {
             res.statusCode = 500;
             console.error(error);
         }
-        res.send(error.message);
+        //res.send(error.message);
     }
 }
 
 async function getUserCredentialValidity(req, res) {
     const {username, passcode} = req.headers;
-
+    console.log("Hallo");
     if (username !== null && passcode !== null) {
         try {
-            const user = users_service.checkUserCredentialsValidity(PrivateUser, username, passcode);
-
+            const user = await users_service.checkUserCredentialsValidity(PrivateUser, username, passcode);
+            console.log(user);
             if (user) {
                 res.statusCode = 200;
                 res.json(user);
@@ -118,7 +118,6 @@ async function addItemToUserShoppingCart(req, res) {
 
 export {
     getUserById,
-    getUserByName,
     addNewUser, 
     getUserCredentialValidity,
     getUserShoppingCart,

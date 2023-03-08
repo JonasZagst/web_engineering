@@ -42,7 +42,7 @@ const companyUserSchema = new mongoose.Schema({
     },
     address: address
 });
-
+    
 const CompanyUser = mongoose.model("CompanyUser", companyUserSchema);
 
 export {

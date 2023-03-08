@@ -10,8 +10,11 @@ function sendLoginRequest(username, password) {
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", "api/users/password", true);
         xhttp.onload = () => {
-            showLogin(xhttp.responseText,username);
-            getUserID(username);
+            const response = JSON.parse(xhttp.responseText);
+            const userID = response._id;
+            console.log(userID);
+            showLogin(xhttp.responseText,username, userID);
+
         };
         xhttp.setRequestHeader("username", username);
         xhttp.setRequestHeader("passcode", password);
@@ -25,7 +28,7 @@ function sendLoginRequest(username, password) {
 
 
 function showLogin(data,username,userID){
-    if(data=="Login succesfull!")
+    if(data!="")
     {
         document.getElementById("loginInputUsername").style.borderColor ="#4ed679";
         document.getElementById("loginInputPassword").style.borderColor ="#4ed679";
@@ -33,6 +36,7 @@ function showLogin(data,username,userID){
             window.location.href = "/";
           }, "1000")
           window.sessionStorage.setItem("userName",username);
+          window.sessionStorage.setItem("userID",userID);
     }
     else {
         document.getElementById("loginInputUsername").style.borderColor = "red";
@@ -44,7 +48,7 @@ function showLogin(data,username,userID){
 }
 
 
-function getUserID(username)
+/**function getUserID(username)
 {
     try{
         var xhttp = new XMLHttpRequest();   
@@ -60,4 +64,4 @@ function getUserID(username)
     catch{
         console.log("something didn't work!");
     }
-}
+}**/

@@ -69,3 +69,15 @@
 .rightAdressInlineElement{
     padding-right: 55px;
 }
+
+#containerLoginCaptionSelector{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    border-radius: 10px;
+    width: 70%;
+    
+}
+
+#containerLoginCaptionSelector:hover{
+    border: solid black;
+}
