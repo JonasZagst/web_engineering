@@ -1,55 +1,33 @@
 <link rel="stylesheet" href="styles/productDetailPage.css">
 <script src="scripts/productDetailPage.js"></script> 
+<script src="scripts/general.js"></script>
 <main>
-    <div class="productGrid">   
-        <div class="productGridBoxLeft">
-            <div class="productImage">
+    <div class="productDetailGrid">   
+        <div class="productDetailGridBoxLeft">
+            <div class="productDetailsImage">
                 <img id="productDetailImage" src="img\productImages\Dell_Latitude_7420_3.jpg">
             </div>
         </div>
-        <div class="productGridBoxRight">
-            <div id="productTitleName">
+        <div class="productDetailGridBoxRight">
+            <div id="productDetailTitleName">
                 <h3>Amazon</h3>
             </div>
-            <div class="productDescription">
-                <h3 id="productDescriptionText">productDescription</h3>
+            <div class="productDetailDescription">
+                <h3 id="productDetailDescriptionText">productDescription</h3>
             </div>
-            <button id="addToCartButton" type="button" /*onclick="pushNewProduct()"*/><strong>Add to shopping cart</strong></button>
+            <button id="addToCartButton" type="button" onclick="addToShoppingCart()"><strong>Add to shopping cart</strong></button>
         </div>
     </div>
-    <div class = "productDetailDetails">
-        <div><h3 id="productDetailDetailsTitle">product Details</h3></div>
+    <div class="productDetailInformations">
+        <div><h3 id="productDetailDetailsTitle">Product Details</h3></div>
         <form id="detailsLeft">
-            <label for="productManufacturer">Name:</label><span id="productName">Hallo</span></br>
-            <label for="productColor">Preis:</label><span id="productPrice">Hallo</span></br>
-            <label for="productOS">Operating System</label><span id="productOS">Hallo</span></br>
-            <label for="productRAM">amountRAM</label><span id="productamountRAM">Hallo</span></br>
-            <label for="productTypeGPU">color</label><span id="productColor">Hallo</span></br>
-            <label for="productTypeCPU">Type CPU:</label><span id="productTypeCPU">Hallo</span></br>
-            <label for="productTypeGPU">Type GPU:</label><span id="productTypeGPU">Hallo</span></br>
+            <label>Name:</label><span id="productDetailName"></span></br>
+            <label>Price:</label><span id="productDetailPrice"></span></br>
+            <label>Operating System</label><span id="productDetailOS"></span></br>
+            <label>Amount RAM</label><span id="productDetailamountRAM"></span></br>
+            <label>Color</label><span id="productDetailColor"></span></br>
+            <label>Type CPU:</label><span id="productDetailTypeCPU"></span></br>
+            <label>Type GPU:</label><span id="productDetailTypeGPU"></span></br>
         </form>
     </div>
-
-
-
-
-            <!-- <div class = "purchaseButton">
-                <a class="btn btn-primary" href="javascript:void(0);">
-                    <span class="fa fa-shopping-cart"></span>
-                </a>
-            </div>
-            <div class="productRatings">
-                <table>
-                    <tr>
-                        <td>
-                            Pros
-                        </td>
-                        <td>
-                            Cons
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div> -->
 </main>

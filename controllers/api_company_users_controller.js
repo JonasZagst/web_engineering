@@ -30,7 +30,7 @@ async function addNewCompanyUser(req, res) {
     const companyUser = req.body;
 
     try {
-        const newUser = await users_service.addNewUser(companyUser);
+        const newUser = await users_service.addNewUser(CompanyUser,companyUser);
         res.statusCode = 201;
         res.json(newUser);
     } catch (error) {
@@ -46,7 +46,6 @@ async function addNewCompanyUser(req, res) {
             res.statusCode = 500;
             console.error(error);
         }
-        res.send(error.message);
     }
 }
 

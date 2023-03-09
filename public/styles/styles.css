@@ -1,17 +1,19 @@
 /*General Designs*/
-body {background-color: #1e1f22;margin: 0;}
+body {background-color: #1e1f22;margin: 0;}  
 main {
     text-align: center;
 }
-h2 {
+span {
     display: inline-block;  
-    margin-left: 42%;
+    margin-left: 35%;
+    vertical-align: top;
 }
-h2 img {
+span img {
+    margin-top: 5%;
     width: 300px;
     height: 60px;
 }
-nav {width: 100%;overflow: auto;background-color:#4ed679}
+nav {width: 100%;overflow: auto;background-color:#4ed679; height: 125px; padding-top: 25px;}
 nav ul {
     text-align: right;
     margin-right: 5%;
@@ -67,8 +69,10 @@ height: 100%;
 
 .grid-item {
     color:black;
-    background: #595959;
-    border-radius: 18%;
+    background: white;
+    border-radius: 12%;
+    border-bottom-left-radius: 18%;
+    border-bottom-right-radius: 18%;
     height: 600px;
     border-width: 2px;
     word-break: break-word;
@@ -86,6 +90,12 @@ height: 100%;
     border-top-left-radius: 18%;
     border-top-right-radius: 18%;
 }
+
+.grid-image:hover {
+    transform: scale(0.95); 
+}
+
+
 
 .grid-text {
     height: 250px;
@@ -116,5 +126,25 @@ input[type="search"] {
 
 #searchInput:hover{
     border: none;
+}
+
+
+#loginNav{
+    margin-left: 60px;
+}
+
+#startSearch
+{
+    background-color: black;
+    color: whitesmoke;
+    visibility: hidden;
+    text-align:center;
+    font-weight: bold;
+    padding: 10px;
+    vertical-align: bottom;
+    width:50px;
+    height: 40px;
+    border-radius: 10px;
+    
 }
 

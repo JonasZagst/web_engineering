@@ -51,16 +51,15 @@ async function addNewUser(req, res) {
 
 async function getUserCredentialValidity(req, res) {
     const {username, passcode} = req.headers;
-    console.log("Hallo");
     if (username !== null && passcode !== null) {
         try {
             const user = await users_service.checkUserCredentialsValidity(PrivateUser, username, passcode);
-            console.log(user);
             if (user) {
                 res.statusCode = 200;
                 res.json(user);
             } else {
                 res.statusCode = 401;
+                res.send("Invalid Authentication!");
             }
         } catch (error) {
             res.statusCode = 500;

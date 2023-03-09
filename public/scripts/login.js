@@ -10,11 +10,15 @@ function sendLoginRequest(username, password) {
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", "api/users/password", true);
         xhttp.onload = () => {
-            const response = JSON.parse(xhttp.responseText);
-            const userID = response._id;
-            console.log(userID);
-            showLogin(xhttp.responseText,username, userID);
-
+            if(xhttp.responseText!="Invalid Authentication!"){
+                const response = JSON.parse(xhttp.responseText);
+                const userID = response._id;
+                showLogin(xhttp.responseText,username, userID);
+            }
+            else{
+                const userID="";
+                showLogin(xhttp.responseText,username, userID);
+            }
         };
         xhttp.setRequestHeader("username", username);
         xhttp.setRequestHeader("passcode", password);
@@ -28,40 +32,24 @@ function sendLoginRequest(username, password) {
 
 
 function showLogin(data,username,userID){
-    if(data!="")
+    if(data!="Invalid Authentication!")
     {
         document.getElementById("loginInputUsername").style.borderColor ="#4ed679";
         document.getElementById("loginInputPassword").style.borderColor ="#4ed679";
         setTimeout(() => {
             window.location.href = "/";
-          }, "1000")
-          window.sessionStorage.setItem("userName",username);
-          window.sessionStorage.setItem("userID",userID);
+        }, "1000")
+        window.sessionStorage.setItem("userName",username);
+        window.sessionStorage.setItem("userID",userID);
     }
     else {
         document.getElementById("loginInputUsername").style.borderColor = "red";
         document.getElementById("loginInputPassword").style.borderColor = "red";
-        let windowParams = "scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=400,height=200";
-        let newWin = window.open("about:blank", "Login Failed", windowParams);
-        newWin.document.write("Login Failed, Username or Password wrong!");
+        document.getElementById("loginInputPassword").value="";
+        //let windowParams = "scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=400,height=200";
+        //let newWin = window.open("about:blank", "Login Failed", windowParams);
+        //newWin.document.write("Login Failed, Username or Password wrong!");
     }
 }
 
 
-/**function getUserID(username)
-{
-    try{
-        var xhttp = new XMLHttpRequest();   
-        xhttp.open("GET", "api/users/name/"+username, true);
-        xhttp.onload = () => {
-            let data = JSON.parse(xhttp.responseText);
-            const userID = data[0]["_id"];
-            window.sessionStorage.setItem("userID",userID);
-        };
-        xhttp.send();
-        //console.log(data);
-    }
-    catch{
-        console.log("something didn't work!");
-    }
-}**/

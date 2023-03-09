@@ -122,8 +122,7 @@ async function getUserShoppingCart(userId) {
  * @returns {[ProductID]|null} The updated shopping cart of the user */
 async function addItemToUserShoppingCart(userId, productId) {
     try {
-        await PrivateUser.update(
-            { id: userId },
+        await PrivateUser.findByIdAndUpdate(userId,
             { $push: { shoppingCart: productId } }
         );
         const updatedUser = await PrivateUser.findById(userId);

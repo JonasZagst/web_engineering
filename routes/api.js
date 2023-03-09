@@ -62,10 +62,6 @@ apiRouter.post('/api/upload', (req, res) => {
   // All good
   res.sendStatus(200);
 });
-apiRouter.get("/productDetailPage", (req, res) => {
-  res.render("productDetailPage")
-});
-
 /** Check whether he credentials of a company user are valid.
  * E-Mail and password are passed in headers. */
 apiRouter.get("/api/companies/password", getCompanyUserCredentialValidity);

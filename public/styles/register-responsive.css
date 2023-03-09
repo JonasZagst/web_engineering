@@ -1,0 +1,34 @@
+/*Small Sized Screen*/
+@media screen and (max-width: 1600px) and (min-width: 1000px) {
+
+    .containerLoginForm{
+       width: 80%;
+       height: 80%;
+    }
+    }
+
+/*Very Small Sized Screen*/
+@media screen and (max-width: 1000px) and (min-width: 350px) {
+
+    .containerLoginForm{
+       width: 60%;
+       height: 1200px;
+    }
+    #containerLoginCaptionSelector{
+      margin-left: 90px;  
+   }
+   .registerGrid{
+      grid-template-columns: 2fr;
+      height: 800px;
+   }
+
+    }
+
+/*Very Very Small Sized Screen*/
+@media screen and (max-width: 350px) and (min-width: 0px) {
+
+   .containerLoginForm{
+      width: 40%;
+      height: 40%;
+   }
+}

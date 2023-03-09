@@ -1,18 +1,20 @@
 <link rel="stylesheet" href="styles/login.css">
 <link rel="stylesheet" href="styles/register.css">
+<link rel="stylesheet" href="styles/register-responsive.css">
 <script src="scripts/register.js"></script>
 <main>
     <div class="containerLoginForm">
         <form>
             <div class="containerLoginText">
                 <div id="containerLoginCaptionSelector">
-                    <h3 id="containerLoginCaptionLeft">Company Account</h3>
-                    <h3 id="containerLoginCaptionRight">Private Account</h3>
+                    <h3 id="containerLoginCaptionLeft" onclick="changeAccountUse(event)">Company Account</h3>
+                    <h3 id="containerLoginCaptionRight" onclick="changeAccountUse(event)">Private Account</h3>
                 </div>
                 <div class="registerGrid">
                     <div class="containerLeft">
                         <h4>Personal Data</h4></br>
-                        <div class="InlineGrid">
+                        <div class="nameGrid" id="nameGrid">
+                        <div class="InlineGrid" id="inlineGridName">
                             <div class="leftInlineElement">
                                 <label for="registerInputFirstName" id="registerLabelFirstName">First Name:</label></br>
                                 <input type="text" id="registerInputFirstName" name="first-name"></br>
@@ -21,6 +23,7 @@
                                 <label for="registerInputLastName" id="registerLabelFirstName">Last Name:</label></br>
                                 <input type="text" id="registerInputLastName" name="last-name"></br>
                             </div>
+                        </div>
                         </div>
                         <label for="registerInputEmail">Email Adress:</label></br>
                         <input type="text" id="registerInputEmail" name="email"></br>

@@ -1,6 +1,6 @@
 
 /*productGrid */
-.productGrid {
+.productDetailGrid {
     display: grid;
     grid-template-columns: 2fr 3fr;
     grid-gap: 1em;
@@ -9,17 +9,17 @@
     margin-right: 2%;
 }
 
-.productGridBoxLeft, .productGridBoxRight {
+.productDetailGridBoxLeft, .productDetailGridBoxRight {
     width: 100%;
     height: 500px;
     background-color: white;
 }
 
-.productGridBoxLeft {
+.productDetailGridBoxLeft, .productDetailGridBoxRight, .productDetailInformations {
     border-radius: 10px;
 }
 
-.productDetailDetails {
+.productDetailInformations {
     width: 96%;
     height: 450px;
     margin-top: 2%;
@@ -30,19 +30,23 @@
 /*ProductImage */
 #productDetailImage {
     width: 600px;
-    height: 100%;
-    
+    height: 500px;
+}
+
+/*ProductImage */
+#productDetailImage:hover {
+    transform: scale(0.9);
 }
 
 /*ProductDescription GridBox Right*/
-#productTitleName {
+#productDetailTitleName {
     text-align: left;
     font-size: 40px;
     margin: 5%;
     font-weight: bold;
 }
 
-#productDescriptionText {
+#productDetailDescriptionText {
     font-style: normal;
     font-size: 22px;
     margin-left: 5%;
@@ -91,10 +95,11 @@
 #detailsLeft label, #detailsLeft span {
     font-size: 25px;
     text-align: left;
+    margin-left: 2%;
 
 }
 
 #detailsLeft {
     text-align: left;
-    margin-left: 5%;
+    margin-left: 1%;
 }

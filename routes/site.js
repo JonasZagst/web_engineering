@@ -18,5 +18,8 @@ websiteRouter.get("/products", (req, res) => {
 websiteRouter.get("/productCreation", (req, res) => {
   res.render("productCreation")
 });
+websiteRouter.get("/productDetailPage", (req, res) => {
+  res.render("productDetailPage")
+});
 
 export { websiteRouter }

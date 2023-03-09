@@ -75,9 +75,23 @@
     grid-template-columns: 2fr 2fr;
     border-radius: 10px;
     width: 70%;
-    
+    margin-left: 150px;
+    margin-right: 110px;
+
 }
 
-#containerLoginCaptionSelector:hover{
+#containerLoginCaptionLeft:hover, #containerLoginCaptionRight:hover{
     border: solid black;
+    height: 75%;
+    width: 100%;  
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
+
+#containerLoginCaptionLeft, #containerLoginCaptionRight{
+    height: 75%;
+    width: 100%;  
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+

@@ -31,8 +31,7 @@ function craeateProductForms(body){
 function addProductBoxes(productName,productDescription,productPrice,productImage,productID){
     document.getElementById("productGrid").innerHTML+= 
     `<div class="grid-item">
-        <div class="grid-image"
-            style="background-image:url(`+productImage+`);background-position:center center;background-size:cover;">
+        <div class="grid-image" onclick="openProductPage()" style="background-image:url(`+productImage+`);background-position:center center;background-size:cover">
         </div>
         <div class="grid-text" id="grid-text1">
             <strong style="color: black;font-size: large">`+productName+`</strong><br><br>
