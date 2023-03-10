@@ -6,7 +6,8 @@ function loadProducts() {
         var xhttp = new XMLHttpRequest();   
         xhttp.open("GET", "api/products", true);
         xhttp.onload = () => {
-            data = JSON.parse(xhttp.response)
+            window.sessionStorage.setItem("productArray",xhttp.response);
+            data = JSON.parse(xhttp.response);
             craeateProductForms(data);
         };
         xhttp.send();
@@ -61,7 +62,60 @@ function addToShoppingCart(event){
     }
 }
 
+function nameFilter(event){
+    const filterValue  = event.target.value; 
+    var data= window.sessionStorage.getItem("productArray");
+    data= JSON.parse(data);
+    const resultManufacturer = data.filter(dataSet => dataSet.productName.includes(filterValue));
+    console.log(resultManufacturer);
+    document.getElementById("productGrid").innerHTML="";
+    craeateProductForms(resultManufacturer);
+}
 
+function priceFilter(event){
+    const filterValue  = event.target.value; 
+    var data= window.sessionStorage.getItem("productArray");
+    data= JSON.parse(data);
+    const result = data.filter(dataSet => dataSet.price < filterValue);
+    console.log(result);
+    document.getElementById("productGrid").innerHTML="";
+    craeateProductForms(result);
+}
+
+function colorFilter(event){
+    const filterValue  = event.target.value; 
+    var data= window.sessionStorage.getItem("productArray");
+    data= JSON.parse(data);
+    const resultColor = data.filter(dataSet => dataSet.productSpecification.color.includes(filterValue));
+    console.log(resultColor);
+    document.getElementById("productGrid").innerHTML="";
+    craeateProductForms(resultColor);
+}
+
+function OSFilter(event){
+    const filterValue  = event.target.value; 
+    var data= window.sessionStorage.getItem("productArray");
+    data= JSON.parse(data);
+    const resultOS = data.filter(dataSet => dataSet.productSpecification.operatingSystem.includes(filterValue));
+    console.log(resultOS);
+    document.getElementById("productGrid").innerHTML="";
+    craeateProductForms(resultOS);
+}
+
+function CPUFilter(event){
+    const filterValue  = event.target.value; 
+    var data= window.sessionStorage.getItem("productArray");
+    data= JSON.parse(data);
+    const resultTypeCPU = data.filter(dataSet => dataSet.productSpecification.typeCPU.includes(filterValue));
+    console.log(resultTypeCPU);
+    document.getElementById("productGrid").innerHTML="";
+    craeateProductForms(resultTypeCPU);
+}
+
+function getCurrentPrice()
+{
+    document.getElementById("currentPrice").innerText = document.getElementById("filterPrice").value +"€";
+}
 
 
 
