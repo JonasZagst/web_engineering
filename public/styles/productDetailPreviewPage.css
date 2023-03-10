@@ -1,0 +1,122 @@
+
+/*productGrid */
+.productDetailGrid {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-gap: 1em;
+    margin-top: 50px; 
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.productDetailGridBoxLeft, .productDetailGridBoxRight {
+    width: 100%;
+    height: 500px;
+    background-color: white;
+}
+
+.productDetailGridBoxLeft, .productDetailGridBoxRight, .productDetailInformations {
+    border-radius: 10px;
+}
+
+.productDetailInformations {
+    width: 96%;
+    height: 450px;
+    margin-top: 2%;
+    margin-left: 2%;
+    background-color: white;
+}
+
+/*ProductImage */
+#productDetailPreviewImage {
+    width: 600px;
+    height: 500px;
+}
+
+/*ProductImage */
+#productDetailPreviewImage:hover {
+    transform: scale(0.9);
+}
+
+/*ProductDescription GridBox Right*/
+#productDetailPreviewTitleName {
+    text-align: left;
+    font-size: 40px;
+    margin: 5%;
+    font-weight: bold;
+}
+
+#productDetailPreviewDescriptionText {
+    font-style: normal;
+    font-size: 22px;
+    margin-left: 5%;
+    margin-right: 5%;
+    
+}
+
+
+
+#addToCartButton {
+        display: inline-block;
+        background-color: #38d885;
+        padding: 20px;
+        width: 50%;
+        color: #ffffff;
+        text-align: center;
+        border: 4px double #cccccc; 
+        border-radius: 10px; 
+        font-size: 28px;
+        cursor: pointer; 
+        margin-left: 25%; 
+        margin-right: 25%; 
+        margin-top: 5%;
+        margin-bottom: 5%;
+        opacity: 0.9;
+}
+
+#addToCartButton:hover {
+    background-color: red;
+    box-shadow: 0 0 15px #FF0000;
+  }
+
+
+/*Product DetailDetails Stylings*/
+
+#productDetailDetailsTitle {
+    text-align: left;
+    font-size: 30px;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    padding-top: 3%;
+
+}
+
+
+#detailsLeft label, #detailsLeft span {
+    font-size: 25px;
+    text-align: left;
+    margin-left: 2%;
+
+}
+
+#detailsLeft {
+    text-align: left;
+    margin-left: 1%;
+}
+
+#returnToCreation{
+        width: 300px;
+        height: 100px;
+        border-radius: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: white ;
+        color: black;
+        margin-block-end: 1em;
+        margin-top: 10px;
+}
+    
+#returnToCreation:hover{
+    opacity: 80%;
+    border:solid #1e1f22
+}
+

@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="styles/productDetailPreviewPage.css">
+<script src="scripts/general.js"></script>
+<main>
+    <div class="productDetailGrid">   
+        <div class="productDetailGridBoxLeft">
+            <div class="productDetailsImage">
+                <img id="productDetailPreviewImage" src="img\productImages\Dell_Latitude_7420_3.jpg">
+            </div>
+        </div>
+        <div class="productDetailGridBoxRight">
+            <div id="productDetailPreviewTitleName">
+                <h3>Amazon</h3>
+            </div>
+            <div class="productDetailDescription">
+                <h3 id="productDetailPreviewDescriptionText">productDescription</h3>
+            </div>
+            <button id="addToCartButton" type="button"><strong>Add to shopping cart</strong></button>
+        </div>
+    </div>
+    <div class="productDetailInformations">
+        <div><h3 id="productDetailDetailsTitle">Product Details</h3></div>
+        <form id="detailsLeft">
+            <label>Name:</label><span id="productDetailPreviewName"></span></br>
+            <label>Price:</label><span id="productDetailPreviewPrice"></span></br>
+            <label>Operating System</label><span id="productDetailPreviewOS"></span></br>
+            <label>Amount RAM</label><span id="productDetailPreviewamountRAM"></span></br>
+            <label>Color</label><span id="productDetailPreviewColor"></span></br>
+            <label>Type CPU:</label><span id="productDetailPreviewTypeCPU"></span></br>
+            <label>Type GPU:</label><span id="productDetailPreviewTypeGPU"></span></br>
+        </form>
+    </div>
+    <button id="returnToCreation" type="button" onclick="window.close();"><strong>Return</strong></button>
+</main>
+<script src="scripts/productDetailPreviewPage.js"></script> 

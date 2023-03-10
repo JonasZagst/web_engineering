@@ -1,5 +1,5 @@
 .productCreationBlock {
-    width: 80%;
+    width: 100%;
     height:800px;
     display: inline-block;
     border-radius: 5%;
@@ -14,11 +14,10 @@
 
 .productGridBox {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 2fr;
     grid-gap: 1em;
     margin-top: 50px; 
-    margin-left: 2%;
-    margin-right: 2%;
+    width: 100%;
     height: 5px;
 }
 
@@ -51,7 +50,8 @@
     font-family: Arial, Helvetica, sans-serif;
     background: #4ed679;
     height: 700px;
-    margin-right: 50px;
+    margin-left: 500px;
+    margin-right: 500px;
     width: 1000px;
     color: black;
 }
@@ -159,7 +159,7 @@ input[type= file]::file-selector-button:hover{
    border: white solid;
 }
 
-#productButton{
+#productButton, #previewButton{
     width: 200px;
     height: 50px;
     border-radius: 10px;
@@ -169,7 +169,7 @@ input[type= file]::file-selector-button:hover{
     margin-block-end: 1em;
 }
 
-#productButton:hover {
+#productButton:hover, #previewButton:hover {
     border:solid #1e1f22
 }
 .productPreviewBox{

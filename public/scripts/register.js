@@ -19,13 +19,29 @@ function pushNewUser()
     }
     xhttp.setRequestHeader("Content-type","application/json");
     xhttp.send(json);
-    //setTimeout(() => {
-        //window.location.href = "/";
-      //}, "1000")
+    //Alert Banner
+    document.getElementById("LoginBanner").style.backgroundColor="green";
+    document.getElementById("LoginBanner").innerText="You Successfully created your own Account!";
+  
+    setTimeout(() => {
+        document.getElementById("LoginBanner").style.backgroundColor="transparent";
+        document.getElementById("LoginBanner").innerText="";
+        window.location.href = "/";
+    }, "2000");
+
     }
     catch{
+    //Alert Banner
+    document.getElementById("LoginBanner").style.backgroundColor="red";
+    document.getElementById("LoginBanner").innerText="There was an error while trying to create your Account!";
+  
+    setTimeout(() => {
+        document.getElementById("LoginBanner").style.backgroundColor="transparent";
+        document.getElementById("LoginBanner").innerText="";
+    }, "2000");
         console.log("something didn't work!");
     }
+ 
 }
 
 function generateJSON(typeofuser){

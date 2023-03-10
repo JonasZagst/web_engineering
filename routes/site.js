@@ -22,4 +22,10 @@ websiteRouter.get("/productDetailPage", (req, res) => {
   res.render("productDetailPage")
 });
 
+websiteRouter.get("/productDetailPreviewPage", (req, res) => {
+  res.render("productDetailPreviewPage")
+});
+
+
+
 export { websiteRouter }
