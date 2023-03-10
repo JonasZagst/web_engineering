@@ -18,30 +18,46 @@ function pushNewUser()
       xhttp.open("POST", "api/users", true);
     }
     xhttp.setRequestHeader("Content-type","application/json");
+    xhttp.onload = () => {
+      var response =JSON.parse(xhttp.responseText);
+      var responseErr= response.error;
+      openPopUpBanner(responseErr);
+    };
     xhttp.send(json);
+  }
+  catch{
+    console.log("Doof gelaufen!")
+  }
+}
+
+function openPopUpBanner(error){
+  console.log(typeof(error));
+  if(typeof(error)!="number"){
     //Alert Banner
     document.getElementById("LoginBanner").style.backgroundColor="green";
     document.getElementById("LoginBanner").innerText="You Successfully created your own Account!";
-  
+
     setTimeout(() => {
         document.getElementById("LoginBanner").style.backgroundColor="transparent";
         document.getElementById("LoginBanner").innerText="";
         window.location.href = "/";
-    }, "2000");
-
-    }
-    catch{
+    }, "4000");
+  }
+  else{
     //Alert Banner
     document.getElementById("LoginBanner").style.backgroundColor="red";
-    document.getElementById("LoginBanner").innerText="There was an error while trying to create your Account!";
-  
+    if(error==5){
+      document.getElementById("LoginBanner").innerText="There was an error while trying to create your account. Please make sure you filled out all necessary fields(*). The fields 'zip' and 'number' have to be of type number!";
+    }
+    else if(error==4)
+    {
+      document.getElementById("LoginBanner").innerText="There was an error while trying to create your account. The username/email-adress you provided already has an existing account!";
+    }
     setTimeout(() => {
         document.getElementById("LoginBanner").style.backgroundColor="transparent";
         document.getElementById("LoginBanner").innerText="";
-    }, "2000");
-        console.log("something didn't work!");
-    }
- 
+    }, "4000");
+  }
 }
 
 function generateJSON(typeofuser){

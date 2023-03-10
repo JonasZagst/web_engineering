@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
     },
     productDescription: {
         type: String,
-        required: false
+        required: true 
     },
     price: { // Amount in EURO
         type: Number,
@@ -18,7 +18,7 @@ const productSchema = new mongoose.Schema({
     },
     image: { // Link to images in public folder
         type: [String],
-        required: false
+        required: true
     },
     // Maybe change the productSpecifications to just a list of tags
     productSpecification: {
@@ -44,7 +44,7 @@ const productSchema = new mongoose.Schema({
         },
         typeGPU: { // not every notebook needs a GPU
             type: String,
-            required: false
+            required: true
         }
     }
 });

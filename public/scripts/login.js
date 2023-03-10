@@ -40,11 +40,8 @@ function showLogin(data,username,userID){
         setTimeout(() => {
             document.getElementById("LoginBanner").style.backgroundColor="transparent";
             document.getElementById("LoginBanner").innerText="";
-        }, "2000");
-
-        setTimeout(() => {
             window.location.href = "/";
-        }, "1000");
+        }, "3000");
 
         window.sessionStorage.setItem("userName",username);
         window.sessionStorage.setItem("userID",userID);
@@ -60,7 +57,7 @@ function showLogin(data,username,userID){
         setTimeout(() => {
             document.getElementById("LoginBanner").style.backgroundColor="transparent";
             document.getElementById("LoginBanner").innerText="";
-        }, "2000")
+        }, "3000")
         //let windowParams = "scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=400,height=200";
         //let newWin = window.open("about:blank", "Login Failed", windowParams);
         //newWin.document.write("Login Failed, Username or Password wrong!");

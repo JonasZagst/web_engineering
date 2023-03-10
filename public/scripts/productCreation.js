@@ -48,33 +48,20 @@ function pushNewProduct()
     var xhttp = new XMLHttpRequest();   
     xhttp.open("POST", "api/products", true);
     xhttp.setRequestHeader("Content-type","application/json");
+    xhttp.onload = () => {
+      try{
+        var response = JSON.parse(xhttp.responseText);
+        openPopUpBanner(response);
+      }
+      catch{
+        openPopUpBanner(xhttp.responseText);
+      }
+    };
     xhttp.send(json);
     }
     catch{
-    document.getElementById("LoginBanner").style.backgroundColor="red";
-    document.getElementById("LoginBanner").innerText="There was an error while trying to create your product!";
-
-    setTimeout(() => {
-        document.getElementById("LoginBanner").style.backgroundColor="transparent";
-        document.getElementById("LoginBanner").innerText="";
-    }, "2000");
+      console.log("Problem");
     }
-  getImageFile();
-  window.sessionStorage.removeItem("imageData");
-  window.sessionStorage.removeItem("previewObject");
-
-  document.getElementById("LoginBanner").style.backgroundColor="green";
-  document.getElementById("LoginBanner").innerText="You Successfully created your own Product!";
-
-  setTimeout(() => {
-      document.getElementById("LoginBanner").style.backgroundColor="transparent";
-      document.getElementById("LoginBanner").innerText="";
-  }, "2000");
-
-  setTimeout(() => {
-    window.location.href = "/products";
-}, "1000")
-
 }
 
 function generateJSON(){
@@ -132,4 +119,32 @@ function pushFileToServer(file){
   catch{
       console.log("something didn't work!");
   }
+}
+
+function openPopUpBanner(error){
+  if(typeof(error)!="string"){
+
+    getImageFile();
+    window.sessionStorage.removeItem("imageData");
+    window.sessionStorage.removeItem("previewObject");
+    //Alert Banner
+    document.getElementById("LoginBanner").style.backgroundColor="green";
+    document.getElementById("LoginBanner").innerText="You Successfully created your own Product!";
+
+    setTimeout(() => {
+        document.getElementById("LoginBanner").style.backgroundColor="transparent";
+        document.getElementById("LoginBanner").innerText="";
+        window.location.href = "/products";
+    }, "4000");
+  }
+  else{
+    //Alert Banner
+    document.getElementById("LoginBanner").style.backgroundColor="red";
+    document.getElementById("LoginBanner").innerText="There was an error while trying to create your account. Please make sure you filled out all necessary fields(*). The fields 'Product Price' has to be of type number! As well make sure that you've added a picture!";
+    setTimeout(() => {
+        document.getElementById("LoginBanner").style.backgroundColor="transparent";
+        document.getElementById("LoginBanner").innerText="";
+    }, "4000");
+  }
+
 }
