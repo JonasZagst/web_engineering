@@ -1,12 +1,14 @@
+/** JS File for /shoppingCart */
+
+/** Retrieves all shopping cart items for the current user and displays them. */
 function getShoppingCartItems() {
   try {
     const userID = window.sessionStorage.userID;
     const xhttp = new XMLHttpRequest();
     xhttp.open("GET", `api/users/${userID}/shoppingCart`, true);
     xhttp.onload = () => {
-      console.log(xhttp.response);
-      const data = JSON.parse(xhttp.response)
-      createShoppingCart(data);
+      const shoppingCartProducts = JSON.parse(xhttp.response)
+      createShoppingCart(shoppingCartProducts);
     };
     xhttp.send();
   } catch (error) {
@@ -14,9 +16,12 @@ function getShoppingCartItems() {
   }
 }
 
-function createShoppingCart(data) {
-  console.log(data);
-  for (const productID of data) {
+/** Create the content for te shopping cart.
+ *
+ * For each product ID in the shopping cart a request to the backend is made to get the full content for the product.
+ * @param {[String]} shoppingCartProducts The list of product IDs in the shopping cart of the current user. */
+function createShoppingCart(shoppingCartProducts) {
+  for (const productID of shoppingCartProducts) {
     const xhttp = new XMLHttpRequest();
     xhttp.open("GET", `api/products/${productID}`, true);
     xhttp.onload = () => {
@@ -28,14 +33,21 @@ function createShoppingCart(data) {
       const productPrice = product.price;
       const productID = product._id;
 
-      addProductBoxes(productName, productDescription, productPrice, productImage, productID);
+      _addProductBoxes(productName, productDescription, productPrice, productImage, productID);
     };
 
     xhttp.send();
   }
 }
 
-function addProductBoxes(productName, productDescription, productPrice, productImage, productID) {
+/** Helper function to display the fill an HTML string with the appropriate information of the product.
+ * @param {String} productName
+ * @param {String} productDescription
+ * @param {Number} productPrice
+ * @param {String} productImage The url to the thumbnail image for the product.
+ * @param {String} productID */
+function _addProductBoxes(productName, productDescription, productPrice, productImage, productID) {
+  // FIXME: Add a shopping cart remove icon.
   document.getElementById("productGrid").innerHTML +=
     `<div class="grid-item">
         <div class="grid-image" onclick="openProductPage" style="background-image:url(${productImage});background-position:center center;background-size:cover">

@@ -1,12 +1,14 @@
-document.addEventListener( "DOMContentLoaded", showProductData());
+/** JS File for /productDetailPreviewPage */
+document.addEventListener("DOMContentLoaded", showProductData());
 
+/** Displays the data for a product. */
 function showProductData() {
     const previewString = window.sessionStorage.getItem("previewObject");
     const previewArray = previewString.split(',');
     const imageData = window.sessionStorage.getItem("imageData");
-    console.log(imageData);
-    console.log(previewArray);
-    
+    // console.log(imageData);
+    // console.log(previewArray);
+
     document.getElementById("productDetailPreviewName").innerText = previewArray[0];
     document.getElementById("productDetailPreviewPrice").innerText = previewArray[2];
     document.getElementById("productDetailPreviewOS").innerText = previewArray[5];
@@ -17,7 +19,7 @@ function showProductData() {
 
     document.getElementById("productDetailPreviewDescriptionText").innerText = previewArray[1];
 
-    document.getElementById("productDetailPreviewImage").src = imageData; 
+    document.getElementById("productDetailPreviewImage").src = imageData;
 
     document.getElementById("productDetailPreviewTitleName").innerText = previewArray[0];
 

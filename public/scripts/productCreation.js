@@ -1,22 +1,23 @@
-//For Page Previewy‚
-function showPreview(){
-  const previewObject = generateProductPreviewObject();
-  window.open('/productDetailPreviewPage','ProductPreview');
-}
-function getImagePreview(event){  
-    const image = event.target.files[0];
-    const imageName= image.name;
-    const reader = new FileReader();
-    reader.readAsDataURL(image);
-    reader.addEventListener('load', () => {
-        window.sessionStorage.setItem('imageData', reader.result);
-    });
-  }
+/** JS File for /productCreation */
 
-function generateProductPreviewObject()
-{
-  const previewObject =[];
-  try{
+function showPreview() {
+  const previewObject = generateProductPreviewObject();
+  window.open('/productDetailPreviewPage', 'ProductPreview');
+}
+
+function getImagePreview(event) {
+  const image = event.target.files[0];
+  const imageName = image.name;
+  const reader = new FileReader();
+  reader.readAsDataURL(image);
+  reader.addEventListener('load', () => {
+    window.sessionStorage.setItem('imageData', reader.result);
+  });
+}
+
+function generateProductPreviewObject() {
+  const previewObject = [];
+  try {
     //Initialize Object
     const title = document.getElementById("productTitle").value;
     const description = document.getElementById("productDescription").value;
@@ -27,78 +28,77 @@ function generateProductPreviewObject()
     const RAM = document.getElementById("productRAM").value;
     const TypeCPU = document.getElementById("productTypeCPU").value;
     const TypeGPU = document.getElementById("productTypeGPU").value;
-    previewObject.push(title,description,price,manufacturer,color,operatingSystem,RAM,TypeCPU,TypeGPU);
+    previewObject.push(title, description, price, manufacturer, color, operatingSystem, RAM, TypeCPU, TypeGPU);
 
     //Save data Object for the session
-    window.sessionStorage.setItem("previewObject",previewObject);
+    window.sessionStorage.setItem("previewObject", previewObject);
     //Save Image for the Session
-    
+
   }
-  catch{
-      alert("Problem while trying to initialize the Product Preview!");
+  catch {
+    alert("Problem while trying to initialize the Product Preview!");
   }
 }
 
 //Logic for the actual product Creation
-function pushNewProduct()
-{
+function pushNewProduct() {
   json = generateJSON();
   console.log(json);
-  try{
-    var xhttp = new XMLHttpRequest();   
+  try {
+    var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "api/products", true);
-    xhttp.setRequestHeader("Content-type","application/json");
+    xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.onload = () => {
-      try{
+      try {
         var response = JSON.parse(xhttp.responseText);
         openPopUpBanner(response);
       }
-      catch{
+      catch {
         openPopUpBanner(xhttp.responseText);
       }
     };
     xhttp.send(json);
-    }
-    catch{
-      console.log("Problem");
-    }
+  }
+  catch {
+    console.log("Problem");
+  }
 }
 
-function generateJSON(){
-const re = new RegExp("(?<=fakepath).*$");
-const imageFile = document.getElementById("uploadImage").value;
-let filename = imageFile.match(re);
-filename = String(filename).substring(1,String(filename).length);
-const filepath = "img/upload/"+filename;
-const productTitle = document.getElementById("productTitle").value;
-const productDescription = document.getElementById("productDescription").value;
-const productPrice = parseInt(document.getElementById("productPrice").value);
-const productManufacturer = document.getElementById("productManufacturer").value;
-const productColor = document.getElementById("productColor").value;
-const productOS = document.getElementById("productOS").value;
-let localProductRAM = document.getElementById("productRAM").value;
-const productRAM= parseInt(localProductRAM.substring(0, localProductRAM.length - 2));
-const productTypeCPU = document.getElementById("productTypeCPU").value;
-const productTypeGPU = document.getElementById("productTypeGPU").value;
+function generateJSON() {
+  const re = new RegExp("(?<=fakepath).*$");
+  const imageFile = document.getElementById("uploadImage").value;
+  let filename = imageFile.match(re);
+  filename = String(filename).substring(1, String(filename).length);
+  const filepath = "img/upload/" + filename;
+  const productTitle = document.getElementById("productTitle").value;
+  const productDescription = document.getElementById("productDescription").value;
+  const productPrice = parseInt(document.getElementById("productPrice").value);
+  const productManufacturer = document.getElementById("productManufacturer").value;
+  const productColor = document.getElementById("productColor").value;
+  const productOS = document.getElementById("productOS").value;
+  let localProductRAM = document.getElementById("productRAM").value;
+  const productRAM = parseInt(localProductRAM.substring(0, localProductRAM.length - 2));
+  const productTypeCPU = document.getElementById("productTypeCPU").value;
+  const productTypeGPU = document.getElementById("productTypeGPU").value;
 
-const mockProduct = 
+  const mockProduct =
   {
-      "productName": productTitle,
-      "productDescription": productDescription,
-      "price": productPrice,
-      "image": [filepath],
-      "productSpecification": {
-          "operatingSystem": productOS,
-          "amountRAM": productRAM,
-          "color": productColor,
-          "typeCPU": productTypeCPU,
-          "manufactorer":productManufacturer,
-          "typeGPU": productTypeGPU
-      }
+    "productName": productTitle,
+    "productDescription": productDescription,
+    "price": productPrice,
+    "image": [filepath],
+    "productSpecification": {
+      "operatingSystem": productOS,
+      "amountRAM": productRAM,
+      "color": productColor,
+      "typeCPU": productTypeCPU,
+      "manufactorer": productManufacturer,
+      "typeGPU": productTypeGPU
+    }
   };
 
-const jsonReturn = JSON.stringify(mockProduct);
-return jsonReturn;
+  const jsonReturn = JSON.stringify(mockProduct);
+  return jsonReturn;
 }
 
 function getImageFile() {
@@ -106,45 +106,43 @@ function getImageFile() {
   pushFileToServer(file);
 }
 
-
-function pushFileToServer(file){
+function pushFileToServer(file) {
   console.log(file);
-  try{
-      var xhttp = new XMLHttpRequest();  
-      var formData = new FormData();
-      formData.append("image", file); 
-      xhttp.open("post", "/api/upload", true);
-      xhttp.send(formData);
+  try {
+    var xhttp = new XMLHttpRequest();
+    var formData = new FormData();
+    formData.append("image", file);
+    xhttp.open("post", "/api/upload", true);
+    xhttp.send(formData);
   }
-  catch{
-      console.log("something didn't work!");
+  catch {
+    console.log("something didn't work!");
   }
 }
 
-function openPopUpBanner(error){
-  if(typeof(error)!="string"){
+function openPopUpBanner(error) {
+  if (typeof (error) != "string") {
 
     getImageFile();
     window.sessionStorage.removeItem("imageData");
     window.sessionStorage.removeItem("previewObject");
     //Alert Banner
-    document.getElementById("LoginBanner").style.backgroundColor="green";
-    document.getElementById("LoginBanner").innerText="You Successfully created your own Product!";
+    document.getElementById("LoginBanner").style.backgroundColor = "green";
+    document.getElementById("LoginBanner").innerText = "You Successfully created your own Product!";
 
     setTimeout(() => {
-        document.getElementById("LoginBanner").style.backgroundColor="transparent";
-        document.getElementById("LoginBanner").innerText="";
-        window.location.href = "/products";
+      document.getElementById("LoginBanner").style.backgroundColor = "transparent";
+      document.getElementById("LoginBanner").innerText = "";
+      window.location.href = "/products";
     }, "4000");
   }
-  else{
+  else {
     //Alert Banner
-    document.getElementById("LoginBanner").style.backgroundColor="red";
-    document.getElementById("LoginBanner").innerText="There was an error while trying to create your account. Please make sure you filled out all necessary fields(*). The fields 'Product Price' has to be of type number! As well make sure that you've added a picture!";
+    document.getElementById("LoginBanner").style.backgroundColor = "red";
+    document.getElementById("LoginBanner").innerText = "There was an error while trying to create your account. Please make sure you filled out all necessary fields(*). The fields 'Product Price' has to be of type number! As well make sure that you've added a picture!";
     setTimeout(() => {
-        document.getElementById("LoginBanner").style.backgroundColor="transparent";
-        document.getElementById("LoginBanner").innerText="";
+      document.getElementById("LoginBanner").style.backgroundColor = "transparent";
+      document.getElementById("LoginBanner").innerText = "";
     }, "4000");
   }
-
 }

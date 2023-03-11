@@ -1,122 +1,117 @@
-document.addEventListener( "DOMContentLoaded", loadProducts());
+/** JS File for /productPage */
 
+document.addEventListener("DOMContentLoaded", loadProducts);
+
+/** Load all products and display them */
 function loadProducts() {
-    console.log("Executed!")
-    try{
-        var xhttp = new XMLHttpRequest();   
+    try {
+        var xhttp = new XMLHttpRequest();
         xhttp.open("GET", "api/products", true);
         xhttp.onload = () => {
-            window.sessionStorage.setItem("productArray",xhttp.response);
+            window.sessionStorage.setItem("productArray", xhttp.response);
             data = JSON.parse(xhttp.response);
-            craeateProductForms(data);
+            _craeateProductForms(data);
         };
         xhttp.send();
     }
-    catch{
-        console.log("something didn't work!");
+    catch (error) {
+        console.error(`loadProducts: ${error}`);
     }
 }
 
-function craeateProductForms(body){
-    for(let i=0; i<body.length;i++)
-    {
+function _craeateProductForms(body) {
+    for (let i = 0; i < body.length; i++) {
         const productImage = body[i].image[0];
         const productName = body[i].productName;
         const productDescription = body[i].productDescription;
         const productPrice = body[i].price;
         const productID = body[i]._id;
-        addProductBoxes(productName,productDescription,productPrice,productImage,productID);
+        _addProductBoxes(productName, productDescription, productPrice, productImage, productID);
     }
 }
 
-function addProductBoxes(productName,productDescription,productPrice,productImage,productID){
-    document.getElementById("productGrid").innerHTML+= 
-    `<div class="grid-item">
-        <div class="grid-image" onclick="openProductPage()" style="background-image:url(`+productImage+`);background-position:center center;background-size:cover">
+function _addProductBoxes(productName, productDescription, productPrice, productImage, productID) {
+    document.getElementById("productGrid").innerHTML +=
+        `<div class="grid-item">
+        <div class="grid-image" onclick="openProductPage()" style="background-image:url(`+ productImage + `);background-position:center center;background-size:cover">
         </div>
         <div class="grid-text" id="grid-text1">
-            <strong style="color: black;font-size: large">`+productName+`</strong><br><br>
-            <strong>`+productDescription+`</strong><br><br><br>
-            <strong>`+productPrice+`€</strong>
-            <button style="background-color:transparent"id="`+productID+`" type="button" onclick="addToShoppingCart(event)"><img style="width:30px;height:30px;vertical-align:middle" src="img/shoppingCart.png" alt="Home"></button>
+            <strong style="color: black;font-size: large">`+ productName + `</strong><br><br>
+            <strong>`+ productDescription + `</strong><br><br><br>
+            <strong>`+ productPrice + `€</strong>
+            <button style="background-color:transparent"id="`+ productID + `" type="button" onclick="addToShoppingCart(event)"><img style="width:30px;height:30px;vertical-align:middle" src="img/shoppingCart.png" alt="Home"></button>
         </div>
     </div>`
 }
 
-
-function addToShoppingCart(event){
+/** Event handler to add an item to the shopping cart of the user.
+ * @param {Object} event */
+function addToShoppingCart(event) {
     const currentButton = event.path[1];
-    const productID  =  currentButton.id;
-    console.log(productID);
+    const productID = currentButton.id;
 
     const userID = window.sessionStorage.getItem("userID");
-    console.log("Starting Execution!");
 
-    try{
-        var xhttp = new XMLHttpRequest();   
-        xhttp.open("POST", "/api/users/"+userID+"/shoppingCart/"+productID, true);
+    try {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "/api/users/" + userID + "/shoppingCart/" + productID, true);
         xhttp.send();
     }
-    catch{
-        console.log("something didn't work!");
+    catch (error) {
+        console.error(`addToShoppingCart: ${error}`);
     }
 }
 
-function nameFilter(event){
-    const filterValue  = event.target.value; 
-    var data= window.sessionStorage.getItem("productArray");
-    data= JSON.parse(data);
+function nameFilter(event) {
+    const filterValue = event.target.value;
+    var data = window.sessionStorage.getItem("productArray");
+    data = JSON.parse(data);
     const resultManufacturer = data.filter(dataSet => dataSet.productName.includes(filterValue));
     console.log(resultManufacturer);
-    document.getElementById("productGrid").innerHTML="";
-    craeateProductForms(resultManufacturer);
+    document.getElementById("productGrid").innerHTML = "";
+    _craeateProductForms(resultManufacturer);
 }
 
-function priceFilter(event){
-    const filterValue  = event.target.value; 
-    var data= window.sessionStorage.getItem("productArray");
-    data= JSON.parse(data);
+function priceFilter(event) {
+    const filterValue = event.target.value;
+    var data = window.sessionStorage.getItem("productArray");
+    data = JSON.parse(data);
     const result = data.filter(dataSet => dataSet.price < filterValue);
     console.log(result);
-    document.getElementById("productGrid").innerHTML="";
-    craeateProductForms(result);
+    document.getElementById("productGrid").innerHTML = "";
+    _craeateProductForms(result);
 }
 
-function colorFilter(event){
-    const filterValue  = event.target.value; 
-    var data= window.sessionStorage.getItem("productArray");
-    data= JSON.parse(data);
+function colorFilter(event) {
+    const filterValue = event.target.value;
+    var data = window.sessionStorage.getItem("productArray");
+    data = JSON.parse(data);
     const resultColor = data.filter(dataSet => dataSet.productSpecification.color.includes(filterValue));
     console.log(resultColor);
-    document.getElementById("productGrid").innerHTML="";
-    craeateProductForms(resultColor);
+    document.getElementById("productGrid").innerHTML = "";
+    _craeateProductForms(resultColor);
 }
 
-function OSFilter(event){
-    const filterValue  = event.target.value; 
-    var data= window.sessionStorage.getItem("productArray");
-    data= JSON.parse(data);
+function OSFilter(event) {
+    const filterValue = event.target.value;
+    var data = window.sessionStorage.getItem("productArray");
+    data = JSON.parse(data);
     const resultOS = data.filter(dataSet => dataSet.productSpecification.operatingSystem.includes(filterValue));
     console.log(resultOS);
-    document.getElementById("productGrid").innerHTML="";
-    craeateProductForms(resultOS);
+    document.getElementById("productGrid").innerHTML = "";
+    _craeateProductForms(resultOS);
 }
 
-function CPUFilter(event){
-    const filterValue  = event.target.value; 
-    var data= window.sessionStorage.getItem("productArray");
-    data= JSON.parse(data);
+function CPUFilter(event) {
+    const filterValue = event.target.value;
+    var data = window.sessionStorage.getItem("productArray");
+    data = JSON.parse(data);
     const resultTypeCPU = data.filter(dataSet => dataSet.productSpecification.typeCPU.includes(filterValue));
     console.log(resultTypeCPU);
-    document.getElementById("productGrid").innerHTML="";
-    craeateProductForms(resultTypeCPU);
+    document.getElementById("productGrid").innerHTML = "";
+    _craeateProductForms(resultTypeCPU);
 }
 
-function getCurrentPrice()
-{
-    document.getElementById("currentPrice").innerText = document.getElementById("filterPrice").value +"€";
+function getCurrentPrice() {
+    document.getElementById("currentPrice").innerText = document.getElementById("filterPrice").value + "€";
 }
-
-
-
-
