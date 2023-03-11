@@ -1,19 +1,36 @@
 /*General Designs*/
-body {background-color: #1e1f22;margin: 0;}  
+body {
+    background-color: #1e1f22;
+    margin: 0;
+}
+
 main {
     text-align: center;
 }
+
+.requires-login {
+    display: none;
+}
+
 span {
     display: inline-block;  
     margin-left: 35%;
     vertical-align: top;
 }
+
 span img {
     margin-top: 5%;
     width: 300px;
     height: 60px;
 }
-nav {width: 100%;overflow: auto;background-color:#8A7D61; height: 125px; padding-top: 25px;}
+
+nav {
+    width: 100%;overflow: auto;
+    background-color:#8A7D61;
+    height: 125px;
+    padding-top: 25px;
+}
+
 nav ul {
     text-align: right;
     margin-right: 5%;
@@ -21,29 +38,38 @@ nav ul {
     float: right;
     margin-top: 25px;
 }
-nav ul li{display: inline; text-align: right}
+
+nav ul li {
+    display: inline;
+    text-align: right;
+}
+
 nav ul li img{
     width: 40px;
     height: 40px;
 }
+
 nav ul li:hover {
     border-bottom: black;
     border-bottom-style: solid;
     border-width: thick;
     border-spacing: 5px;
 }
+
 nav ul li button:hover {
     border-bottom: black;
     border-bottom-style: solid;
     border-width: thick;
     border-spacing: 0px;
 }
+
 nav ul li:active {
     border-bottom: white;
     border-bottom-style: solid;
     border-width: thick;
     border-spacing: 5px;
 }
+
 nav ul li a {
 width: 20%;
 text-align: center;

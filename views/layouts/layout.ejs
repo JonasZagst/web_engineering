@@ -6,7 +6,6 @@
     <link rel="icon" href="img/favicon.png">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/styles-responsive.css">
-    <script src="scripts/general.js"></script>
 </head>
 <nav>
     <span id="loginNav"></span>
@@ -24,8 +23,8 @@
         </li>
         <li><a href="/"><img src="img/Home.png" alt="Home"></a></li>
         <li><a href="/products"><img src="img/shop.png" alt="Product"></a></li>
-        <li><a href="/productCreation"><img src="img/productCreation.svg" alt="ProductCreation"></a></li>
-        <li><a href="/shoppingCart"><img src="img/shoppingCart.png" alt="Shopping Cart"></a></li>
+        <li class="requires-login requires-company-user"><a href="/productCreation"><img src="img/productCreation.svg" alt="ProductCreation"></a></li>
+        <li class="requires-login"><a href="/shoppingCart"><img src="img/shoppingCart.png" alt="Shopping Cart"></a></li>
         <li id="loginNavButtonImage"><a href="/login"><img src="img/Login.png" alt="Account Management"></a></li>
     </ul>
 </nav>
@@ -37,4 +36,5 @@
 </body>
 <footer>
 </footer>
+<script src="scripts/general.js"></script>
 </html>
