@@ -19,7 +19,7 @@ const address = {
             required: true
         },
         houseNumber: {
-            type: String,
+            type: Number,
             required: true
         }
     },

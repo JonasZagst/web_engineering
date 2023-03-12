@@ -1,0 +1,17 @@
+/*Small Sized Screen*/
+@media screen and (max-width: 740px) and (min-width: 350px) {
+
+    .containerLoginForm{
+       width: 60%;
+       height: 60%;
+    }
+    }
+
+/*Very Small Sized Screen*/
+@media screen and (max-width: 350px) and (min-width: 0px) {
+
+    .containerLoginForm{
+       width: 40%;
+       height: 40%;
+    }
+    }

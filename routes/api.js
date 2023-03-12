@@ -1,4 +1,6 @@
 import express from "express"
+//for image Upload
+import expressFileUpload from 'express-fileupload'
 
 import {addNewProduct, getProductById, getProducts} from "../controllers/api_products_controller.js"
 import {
@@ -16,6 +18,7 @@ import {
 
 const apiRouter = express.Router();
 
+apiRouter.use(expressFileUpload());
 // API Routes
 
 /** Retrieve all products. */
@@ -45,11 +48,20 @@ apiRouter.post("/api/users", addNewUser);
 
 /** Get the shopping cart of a certain user. */
 apiRouter.get("/api/users/:id/shoppingCart", getUserShoppingCart);
+apiRouter.post("/api/users/:id/shoppingCart/:productID", addItemToUserShoppingCart);
 
-/** Add a product by its id to the shopping cart of a certain user.
- * The ID of the product must be passed in the body of the request with the name `productId`. */
-apiRouter.put("/api/users/:id/shoppingCart", addItemToUserShoppingCart);
+//Image Upload
+apiRouter.post('/api/upload', (req, res) => {
+  // Get the file that was set to our field named "image"
+  const { image } = req.files;
+  // If no image submitted, exit
+  if (!image) return res.sendStatus(400);
 
+  // Move the uploaded image to our upload folder
+  image.mv('public/img/upload/' + image.name);
+  // All good
+  res.sendStatus(200);
+});
 /** Check whether he credentials of a company user are valid.
  * E-Mail and password are passed in headers. */
 apiRouter.get("/api/companies/password", getCompanyUserCredentialValidity);

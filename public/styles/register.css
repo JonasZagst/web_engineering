@@ -1,7 +1,9 @@
 .containerLoginForm {
     height:700px;
-    width: 850px;
+    width: 1400px;
     text-align: center;
+    margin-top: 2.5%;
+    border-radius: 15%;
 }
 .containerLoginForm input{
     text-align: center;
@@ -30,3 +32,66 @@
 .Details {
     visibility:hidden;
 }
+
+.registerGrid{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    height: 400px;
+}
+
+.registerGrid h4{
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+.InlineGrid {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+.AdressInlineGrid {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.leftInlineElement{
+    padding-left: 45px;
+}
+
+.rightInlineElement{
+    padding-right: 45px;
+}
+
+.leftAdressInlineElement{
+    padding-left: 15px;
+}
+
+.rightAdressInlineElement{
+    padding-right: 55px;
+}
+
+#containerLoginCaptionSelector{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    border-radius: 10px;
+    width: 70%;
+    margin-left: 150px;
+    margin-right: 110px;
+
+}
+
+#containerLoginCaptionLeft:hover, #containerLoginCaptionRight:hover{
+    border: solid black;
+    height: 75%;
+    width: 100%;  
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#containerLoginCaptionLeft, #containerLoginCaptionRight{
+    height: 75%;
+    width: 100%;  
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+

@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="styles/productDetailPage.css">
+<script src="scripts/productDetailPage.js"></script> 
+<script src="scripts/general.js"></script>
+<main>
+    <div class="productDetailGrid">   
+        <div class="productDetailGridBoxLeft">
+            <div class="productDetailsImage">
+                <img id="productDetailImage" src="img\productImages\Dell_Latitude_7420_3.jpg">
+            </div>
+        </div>
+        <div class="productDetailGridBoxRight">
+            <div id="productDetailTitleName">
+                <h3>Amazon</h3>
+            </div>
+            <div class="productDetailDescription">
+                <h3 id="productDetailDescriptionText">productDescription</h3>
+            </div>
+            <button id="addToCartButton" type="button" onclick="addToShoppingCart()"><strong>Add to shopping cart</strong></button>
+        </div>
+    </div>
+    <div class="productDetailInformations">
+        <div><h3 id="productDetailDetailsTitle">Product Details</h3></div>
+        <form id="detailsLeft">
+            <label>Name:</label><span id="productDetailName"></span></br>
+            <label>Price:</label><span id="productDetailPrice"></span></br>
+            <label>Operating System</label><span id="productDetailOS"></span></br>
+            <label>Amount RAM</label><span id="productDetailamountRAM"></span></br>
+            <label>Color</label><span id="productDetailColor"></span></br>
+            <label>Type CPU:</label><span id="productDetailTypeCPU"></span></br>
+            <label>Type GPU:</label><span id="productDetailTypeGPU"></span></br>
+        </form>
+    </div>
+</main>

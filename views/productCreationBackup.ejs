@@ -12,7 +12,7 @@
                                 <span class="dropTitle">Drop file here</span></br>
                                 <span class="dropTitleSecond">or</span>
                                 <div class="uploadImageBox">
-                                    <input id="uploadImage" type="file" accept="image/*" onchange="getImagePreview(event)" required>
+                                    <input id="uploadImage" type="file" accept="image/*" onchange="preview_image(event)" required>
                                 </div>
                             </label></br>
 
@@ -97,8 +97,17 @@
                               </datalist>
                         </form>
                     </div>
-                    <button id="previewButton" type="button" onclick="showPreview()"><strong>Preview</strong></button>
-                    <button id="productButton" type="button" onclick="pushNewProduct()"><strong>Create</strong></button>
+                    <button id="productButton" type="button" onclick="pushNewProduct()"><strong>Preview</strong></button>
+                </div>
+                <div class="productCreationPreview">
+                    <div class="productItem">
+                        <img id="uploadedImage" alt="">
+                        <div class="productPreviewBox" id="productPreviewBox">
+                            <strong id="productPreviewTitle" style="color: whitesmoke;font-size: large">Amazon Web Services</strong></br></br>
+                            <strong id="productPreviewDescription">Amazon Web Services (AWS) is a comprehensive, evolving cloud computing platform provided by Amazon that offers a mix of infrastructure as a service (IaaS), platform as a service (PaaS) and packaged software as a service (SaaS) offerings.</strong></br></br></br>
+                            <strong id="productPreviewPrice"></strong></br></br></br>
+                        </div>
+                    </div>  
                 </div>
             </div>  
     </div>

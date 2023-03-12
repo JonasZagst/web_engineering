@@ -1,9 +1,8 @@
-import { CompanyUser } from "../models/company_user.js"
+import {CompanyUser} from "../models/company_user.js"
 import * as users_service from "../services/users_service.js"
-import {PrivateUser} from "../models/user.js";
 
 async function getCompanyUserById(req, res) {
-    const { id } = res.params;
+    const {id} = res.params;
 
     if (id !== null) {
         try {
@@ -30,22 +29,22 @@ async function addNewCompanyUser(req, res) {
     const companyUser = req.body;
 
     try {
-        const newUser = await users_service.addNewUser(CompanyUser,companyUser);
+        const newUser = await users_service.addNewUser(companyUser);
         res.statusCode = 201;
         res.json(newUser);
     } catch (error) {
         if (error.name === "JSONMappingError") {
             res.statusCode = 400;
-            res.json({error: error.code,
-                message: error.message});
         } else if (error.name === "DuplicateKeyError") {
             res.statusCode = 403;
-            res.json({error: error.code,
-                message: error.message});
         } else {
             res.statusCode = 500;
             console.error(error);
         }
+        res.json({
+            error: error.code,
+            message: error.message
+        });
     }
 }
 

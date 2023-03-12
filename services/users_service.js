@@ -56,6 +56,7 @@ async function getUserById(model, id) {
  *
  * @returns {Object|null} The new Mongoose model for PrivateUser */
 async function addNewUser(model, userJSON) {
+    console.log(userJSON);
     const userModel = new model(userJSON);
     const userModelValidationError = userModel.validateSync();
 
@@ -86,7 +87,7 @@ async function addNewUser(model, userJSON) {
  * @returns {PrivateUser|null} returns the user if E-Mail and password match an user in the database and null if no match could be found.*/
 async function checkUserCredentialsValidity(model, email, password) {
     try {
-        return await model.findOne({ email: email, password: password }).select("-password");
+        return await model.findOne({ email: email, password: password});  
     } catch (error) {
         // CastError is thrown when mongodb doesn't find a user of this id, so we return null.
         if (error.name === "CastError") {
@@ -121,10 +122,10 @@ async function getUserShoppingCart(userId) {
  * @returns {[ProductID]|null} The updated shopping cart of the user */
 async function addItemToUserShoppingCart(userId, productId) {
     try {
+        await PrivateUser.findByIdAndUpdate(userId,
+            { $push: { shoppingCart: productId } }
+        );
         const updatedUser = await PrivateUser.findById(userId);
-        updatedUser.shoppingCart.push(productId);
-        await updatedUser.save();
-
         return updatedUser.shoppingCart;
     } catch (error) {
         if (error.name === "CastError") {

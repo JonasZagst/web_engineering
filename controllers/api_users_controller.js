@@ -1,8 +1,8 @@
-import {PrivateUser} from "../models/user.js"
+import { PrivateUser } from "../models/user.js"
 import * as users_service from "../services/users_service.js"
 
 async function getUserById(req, res) {
-    const {id} = req.params;
+    const { id } = req.params;
 
     if (id !== null) {
         try {
@@ -35,29 +35,35 @@ async function addNewUser(req, res) {
     } catch (error) {
         if (error.name === "JSONMappingError") {
             res.statusCode = 400;
+            res.json({
+                error: error.code,
+                message: error.message
+            });
         } else if (error.name === "DuplicateKeyError") {
             res.statusCode = 403;
+            res.json({
+                error: error.code,
+                message: error.message
+            });
         } else {
             res.statusCode = 500;
             console.error(error);
         }
-        res.json({error: error.code,
-        message: error.message});
     }
 }
 
 async function getUserCredentialValidity(req, res) {
-    const {username, passcode} = req.headers;
-
+    const { username, passcode } = req.headers;
     if (username !== null && passcode !== null) {
         try {
             const user = users_service.checkUserCredentialsValidity(PrivateUser, username, passcode);
-
             if (user) {
                 res.statusCode = 200;
                 res.json(user);
+                res.cookie("credentials", JSON.dump({ username: username, password: passcode }), { maxAge: 5 * 60 * 60 * 1000 }); // 5 Hours in milliseconds
             } else {
                 res.statusCode = 401;
+                res.send("Invalid Authentication!");
             }
         } catch (error) {
             res.statusCode = 500;
@@ -71,11 +77,11 @@ async function getUserCredentialValidity(req, res) {
 }
 
 async function getUserShoppingCart(req, res) {
-    const {id} = req.params;
+    const { id } = req.params;
 
     if (id !== null) {
         try {
-            const queryResult = await users_service.getUserShoppingCart(id);
+            const queryResult = users_service.getUserShoppingCart(id);
             if (!queryResult) {
                 res.statusCode = 404;
                 res.send("Not found");
@@ -95,17 +101,15 @@ async function getUserShoppingCart(req, res) {
 }
 
 async function addItemToUserShoppingCart(req, res) {
-    const {id} = req.params;
+    const { id, productID } = req.params;
 
     if (!req.body || id === null) {
         res.statusCode = 400;
         res.send("Bad Request");
-        return null;
+        return;
     }
-    const {productId} = req.body;
-
     try {
-        const newShoppingCart = await users_service.addItemToUserShoppingCart(id, productId);
+        const newShoppingCart = await users_service.addItemToUserShoppingCart(id, productID);
         res.statusCode = 201;
         res.json(newShoppingCart);
     } catch (error) {

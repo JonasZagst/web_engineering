@@ -1,16 +1,29 @@
-function login(event) {
+/** JS file for /login */
+
+/** Handles the login. */
+function login() {
     username = document.getElementById("loginInputUsername").value;
     password = document.getElementById("loginInputPassword").value;
     sendLoginRequest(username, password);
 }
 
+/** Sends a request to the server to check whether the provided `username` and `password` are correct.
+ * @param {String} username
+ * @param {String} password */
 function sendLoginRequest(username, password) {
-    var data;
     try {
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", "api/users/password", true);
         xhttp.onload = () => {
-            showLogin(xhttp.responseText);
+            if (xhttp.responseText != "Invalid Authentication!") {
+                const response = JSON.parse(xhttp.responseText);
+                const userID = response._id;
+                showLogin(xhttp.responseText, username, userID);
+            }
+            else {
+                const userID = "";
+                showLogin(xhttp.responseText, username, userID);
+            }
         };
         xhttp.setRequestHeader("username", username);
         xhttp.setRequestHeader("passcode", password);
@@ -22,21 +35,38 @@ function sendLoginRequest(username, password) {
     }
 }
 
+/** Displays whether the login succeeded. */
+function showLogin(data, username, userID) {
+    if (data != "Invalid Authentication!") {
+        document.getElementById("LoginBanner").style.backgroundColor = "green";
+        document.getElementById("LoginBanner").innerText = "Login Succesfull!";
 
-function showLogin(data) {
-    if (data == "Login succesfull!") {
-        document.getElementById("loginInputUsername").style.borderColor = "#4ed679";
-        document.getElementById("loginInputPassword").style.borderColor = "#4ed679";
         setTimeout(() => {
+            document.getElementById("LoginBanner").style.backgroundColor = "transparent";
+            document.getElementById("LoginBanner").innerText = "";
             window.location.href = "/";
-        }, "1000")
+        }, "3000");
+
+        window.sessionStorage.setItem("userName", username);
+        window.sessionStorage.setItem("userID", userID);
     }
     else {
         document.getElementById("loginInputUsername").style.borderColor = "red";
         document.getElementById("loginInputPassword").style.borderColor = "red";
-        let windowParams = "scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=400,height=200";
-        let newWin = window.open("about:blank", "Login Failed", windowParams);
-        newWin.document.write("Login Failed, Username or Password wrong!");
+        document.getElementById("loginInputPassword").value = "";
+
+        document.getElementById("LoginBanner").style.backgroundColor = "red";
+        document.getElementById("LoginBanner").innerText = "Login Failed!";
+
+        setTimeout(() => {
+            document.getElementById("LoginBanner").style.backgroundColor = "transparent";
+            document.getElementById("LoginBanner").innerText = "";
+        }, "3000")
+        //let windowParams = "scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=400,height=200";
+        //let newWin = window.open("about:blank", "Login Failed", windowParams);
+        //newWin.document.write("Login Failed, Username or Password wrong!");
     }
 }
+
+
 
