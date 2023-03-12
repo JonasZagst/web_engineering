@@ -54,8 +54,7 @@ function _addProductBoxes(productName, productDescription, productPrice, product
 
 /** Opens the detailed page for a product. */
 function openProductPageClick(event) {
-    const currentImage = event.path[0];
-    const productName = currentImage.id;
+    const productName = event.target.getAttribute("id");
     window.sessionStorage.setItem("productName", productName);
     window.location.href = "/productDetailPage";
 }
