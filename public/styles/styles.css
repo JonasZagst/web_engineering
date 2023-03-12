@@ -105,14 +105,8 @@ span img {
     background-color: #8A7D61;
     text-align: center;
 }
-#startSearchSmall{
-    width: 12.5%;
-    height:50px;
-    background-color: black;
-}
-
 #navSearchSmall{
-    width: 62.5%;
+    width: 60%;
     height:50px;
     background-color: black;
 }
@@ -150,10 +144,14 @@ input[type="search"] {
     font-weight: bold;
     padding: 10px;
     vertical-align: bottom;
-    width:50px;
     height: 40px;
     border-radius: 10px;
     
+}
+
+#startSearchSmall{
+    width: 12%;
+    height: 50px;
 }
 #startSearchSmall, #navSearchSmall, #searchIcon
 {

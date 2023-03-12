@@ -49,7 +49,7 @@ function changeToSearch(event) {
     }
 }
 
-/** Requests all products from the backend and displays them. */
+/** Requests all products from the backend. */
 function importProducts() {
     try {
         var xhttp = new XMLHttpRequest();
