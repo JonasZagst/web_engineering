@@ -4,7 +4,8 @@ Repository zur Web Engineering Vorlesung
 Prüfungsleistung für die Vorlesung Web Engineering des Kurses TIK22 und TIM22
 der DHBW Ravensburg (Campus Friedrichshafen)
 
-Diese Datei dient auch als Anleitung für die Installation der Software.
+Diese Datei dient auch als Anleitung für die Installation der Software. Weiterhin lässt sich eine Dokumentation für die
+serverseitige Infrastruktur und das Javascript für die funktionalität der Webseiten in JSDoc erstellen.
 
 ## Inhalt
 * Server Starten
@@ -44,6 +45,63 @@ die URL `localhost:PORT` zugreifen. Dabei wird der *PORT* aus dem *.env* File ve
 nicht angegeben wurde der PORT: 3000.
 
 ## Aufbau des Servers
+Dieses Kapitel beschreibt den funktionalen Aufbau des Servers.
+
+### Grundaufbau
+MVC, Templating Engine, Modelle
+
+### API
+Die Webseiten, sowie sonstige Ressourcen wie die Zugriffe auf Users und Products sind mit der API umgesetzt.
+Hierbei wurde sich lose an den **REST** Design Prinzipien orientiert.
+
+#### Webseiten
+Die **API Endpunkte** für den Zugriff auf die Webseiten sind im *routes* Ordner in der Datei *site.js* definiert.
+Die Startseite (index) erreicht man über den "leeren Pfad" ``/``, wobei dieser auch weggelassen werden kann.
+Alle weiteren Webseiten findet man über den Pfad, welcher normalerweise derselben Namenskonvention folgt, wie die
+zugrundeliegende Datei. Auf den genauen Aufbau der Webseiten geht das Kapitel *Aufbau der Webseite* noch genauer ein.
+
+
+#### Serverseitige Funktionen
+Die **API Endpunkte** für den Zugriff auf die serverseitigen Funktionen sind im *routes* Ordner in der Datei *api.js* definiert.
+Der Pfad beginnt für alle funktionen mit dem Präfix ``/api``, um die Unterscheidung zu den Webseiten zu vereinfachen.
+Der zweite Teil des Pfads identifiziert die Ressource auf der gearbeitet werden soll. Hier wird zwischen den *products*, *users*
+und *companies* unterschieden. Wobei letzteres den Nutzeraccount von Firmennutzern repräsentiert. Alle Rückgabewerte im
+Erfolgsfall werden in JSON Format gesendet.
+
+Die **Product API**:
+* Eine **GET** Anfrage auf den URI ``/api/products`` liefert eine Liste aller Produkte zurück.
+* Eine **POST** Anfrage auf den URI ``/api/products`` erlaubt es (wenn im Body ein neues Produkt in akzeptierten
+JSON Schema mitgeliefert wird), ein neues Product auf der Datenbank zu speichern. Diesem wird dann serverseitig eine 
+eindeutige *UUID* zugewiesen. Als bestätigung wird der erstellte Eintrag zurückgesendet.
+* Eine **GET** Anfrage auf den URI ``/api/products/{id}`` liefert ein konkretes Produkt anhand seiner *UUID* zurück.
+Hierbei wird die *UUID* des gesuchten Produktes im Pfad übergeben.
+* Eine **GET** Anfrage auf den URI ``/api/products?search={query}`` liefert alle Produkte, welche in dem Namen, der Beschreibung
+oder sonstigen nicht numerischen Feldern den gegebenen *query term* beinhalten. 
+Diese Funktion dient für die Produktsuche der Nutzer.
+
+Die **User API**:
+
+Die **users** und **companies** API funktionieren sehr ähnlich und sind deshalb in diesem Abschnitt zusammengefasst.
+* Eine **POST** Anfrage auf den URI ``/api/users`` erlaubt es (wenn im Body ein neuer User in akzeptierten JSON Schema
+mitgeliefert wird), einen neuen User anzulegen und auf der Datenbank zu speichern. Diesem wird dann serverseitig eine
+eindeutige *UUID* zugewiesen. Als bestätigung wird der erstellte Nutzer zurückgesendet.
+* Eine **GET** Anfrage auf den URI ``/api/users/{id}`` liefert einen konkreten Nutzer anhand seiner *UUID* zurück, wobei
+das Passwort jedoch nicht mit übergeben wird. Hierbei wird die *UUID* des gesuchten Users im Pfad übergeben.
+* Eine **GET** Anfrage auf den URI ``/api/users/password`` mit den Headern *username* und *password*, welche die eindeutige
+E-Mail eines Users und das Passwort für seinen Account beinhalten, liefert diese Funktion ähnlich zu der oben genannten Funktion
+den User ohne sein Passwort zurück. Diese Funktion dient der Authentifizierung und überprüfung von Nutzerdaten.
+
+All diese Funktionen werden zwischen *users* und *compnaies* geteilt, für letztere muss nur *users* im Pfad durch *companies* ersetzt
+werden. Beispielsweise wäre eine Anfrage eines *company Accounts* per id: ``/api/companies/{id}``. Die folgenden Funktionen
+lassen sich jecoch nur auf *users* anwenden.
+* Eine **GET** Anfrage auf den URI ``/api/users/{id}/shoppingCart`` liefert ein Array aus allen *ProductID* im Warenkorb des
+Nutzers, anhand der *UUID* des Nutzers. Diese können anschließend über die **Product API** den Produkten zugeordnet werden.
+* Eine **PUT** Anfrage auf den URI ``/api/users/:id/shoppingCart``, bei welcher eine **ProductID** im Body übergeben wird,
+fügt die übergebene *Product ID* dem Wahrenkorb des mit dem *id* parameter spezifizierten Nutzers hinzu und sendet das
+aktualisierte Array des Warenkorbs zurück.
+
+Eine Möglichkeit alle User anzufragen wurde bewusst weggelassen, sodass nicht die Daten aller Nutzer einfach gesammelt
+werden können. In Zukunft wäre für die API Zugriffe allgemein noch eine **Authentication** geplant.
 
 ## Aufbau der Webseite
 
