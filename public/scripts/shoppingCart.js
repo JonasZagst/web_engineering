@@ -20,6 +20,7 @@ function getShoppingCartItems() {
  *
  * For each product ID in the shopping cart a request to the backend is made to get the full content for the product.
  * @param {[String]} shoppingCartProducts The list of product IDs in the shopping cart of the current user. */
+
 function createShoppingCart(shoppingCartProducts) {
   for (const productID of shoppingCartProducts) {
     const xhttp = new XMLHttpRequest();

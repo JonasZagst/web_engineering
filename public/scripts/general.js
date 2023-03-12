@@ -1,7 +1,11 @@
 /** General functions for the whole website. */
 
 // Wait until the page is fully loaded
-window.onload = detectLogin
+window.onload=function(){
+    detectLogin();
+    detectWindowWidth();
+};
+window.onresize = detectWindowWidth
 
 /** Switches the main banner on the page after an amount of time. */
 function switchBannerImageAfterTime() {
@@ -75,11 +79,20 @@ function _createProductDataList(data) {
 function detectLogin() {
     const userName = window.sessionStorage.getItem("userName");
     if (userName) {
-        document.getElementById("loginNav").innerHTML = `<img style=" width: 40px;height: 40px;margin-left:15px; margin-top:15px" src="img/Login.png" alt="Account Management"></img></br> ${userName}`;
+        document.getElementById("loginNav").innerHTML = `<img style=" width: 40px;height: 40px" src="img/Login.png" alt="Account Management"></img></br> ${userName}`;
         document.getElementById("loginNavButtonImage").innerHTML = `<img src="img/LogoutButton.png" onClick="userLogout()" alt="Account Logout">`;
 
         for (const e of document.getElementsByClassName("requires-login"))
-            e.style.display = "inline";
+        {
+            if(e.className.includes("requires-company-user")&&sessionStorage.getItem("typeOfUser")=="business")
+            {
+                e.className="requires-login requires-company-user navItems";
+            }   
+            else if(!(e.className.includes("requires-company-user"))&&sessionStorage.getItem("typeOfUser")=="private")
+            {
+                e.className="requires-login navItems";
+            }
+        }
     }
 }
 
@@ -96,16 +109,69 @@ function userLogout() {
         document.getElementById("LoginBanner").innerText = "";
     }, "2500");
 
+    for (const e of document.getElementsByClassName("requires-login"))
+    {
+        if(e.className.includes("requires-company-user")&&sessionStorage.getItem("typeOfUser")=="business")
+        {
+            e.className="requires-login requires-company-user";
+            e.style.display="none"
+        }   
+        else if(!(e.className.includes("requires-company-user"))&&sessionStorage.getItem("typeOfUser")=="private")
+        {
+            e.className="requires-login";
+            e.style.display="none"
+        }
+    }
+
     window.sessionStorage.setItem("userName", "");
     window.sessionStorage.setItem("userID", "");
+    window.sessionStorage.setItem("typeOfUser", "");    
 
     document.getElementById("loginNav").innerHTML = ``;
     document.getElementById("loginNavButtonImage").innerHTML = `<a href="/login"><img src="img/Login.png" alt="Account Management"></a>`
 }
 
 /** Opens the detailed page for a product. */
-function openProductPage() {
-    const value = document.getElementById("navSearch").value;
+function openProductPage(event) {
+    let value ="";
+    if(window.innerWidth<=1300){
+        value = document.getElementById("navSearchSmall").value;
+    }
+    else{
+            value = document.getElementById("navSearch").value;
+    }
     window.sessionStorage.setItem("productName", value);
     window.location.href = "/productDetailPage";
 }
+
+/** Expand the nav bar, when button is clicked. */
+function expandMenu(){
+    document.getElementById("navExpandMenu").style.display="none";
+    document.getElementById("navCollapseMenu").style.display="inline";
+    for(const n of document.getElementsByClassName("navItems")){    
+        n.style.display ="inline";
+    }
+}   
+
+/** Collapses the nav bar, when button is clicked. */
+function collapseMenu(){
+    document.getElementById("navExpandMenu").style.display="inline";
+    document.getElementById("navCollapseMenu").style.display="none";
+    let navElements = document.getElementsByClassName("navItems");
+    for(const n in navElements){
+        navElements[n].style.display ="none";
+    }
+}   
+
+function detectWindowWidth(){
+    if(window.innerWidth<=1300){
+        document.getElementById("searchFieldSmall").style.display = "block";
+        document.getElementById("searchInput").style.display="none";
+        document.getElementById("searchInput").className="";
+    } 
+    else{
+        document.getElementById("searchFieldSmall").style.display = "none";
+        document.getElementById("searchInput").className="navItems";
+    }
+}
+

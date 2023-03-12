@@ -4,10 +4,10 @@
 function pushNewUser() {
   let typeofuser = ""
 
-  if (document.getElementById("registerInputCompanyName")) {
+  if (document.getElementById("typeofUser").checked) {
     typeofuser = "company";
   }
-  else if (document.getElementById("registerInputCompanyName")) {
+  else {
     typeofuser = "private";
   }
 
@@ -39,7 +39,7 @@ function pushNewUser() {
 /** Open a popup window to inform the user whether the registration of the user account succeeded.
  * @param {Number|any} error */
 function openPopUpBanner(error) {
-  if (error instanceof Number) {
+  if (typeof(error)=="number") {
     // Alert Banner
     document.getElementById("LoginBanner").style.backgroundColor = "red";
     if (error == 5) {
@@ -123,19 +123,13 @@ function generateJSON(typeofuser) {
 /** Change the form if the user switches from a private user registration form to a company user one or vice versa.
  * @param {Object} event */
 function changeAccountUse(event) {
-  // console.log(event.path[0].id);
-  if (event.path[0].id == "containerLoginCaptionLeft") {
-
-    document.getElementById("containerLoginCaptionLeft").style.border = "solid black";
-    document.getElementById("containerLoginCaptionRight").style.border = "none";
-    document.getElementById("nameGrid").innerHTML = `<label for="registerInputCompanyName">Company Name:</label></br>
-    <input type="text" id="registerInputCompanyName" name="registerInputCompanyName"></br>`;
-
-  } else if (event.path[0].id == "containerLoginCaptionRight") {
-
-    document.getElementById("containerLoginCaptionRight").style.border = "solid black";
-    document.getElementById("containerLoginCaptionLeft").style.border = "none";
-    document.getElementById("nameGrid").innerHTML = `<div class="InlineGrid" id="inlineGridName">
+    if(document.getElementById("typeofUser").checked)
+    {   
+      document.getElementById("nameGrid").innerHTML = `<label for="registerInputCompanyName">Company Name:</label></br>
+      <input type="text" id="registerInputCompanyName" name="registerInputCompanyName"></br>`;
+    }
+    else{
+      document.getElementById("nameGrid").innerHTML = `<div class="InlineGrid" id="inlineGridName">
       <div class="leftInlineElement">
           <label for="registerInputFirstName" id="registerLabelFirstName">First Name:</label></br>
           <input type="text" id="registerInputFirstName" name="first-name"></br>
@@ -144,6 +138,6 @@ function changeAccountUse(event) {
           <label for="registerInputLastName" id="registerLabelFirstName">Last Name:</label></br>
           <input type="text" id="registerInputLastName" name="last-name"></br>
       </div>
-  </div>`;
-  }
+      </div>`;
+    }
 }

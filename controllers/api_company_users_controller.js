@@ -54,8 +54,7 @@ async function getCompanyUserCredentialValidity(req, res) {
 
     if (username !== null && passcode !== null) {
         try {
-            const user = users_service.checkUserCredentialsValidity(CompanyUser, username, passcode);
-
+            const user =  await users_service.checkUserCredentialsValidity(CompanyUser, username, passcode);
             if (user) {
                 res.statusCode = 200;
                 res.json(user);

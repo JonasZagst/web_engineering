@@ -1,11 +1,16 @@
 <script src="scripts/productPage.js"></script>
 <script src="scripts/general.js"></script>
+<link rel="stylesheet" href="styles/productPage.css">
 <link rel="stylesheet" href="styles/productPage_responsive.css">
 <main>
-    <div class="productFilter">
-        <label for="filterManufacturer">Manufacturer:</label>
-        <input list="filterManufacturerList" name="filterManufacturer" id="filterManufacturer" oninput="nameFilter(event)">
-        <datalist id="filterManufacturerList">
+    <div class="productFilterGrid">
+        <div id="collapseFilter">
+            <img src="img/filter.png" alt="Filter" id="filterIcon" onclick="collapseFilter()">
+        </div>
+        <div id="FilterManufacturerGrid" class="filterItems">
+            <label for="filterManufacturer" class="filterItems">Manufacturer:</label></br>
+            <input list="filterManufacturerList" name="filterManufacturer" id="filterManufacturer" oninput="nameFilter(event)">
+            <datalist id="filterManufacturerList">
             <option value="Dell">
                 <option value="Asus">
                 <option value="Apple">
@@ -13,42 +18,51 @@
                 <option value="Lenovo">
                 <option value="Chromebook">
                 <option value="Other">
-        </datalist>
+            </datalist>
+        </div>
 
-        <label for="filterPrice" >Price:</label>
-        <input type="range" min="0" max="4000" step="10.0" value="1200" oninput="priceFilter(event)" onchange="getCurrentPrice()" id="filterPrice"></input>
-        <label for="filterPrice" id="currentPrice"></label>
+        <div id="FilterManufacturerGrid" class="filterItems">
+            <label for="filterPrice" >Price:</label></br>
+            <input type="range" min="0" max="4000" step="10.0" value="1200" oninput="priceFilter(event)" onchange="getCurrentPrice()" id="filterPrice"></input>
+            <label for="filterPrice" id="currentPrice"></label>
+        </div>
 
-        <label for="filterColor">Product Color:</label> 
-        <input list="filterColors" name="filterColor" id="filterColor" oninput="colorFilter(event)">
-        <datalist id="filterColors">
-            <option value="Black">
-            <option value="Grey">
-            <option value="Dark Grey">
-            <option value="Light Grey">
-            <option value="Dark Blue">
-            <option value="Gold">
-            <option value="Other">
-        </datalist>
+        <div id="FilterColorGrid" class="filterItems"> 
+            <label for="filterColor">Product Color:</label></br>
+            <input list="filterColors" name="filterColor" id="filterColor" oninput="colorFilter(event)">
+            <datalist id="filterColors">
+                <option value="Black">
+                <option value="Grey">
+                <option value="Dark Grey">
+                <option value="Light Grey">
+                <option value="Dark Blue">
+                <option value="Gold">
+                <option value="Other">
+            </datalist>
+        </div>  
 
-        <label for="filterOS">OS:</label>
-        <input list="filterOSList" name="filterOS" id="filterOS" oninput="OSFilter(event)">
-        <datalist id="filterOSList">
-            <option value="Microsoft">
-            <option value="MAC OS">
-            <option value="Linux">
-        </datalist>
+        <div id="FilterOSGrid" class="filterItems">
+            <label for="filterOS">OS:</label></br>
+            <input list="filterOSList" name="filterOS" id="filterOS" oninput="OSFilter(event)">
+            <datalist id="filterOSList">
+                <option value="Microsoft">
+                <option value="MAC OS">
+                <option value="Linux">
+            </datalist>
+        </div>
 
-        <label for="filterCPU">Type CPU:</label>
-        <input list="filterCPUS" name="filterCPU" id="filterCPU" oninput="CPUFilter(event)">
-        <datalist id="filterCPUS">
-            <option value="Intel Core i5">
-            <option value="Intel Core i7">
-            <option value="Intel Core i9">
-            <option value="AMD Ryzen 9">
-            <option value="AMD Ryzen 5">
-            <option value="Other">
-        </datalist>
+        <div id="FilterCPUGrid" class="filterItems">
+            <label for="filterCPU">Type CPU:</label></br>
+            <input list="filterCPUS" name="filterCPU" id="filterCPU" oninput="CPUFilter(event)">
+            <datalist id="filterCPUS">
+                <option value="Intel Core i5">
+                <option value="Intel Core i7">
+                <option value="Intel Core i9">
+                <option value="AMD Ryzen 9">
+                <option value="AMD Ryzen 5">
+                <option value="Other">
+            </datalist>
+        </div>
     </div>
     <div class="productGrid" id="productGrid">
     </div>

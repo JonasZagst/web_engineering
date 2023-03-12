@@ -12,16 +12,23 @@ main {
     display: none;
 }
 
-span {
-    display: inline-block;  
-    margin-left: 35%;
-    vertical-align: top;
+.LoginBanner{
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    background-color: transparent;
+    color: whitesmoke;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 1px;
 }
 
-span img {
-    margin-top: 5%;
-    width: 300px;
-    height: 60px;
+/* New Nav Bar*/
+.navGridBox{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 4fr;
+    margin-top: 20px;
 }
 
 nav {
@@ -33,15 +40,11 @@ nav {
 
 nav ul {
     text-align: right;
-    margin-right: 5%;
-    display: inline-block;
-    float: right;
-    margin-top: 25px;
+    margin-right: 50px;
 }
 
 nav ul li {
     display: inline;
-    text-align: right;
 }
 
 nav ul li img{
@@ -56,83 +59,68 @@ nav ul li:hover {
     border-spacing: 5px;
 }
 
-nav ul li button:hover {
-    border-bottom: black;
-    border-bottom-style: solid;
-    border-width: thick;
-    border-spacing: 0px;
-}
-
-nav ul li:active {
-    border-bottom: white;
-    border-bottom-style: solid;
-    border-width: thick;
-    border-spacing: 5px;
-}
-
 nav ul li a {
-width: 20%;
-text-align: center;
-padding: 15px;
-height: 100%;
+    padding: 10px;
 }
 
-/*Product Page Designs*/
-.productGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1em;
-    margin-top: 5%;
-    margin-left: 2%;
-    margin-right: 2%;
+
+span img {
+    width: 300px;
+    height: 60px;
 }
 
-/*Product Page Designs*/
-.productGrid img {
-   width:2px;
-   height: 2px;
+
+#navLoginGrid
+{
+    text-align: center;
 }
 
-.grid-item {
-    color:black;
-    background: white;
-    border-radius: 12%;
-    border-bottom-left-radius: 18%;
-    border-bottom-right-radius: 18%;
-    height: 600px;
-    border-width: 2px;
-    word-break: break-word;
-    margin-bottom: 20px;
+#navLogoGrid
+{
+    margin-left:20%
 }
 
-.grid-item img {
-    width: 300px;;
-    height: 300px;
-    object-fit: fill;
+.navItems{
+    display: none;
 }
 
-.grid-image {
-    height:350px;
-    border-top-left-radius: 18%;
-    border-top-right-radius: 18%;
+/** Nav Icon for Colappsing and Extanding the menu*/
+#navCollapseMenu img{
+    transform:rotate(90deg);
 }
 
-.grid-image:hover {
-    transform: scale(0.95); 
+#navCollapseMenu {
+    display: none;
 }
 
-.grid-text {
-    height: 250px;
-    border-bottom-left-radius: 29%;
-    border-bottom-right-radius: 29%;
-    background-color:#8A7D61;
-    padding-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
+#navCollapseMenu, #navExpandMenu{
+    margin-left: 10px;
 }
 
-#searchIcon {
-    visibility: visible;
+/** Stylings for responsive handling of the search bar **/
+.searchFieldSmall{
+    display: block;
+    width: 100%;
+    height:100px;
+    background-color: #8A7D61;
+    text-align: center;
+}
+#startSearchSmall{
+    width: 12.5%;
+    height:50px;
+    background-color: black;
+}
+
+#navSearchSmall{
+    width: 62.5%;
+    height:50px;
+    background-color: black;
+}
+
+.searchFieldSmall #searchIcon{
+
+    width: 20px;
+    height:20px;
 }
 
 input[type="search"] {
@@ -147,18 +135,13 @@ input[type="search"] {
     font-weight: bold;
     padding: 10px;
     vertical-align: bottom;
-    }
+}
 
 #searchInput:hover{
     border: none;
 }
 
-
-#loginNav{
-    margin-left: 60px;
-}
-
-#startSearch
+#startSearch,#startSearchSmall
 {
     background-color: black;
     color: whitesmoke;
@@ -172,48 +155,14 @@ input[type="search"] {
     border-radius: 10px;
     
 }
+#startSearchSmall, #navSearchSmall, #searchIcon
+{
+    visibility: visible;
 
-.LoginBanner{
-    width: 100%;
-    height: 40px;
-    position: absolute;
-    top: 0;
-    background-color: transparent;
-    color: whitesmoke;
-    text-align: center;
-    font-weight: bold;
-    padding-top: 1px;
 }
 
-.productFilter{
-    width: 100%;
-    background-color: #8A7D61;
-    height:100px;
-    padding-top: 0px;
-    border-top: #1e1f22 solid;
-}
 
-.productFilter input{
-    width: 200px;
-    height: 50%;
-    border: black solid;
-    border-radius: 10px;
-    margin: 20px;
-    color: black;
-    margin-top: 25px;
-}
 
-.productFilter label{
-    font-weight: bold;
-}
 
-#filterPrice{
-    vertical-align: middle;
-    border: solid black;
-}
 
-#currentPrice{
-    margin-right: 10px;
-    margin-left: -5px;
-    font-weight: bold;
-}
+

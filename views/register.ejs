@@ -6,10 +6,6 @@
     <div class="containerLoginForm">
         <form>
             <div class="containerLoginText">
-                <div id="containerLoginCaptionSelector">
-                    <h3 id="containerLoginCaptionLeft" onclick="changeAccountUse(event)">Company Account</h3>
-                    <h3 id="containerLoginCaptionRight" onclick="changeAccountUse(event)">Private Account</h3>
-                </div>
                 <div class="registerGrid">
                     <div class="containerLeft">
                         <h4>Personal Data</h4></br>
@@ -56,6 +52,8 @@
                     </div>
                     </div>
                 </div>  
+                <label for="typeofUser">Register as Business User:</label>
+                <input type="checkbox" id="typeofUser" onchange="changeAccountUse(event)"></br>
                 <button type="button" value="button" onclick="pushNewUser()" class="loginButton"><img src="img/LoginFormButton.png">
                 </button>
                 </br>

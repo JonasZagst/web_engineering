@@ -1,12 +1,16 @@
+/** Styling for the Landing Page Image Banner**/
 #LandingBanner {
     background-color:#8A7D61 ;margin-bottom: 0%;height: 100%;
 }
 #LandingBannerImage
 {
-    width: 1500px;
-    height: 750px;
+    width: 75%;
+    height: 50%;
+    max-height: 50%;
     border-radius: 30px;
 }
+
+/** Styling for the Landing Page Motto**/
 #containerMotto{
     margin-top:0;color: black;background-color:#8A7D61;text-align: center;padding:10px
 }
@@ -15,6 +19,7 @@
 margin-top:0;color: black;background-color:#8A7D61;text-align: center;font-size: x-large;;
 }
 
+/** Styling for the Landing Page Information Box**/
 #gridContainerInfo {
     margin-top: 50px;
     display: grid;

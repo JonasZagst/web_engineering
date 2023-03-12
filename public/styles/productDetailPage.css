@@ -62,7 +62,7 @@
 
 #addToCartButton {
         display: inline-block;
-        background-color: #38d885;
+        background-color:#8A7D61 ;
         padding: 20px;
         width: 50%;
         color: #ffffff;
@@ -76,6 +76,13 @@
         margin-top: 5%;
         margin-bottom: 5%;
         opacity: 0.9;
+}
+
+#shoppingCartButton{
+    width:100px;
+    height:100px;
+    vertical-align:middle"
+
 }
 
 #addToCartButton:hover {

@@ -11,8 +11,9 @@
 @media screen and (max-width: 1000px) and (min-width: 350px) {
 
     .containerLoginForm{
-       width: 60%;
-       height: 1200px;
+       width: 70%;
+       height: 1100px;
+       border-radius: 5%;
     }
     #containerLoginCaptionSelector{
       margin-left: 90px;  

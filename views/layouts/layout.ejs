@@ -8,29 +8,42 @@
     <link rel="stylesheet" href="styles/styles-responsive.css">
 </head>
 <nav>
-    <span id="loginNav"></span>
-    <span><a href="/"><img src="img/Logo.png" alt="Logo"></a></span>
-    <ul>
-        <!--Auskommentiertes Textfeld zur Suche, wird ein und ausgeklappt!
-        <li><a><input type="text" class="textfeld" id="textfeld" style="width: 40%;vertical-align:super;margin-right: 10px;background-color: #4ed679;border: black;border-style: solid;color: black;border-width:3px;"></a></li>
-        -->   
-        <li id="searchInput">
-            <button type="button" id="startSearch" onclick="openProductPage()">GO</button>
-            <input type="search" id="navSearch" name="search" list="searchItems" onkeydown="importProducts()">
-                <datalist id="searchItems"></datalist>
-                <img src="img/search.png" alt="Search" id="searchIcon" onclick="changeToSearch(event)">
-            </input>
-        </li>
-        <li><a href="/"><img src="img/Home.png" alt="Home"></a></li>
-        <li><a href="/products"><img src="img/shop.png" alt="Product"></a></li>
-        <li class="requires-login requires-company-user"><a href="/productCreation"><img src="img/productCreation.svg" alt="ProductCreation"></a></li>
-        <li class="requires-login"><a href="/shoppingCart"><img src="img/shoppingCart.png" alt="Shopping Cart"></a></li>
-        <li id="loginNavButtonImage"><a href="/login"><img src="img/Login.png" alt="Account Management"></a></li>
-    </ul>
+    <div class="navGridBox">
+        <div id="navLoginGrid">
+            <span id="loginNav"></span>
+        </div>
+        <div id="navLogoGrid">
+            <span><a href="/"><img src="img/Logo.png" alt="Logo"></a></span>
+        </div>
+        <div class="navMenuGrid">
+            <ul>
+                <li class="navItems" id="searchInput">
+                    <button type="button" id="startSearch" onclick="openProductPage()">GO</button>
+                    <input type="search" id="navSearch" name="search" list="searchItems" onkeydown="importProducts()">
+                        <datalist id="searchItems"></datalist>
+                        <img src="img/search.png" alt="Search" id="searchIcon" onclick="changeToSearch(event)">
+                    </input>
+                </li>
+                <li class="navItems"><a href="/"><img src="img/Home.png" alt="Home"></a></li>
+                <li class="navItems"><a href="/products"><img src="img/shop.png" alt="Product"></a></li>
+                <li class="requires-login requires-company-user"><a href="/productCreation"><img src="img/productCreation.svg" alt="ProductCreation"></a></li>
+                <li class="requires-login"><a href="/shoppingCart"><img src="img/shoppingCart.png" alt="Shopping Cart"></a></li>
+                <li class="navItems" id="loginNavButtonImage"><a href="/login"><img src="img/Login.png" alt="Account Management"></a></li>
+                <li id="navExpandMenu" onclick="expandMenu()"><img src="img/menu.png" alt=""></a></li>
+                <li id="navCollapseMenu" onclick="collapseMenu()"><img src="img/menu.png" alt=""></a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
 <body>
     <div class="LoginBanner" id="LoginBanner">
         <p></p>
+    </div>
+    <div class="searchFieldSmall" id="searchFieldSmall">
+        <button type="button" id="startSearchSmall" onclick="openProductPage()">Find</button>
+        <input type="search" id="navSearchSmall" name="search" list="searchItems" onkeydown="importProducts()">
+            <datalist id="searchItems"></datalist>
+        </input>
     </div>
     <%- body %>
 </body>
