@@ -5,9 +5,6 @@ import DbPostError from "../errors/dbPostError.js";
 import DbPutError from "../errors/dbPutError.js";
 import DuplicateKeyError from "../errors/duplicateKeyError.js";
 
-// TODO: Merge company user and private user services in one file and add the model as a first arguemnt to all functions acting on those models.
-// TODO: Try to remove most of the null-returns from the functions
-
 /** The Address of the user, where they want their stuff delivered to.
  * @typedef {Object} Address
  * @property {string} country
@@ -87,7 +84,7 @@ async function addNewUser(model, userJSON) {
  * @returns {PrivateUser|null} returns the user if E-Mail and password match an user in the database and null if no match could be found.*/
 async function checkUserCredentialsValidity(model, email, password) {
     try {
-        return await model.findOne({ email: email, password: password});  
+        return await model.findOne({ email: email, password: password });
     } catch (error) {
         // CastError is thrown when mongodb doesn't find a user of this id, so we return null.
         if (error.name === "CastError") {
@@ -136,10 +133,29 @@ async function addItemToUserShoppingCart(userId, productId) {
     }
 }
 
+/** Updates the shopping cart of a user to `products`
+ * @param {UserID} userId The user whose shopping cart should be modified
+ * @param {[ProductID]} products The products that will be added to the shopping cart
+ * @returns {[ProductID]|null} The updated shopping cart of the user */
+async function setUserShoppingCart(userId, products) {
+    try {
+        await PrivateUser.findByIdAndUpdate(userId, { shoppingCart: products });
+        const updatedUser = await PrivateUser.findById(userId);
+        return updatedUser.shoppingCart;
+    } catch (error) {
+        if (error.name === "CastError") {
+            return null;
+        }
+
+        throw new DbPutError(`Could not update user shopping cart by id. Error: ${error}`);
+    }
+}
+
 export {
     getUserById,
     addNewUser,
     checkUserCredentialsValidity,
     getUserShoppingCart,
-    addItemToUserShoppingCart
+    addItemToUserShoppingCart,
+    setUserShoppingCart
 }

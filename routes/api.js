@@ -2,18 +2,19 @@ import express from "express"
 //for image Upload
 import expressFileUpload from 'express-fileupload'
 
-import {addNewProduct, getProductById, getProducts} from "../controllers/api_products_controller.js"
+import { addNewProduct, getProductById, getProducts } from "../controllers/api_products_controller.js"
 import {
-    addItemToUserShoppingCart,
-    addNewUser,
-    getUserById,
-    getUserCredentialValidity,
-    getUserShoppingCart
+  addItemToUserShoppingCart,
+  addNewUser,
+  getUserById,
+  getUserCredentialValidity,
+  getUserShoppingCart,
+  clearUserShoppingCart
 } from "../controllers/api_users_controller.js"
 import {
-    addNewCompanyUser,
-    getCompanyUserById,
-    getCompanyUserCredentialValidity
+  addNewCompanyUser,
+  getCompanyUserById,
+  getCompanyUserCredentialValidity
 } from "../controllers/api_company_users_controller.js";
 
 const apiRouter = express.Router();
@@ -48,7 +49,12 @@ apiRouter.post("/api/users", addNewUser);
 
 /** Get the shopping cart of a certain user. */
 apiRouter.get("/api/users/:id/shoppingCart", getUserShoppingCart);
+
+/** Adds an productId to the shopping cart of an user. */
 apiRouter.post("/api/users/:id/shoppingCart/:productID", addItemToUserShoppingCart);
+
+/** Clears the shopping cart of an user. */
+apiRouter.delete("/api/users/:id/shoppingCart", clearUserShoppingCart);
 
 //Image Upload
 apiRouter.post('/api/upload', (req, res) => {
@@ -62,6 +68,7 @@ apiRouter.post('/api/upload', (req, res) => {
   // All good
   res.sendStatus(200);
 });
+
 /** Check whether he credentials of a company user are valid.
  * E-Mail and password are passed in headers. */
 apiRouter.get("/api/companies/password", getCompanyUserCredentialValidity);
@@ -76,5 +83,5 @@ apiRouter.get("/api/companies/:id", getCompanyUserById);
 apiRouter.post("/api/companies", addNewCompanyUser);
 
 export {
-    apiRouter
+  apiRouter
 }

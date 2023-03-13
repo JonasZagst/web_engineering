@@ -109,9 +109,24 @@ async function addItemToUserShoppingCart(req, res) {
         return;
     }
     try {
-        const newShoppingCart = await users_service.addItemToUserShoppingCart(id, productID);
+        const newShoppingCart = users_service.addItemToUserShoppingCart(id, productID);
         res.statusCode = 201;
         res.json(newShoppingCart);
+    } catch (error) {
+        res.statusCode = 500;
+        console.error(error);
+        res.send(error.message);
+    }
+}
+
+async function clearUserShoppingCart(req, res) {
+    const { userId } = req.params;
+    if (!userId) {
+        res.sendStatus(400);
+    }
+    try {
+        users_service.setUserShoppingCart(userId, []);
+        res.sendStatus(200);
     } catch (error) {
         res.statusCode = 500;
         console.error(error);
@@ -124,5 +139,6 @@ export {
     addNewUser,
     getUserCredentialValidity,
     getUserShoppingCart,
-    addItemToUserShoppingCart
+    addItemToUserShoppingCart,
+    clearUserShoppingCart
 }
