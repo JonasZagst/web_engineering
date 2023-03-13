@@ -16,6 +16,7 @@ import {
   getCompanyUserById,
   getCompanyUserCredentialValidity
 } from "../controllers/api_company_users_controller.js";
+import { uploadImage } from "../controllers/fs_controller"
 
 const apiRouter = express.Router();
 
@@ -56,18 +57,8 @@ apiRouter.post("/api/users/:id/shoppingCart/:productID", addItemToUserShoppingCa
 /** Clears the shopping cart of an user. */
 apiRouter.delete("/api/users/:id/shoppingCart", clearUserShoppingCart);
 
-//Image Upload
-apiRouter.post('/api/upload', (req, res) => {
-  // Get the file that was set to our field named "image"
-  const { image } = req.files;
-  // If no image submitted, exit
-  if (!image) return res.sendStatus(400);
-
-  // Move the uploaded image to our upload folder
-  image.mv('public/img/upload/' + image.name);
-  // All good
-  res.sendStatus(200);
-});
+/** Uploads an image to the filesystem of the server. */
+apiRouter.post('/api/upload', uploadImage);
 
 /** Check whether he credentials of a company user are valid.
  * E-Mail and password are passed in headers. */
