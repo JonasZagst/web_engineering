@@ -13,11 +13,11 @@ Diese Datei dient auch als Anleitung für die Installation der Software.
 
 ## Server starten
 
-### Env Variablen
+### .env_Variablen
 Das File *.env* im Root Verzeichnis des Projekts definiert wichtige Variablen,
-welche der Server benötigt, um sich mit der Datenbank zu verbinden oder mockdaten zu erstellen.
+welche der Server benötigt, um sich mit der Datenbank zu verbinden oder Mockdaten zu erstellen.
 
-* Die **PORT** Variable wird verwendet, um den Port zu definieren über den der Webserver
+* Die **PORT** Variable wird verwendet, um den Port zu definieren, über den der Webserver
 und auch die Webseite erreichbar sein sollen. Wenn dieser nicht gesetzt wird,
 wird der Standardwert 3000 verwendet.
 * Die **SETUP_MOCK_DATA** Variable wird verwendet, um die Daten in der Datenbank zu löschen
@@ -41,94 +41,95 @@ keine Garantien ausgesprochen werden, auch wenn eine weite Kompatibilität zu er
 * Zum Start des Webservers muss im Root Verzeichnis des Projekts `npm run prod` ausgeführt werden.
 * Um die Webseite mit einem Browser anzuzeigen, kann man nach dem Start des Webservers auf die Startseite über
 die URL `localhost:PORT` zugreifen. Dabei wird der *PORT* aus dem *.env* File verwendet. Falls dieser
-nicht angegeben wurde der PORT: 3000.
+nicht angegeben wurde gilt der PORT: 3000.
 
 ## Aufbau des Servers
 
 ## Aufbau der Webseite
-Grundsätzlich hat man auf der Website folgende Kernfunktionalitäten zur Verfügung: 
-1. Search(Ohne Login)
-2. Product Page(Ohne Login)
-3. Login(Ohne Login) 
-4. Register(Ohne Login) 
-5. Shopping Cart(Login mit Privat Account benötigt)
-6. Product Detail Page(Ohne Login)
-7. Product Creation(Login mit Business Account benötigt)
-8. Logout(Login benötigt)
+Grundsätzlich stehen auf der Website folgende Kernfunktionalitäten zur Verfügung: 
+1. Suche (ohne vorhandenen Login)
+2. Produktübersichtsseite (ohne vorhandenen Login)
+3. Login (mit vorhandenem Account) 
+4. Registrieren (ohne vorhandenen Login) 
+5. Warenkorb (vorhandener Login mit Privataccount benötigt)
+6. Produktdetailseite (ohne vorhandenen Login)
+7. Produkterstellung (vorhandener Login mit Businessaccount benötigt)
+8. Logout (mit vorhandenem Login)
 
-Wie oben angedeutet sind die Funktionalitäten der Website teilweise eingeschränkt solange man nicht eingeloogt ist. 
-Demnach wird auch diese Anleitung dementsprechend aufgebaut(Vom Allgemeinen zum Besonderen). 
+Wie oben angedeutet, sind die Funktionalitäten der Website teilweise eingeschränkt, solange man nicht eingeloogt ist. 
+Dementsprechend wird auch diese Anleitung vom Allgemeinen zum Besonderen aufgebaut. 
 
-## Funktionaliäten Ohne Login:
-Angekommen auf der Landing Page, erhält man als User einen schnellen Überblick darüber, was die Motivation der Website ist und der Zweck der Website ist. Das Bild Banner auf dem oberen Teil der Page, läuft grundsätzlich zeitlich durch. Man kann aber auch jederzeit per Klick auf das Bild "weiterscrollen".(switchBannerImageAfterTime, general.js)
+## Funktionalitäten ohne Login:
+Angekommen auf der Landing Page, erhält man als User einen schnellen Überblick darüber, was die Motivation und der Zweck der Website ist. Das Banner auf dem oberen Teil der Seite wechselt regelmäßig. Man kann aber auch jederzeit durch einen Klick auf das Bild "weiterscrollen".
+(switchBannerImageAfterTime, general.js)
 
 Von hier aus hat man nun mehrere Möglichkeiten: 
 
-## Produktsuche:(general.js, productPage.js)
-Jenachdem ob man gezielt auf der Suche nach einem Produkt ist oder nur am recherchieren, hat man zwei Möglichkeiten sich alle angebotenen Produkte anzeigen zu lassen. 
-1. Über öffnen der Suchfunktion(changeToSearch("general.js": openProductPage, importProducts, _createProductDataList,openProductPage): 
-   Hierfür muss man zualler erst, das Menü im oberen rechten Rand der Webseite aufklappen und den Menüpunkt mit der Lupe auswählen. 
-   Sobald man dies getan hat, öffnet sich ein Textfeld, indem man nach dem gesuchten Produkt suchen kann. Sollte man fündg werden, muss man nur noch das Produkt auswählen und auf "GO" drücken. Man wird unverögert zu einer detailierten Ansicht, des Produkts geführt. 
+## Produktsuche: (general.js, productPage.js)
+Je nachdem, ob man gezielt auf der Suche nach einem Produkt ist oder nur recherchieren möchte, gibt es zwei Möglichkeiten, sich alle angebotenen Produkte anzeigen zu lassen. 
+1. Über öffnen der Suchfunktion (changeToSearch("general.js": openProductPage, importProducts, _createProductDataList,openProductPage): 
+   Hierfür muss man zuerst das Menü im oberen rechten Rand der Webseite aufklappen und den Menüpunkt mit der Lupe auswählen. 
+   Sobald man dies getan hat, öffnet sich ein Textfeld, in dem man ein Produkt suchen kann. Sollte man fündig werden, muss nur noch das Produkt ausgewählt und auf "GO" gedrückt werden. Man wird nun unverzüglich zu einer detailierten Ansichtsseite des Produkts geführt. 
 2. Über die Product Page:("productPage.js") 
-   Zu der Product Page gelangt man ebenfalls über das Menü. Hierfür muss dieses Mal, der Menüpunkt mit dem "Laptop" auswählen. Daraufhin wird man zu einer "Übersichts Seite" geführt. Hier werden alle aktuell verfügbaren Laptops präsentiert. Um einen  besseren Überblick zu erhalten, hat man über den Produkten die Möglichkeit zu filtern. 
+   Zu der Product Page gelangt man ebenfalls über das Menü. Hierfür muss der Menüpunkt mit dem Laptop ausgewählt werden. Daraufhin wird man zu einer Übersichtsseite geführt. Hier werden alle aktuell verfügbaren Laptops präsentiert. Um einen besseren Überblick zu erhalten, hat man über den Produkten die Möglichkeit, diese nach bestimmten Kriterien zu filtern. 
    Folgende Filter sind verfügar: 
-   Hersteller(Liste), Preis(Regler), Farbe(Liste), Betriebssystem(Liste), Type CPU(Liste). 
+   Hersteller (Liste), Preis (Regler), Farbe (Liste), Betriebssystem (Liste), CPU-Typ (Liste). 
    Die Produktübersichtsseite wird automatische nach auswählen eines Filters angepasst. 
 
    Auch von hier aus hat man die Möglichkeit auf die Detailansicht eines Produkts zu gelangen. 
-   Dafür muss hier auf das Bild eines Produkts gedrückt werden. Man wird daraufhin umgehend auf die Detailansicht, des angeklickten Produktes geführt. 
+   Dafür muss hier auf das Bild eines Produkts gedrückt werden. Daraufhin erfolgt umgehend die Weiterleitung auf die Detailansicht des angeklickten Produktes.
 
-## Login/Registrieren:
-Grundsätlich wird der gesamte Login und Registrierprozess aufgeteilt in den Usertyp(Privat oder Gewerblich). Diese Entscheidung wird wie auch bereits erwähnt Einfluss auf den restlichen Verlauf der Webseite haben. Private User haben die Möglichkeit einzukaufen und dementsprechend einen Warenkorb. Diese Funktion steht Gewerblichen Usern nicht zur Verfügung. Dafür hat man als gewerblicher User über das "Product Creation" Formular die Möglichkeit seine eigenen Produkte einzustellen.
+## Login/Registrierung:
+Grundsätzlich wird der gesamte Login- und Registrierungsprozess aufgeteilt nach dem Nutzertyp (privat oder gewerblich). Diese Entscheidung wird wie, zuvor erwähnt, Einfluss auf den restlichen Verlauf der Webseite haben. Private Nutzer haben die Möglichkeit einzukaufen und dementsprechend einen Warenkorb zu füllen. Diese Funktion steht gewerblichen Nutzern nicht zur Verfügung. Dafür hat man als gewerblicher Nutzer über das "Product Creation"-Formular die Möglichkeit, seine eigenen Produkte einzustellen.
 
-Login:("login.js")
-Zum Login kommt man indem man im Menü den Menüpunkt mit dem User auswählt. Hier loggt man sich mit seiner E-Mail Adresse und Passowrt ein. Außerdem ist es essenziell darauf zu achten, dass man die Checkbox "Login as Business User" auswählt, sollte man sich mit seinem Business Account anmelden wollen. Ob das Login erfolgreich war, wird einem über das Pop Up Fenster am oberen Rand der Webseite mitgeteilt. 
-Bei erfolgreichem Login wird man automatisch wieder zuürck zur Startseite geleitet, auf der man nun im oberen link Rand der Seite sehen kann, dass man eingeloggt ist. 
+Login: ("login.js")
+Den Login erreicht man, indem man im Menü den Menüpunkt mit dem User-Symbol auswählt. Hier loggt man sich mit seiner E-Mail Adresse und seinem Passwort ein. Außerdem ist es essenziell darauf zu achten, dass man die Checkbox "Login as Business User" auswählt, sollte man sich mit seinem Business Account anmelden wollen. Ob der Login erfolgreich war, teilt ein Pop-Up-Fenster am oberen Rand der Webseite mit. 
+Bei erfolgreichem Login wird man automatisch wieder zurück zur Startseite geleitet, auf der man nun im oberen linken Rand der Seite sehen kann, dass man eingeloggt ist. 
 
-Sollte man nun noch keinen Account besitzen, dann kann man sich diesen direkt vom Login Formular aus anlegen. Indem man auf den Hyperlink "Register here" klickt.   
+Sollte man aber noch keinen Account besitzen, dann kann dieser direkt vom Login-Formular aus angelegt werden, indem man auf den Hyperlink "Register here" klickt.   
 
-Register:("register.js")
-Wie auch schon beim Login, hat man hier die Möglichkeit zwischen Privatem und Gewerblichem Account auszuwählen. Jenachdem, welche Auswahl getroffen wurde, wird das Formular angepasst. Alle angezeigten Textfelder/Daten müsssen vollstädnig und korrekt ausgefüllt werden. Das heißt die Felder "ZIP" und "Number" müssen als Numerische Werte ausgefüllt werden und alle Felder sind "required". Außerdem ist darauf zu achten, dass es nicht möglich ist mehrere User mit der selben E-Mail anzulegen. 
-Bezüglich des Erfolg des Registrierungsprozesses, wird man auch hier wieder über ein Pop Up Fenster am oberen Bildschirmrand informiert. Sollte es Problem mit dem Formular geben, dann werden diese über das Pop Up Fenster angezeigt. So dass diese angepasst und verbessert werden können. 
+Registrierung: ("register.js")
+Wie auch schon beim Login, hat man hier die Möglichkeit zwischen privatem und gewerblichen Account auszuwählen. Je nachdem, welche Auswahl getroffen wurde, wird das Formular angepasst. Alle angezeigten Textfelder/Daten müsssen vollstädnig und korrekt ausgefüllt werden. Das heißt, die Felder "ZIP" und "Number" müssen als numerische Werte ausgefüllt werden und alle Felder sind "required". Außerdem ist darauf zu achten, dass es nicht möglich ist, mehrere User mit der selben E-Mail anzulegen. 
+Bezüglich des Erfolgs des Registrierungsprozesses, wird man auch hier wieder über ein Pop-Up-Fenster am oberen Bildschirmrand informiert. Sollte es ein Problem mit dem ausgefüllten Formular geben, dann wird dieser über das Pop-Up-Fenster angezeigt. Damit kann der Fehler gefunden und korrigiert werden.
 
 
-## Funktionaliäten Mit Login:
-Nach erfolgreichem Login wird sich nun das Menü anpassen. Unabhängig davon, welchen Usertyp man ausgewählt hat. Wird stest ein Logout Button  als letzer Menüpunkt hinzugefügt. Sollte man sich als Privater User angemeldet haben, dann wird ein Einkaufswagen in der Menüleiste hinzugefügt. 
+## Funktionalitäten mit Login:
+Nach erfolgreichem Login passt sich das Menü an. Unabhängig davon, welchen Usertyp man ausgewählt hat, wird stets ein Logout-Button als letzer Menüpunkt hinzugefügt. Sollte man sich als privater User angemeldet haben, dann wird ein Einkaufswagen in der Menüleiste hinzugefügt. 
 
-## Einkaufswagen:("shoppingCart.js")
-   Von nun an hat man als User die Möglichkeit Produkte, die man kaufen möchte zu seinem Einkaufswagen hinzuzufügen. Dies ist nur von der Detailansicht aus möglich.(Zu dieser gelangt, man wie bereits erwähnt über die Produkt Page oder die Suchleiste). Von hier aus kann man Produkte in seinen Einkaufswagen legen indem man, auf den dementsprechenden Button drückt.  
-   Sobald man nun fertig mit einkaufen ist, gelangt man über den Menüpunkt(Einkaufswagen) zu seinem eigenen Einkaufswagen. Auf dieser Seite erhält man eine finale Übersicht darüber, was aktuell im Warenkorb liegt und kann über den Button "Checkout" alle Produkte kaufen. 
+## Einkaufswagen: ("shoppingCart.js")
+   Von nun an hat man als User die Möglichkeit, Produkte, die man erwerben möchte, zu seinem Einkaufswagen hinzuzufügen. Dies ist nur von der Detailansicht möglich. Von hier aus kann man Produkte in seinen Einkaufswagen legen, indem man auf den entsprechenden Button drückt.  
+   Sobald man nun den Einkauf beenden möchte, gelangt man über den entsprechenden Menüpunkt zu seinem eigenen Einkaufswagen. Auf dieser Seite erhält man eine finale Übersicht darüber, was aktuell im Warenkorb liegt und kann über den Button "Checkout" die Produkte kaufen. 
 
-Sollte man sich als gewerblicher Nutzer einloggen, erhält man stadtdessen den Menüpunkt "Product Creation"(dargestellt mit dem Notizblock). 
-## Product Creation:("productCreation.js","productDetailPreviewPage.js")
-   Als gewerblicher User kann man nun über diesen Menüpunkt eigene Produke einstellen. Dafür ist es zwingend notwendig, dass alle  Eingabefelder ausgefüllt wurden und min. 1 Bild hochgeladen wurde. Bilder können entweder hochgeladen werden, indem man den Button "Choose File" drückt oder indem man eine Datei in das Feld "Product Image" zieht. Bezüglich der Datentypen, muss "Product Price" selbsverstädndlich, wieder mit numerischen Werten angegeben werden. Der Rest der Eingabefelder sind wieder Strings bzw. Auswahlfelder, bei denen man aus einer Liste wählen kann. 
+Sollte man sich als gewerblicher Nutzer einloggen, erscheint stattdessen der Menüpunkt "Product Creation" dargestellt als Notizblock. 
+## Product Creation: ("productCreation.js","productDetailPreviewPage.js")
+   Als gewerblicher User kann man nun über diesen Menüpunkt eigene Produke einstellen. Dafür ist es zwingend notwendig, dass alle Eingabefelder ausgefüllt wurden und mindestens ein Bild hochgeladen wurde. Bilder können entweder hochgeladen werden, indem man den Button "Choose File" wählt oder eine Datei in das Feld "Product Image" zieht. Dabei muss der "Product Price" selbsverständlich wieder mit dem korrekten Datentyp, hier also numerischen Werten, angegeben werden. Der Rest der Eingabefelder werden mit Text gefüllt oder Auswahlfelder, bei denen man aus einer Liste wählen kann. 
     
-   Sobald man nun alles vollständig ausgefüllt hat, kann man sich zuerst noch über den Button "Preview" anzeigen lassen, wie das eingestellte Produkt laut aktuellem Stand aussehen würde. Somit kann man gegebenfalls noch Änderungen vornehmen, sollte es bei der Vorschau noch Unstimigkeiten geben.  Um wieder zurück zugelangen, muss der Button "Return" gedrückt werden. Daraufhin wird das Vorschau Fenster geschloßen und man gelangt direkt wieder zum Product Creation Formular. 
+   Sobald man nun alles vollständig ausgefüllt hat, kann man sich vor Veröffentlichung noch über den Button "Preview" anzeigen lassen, wie das eingestellte Produkt auf seiner Detailseite nach dem aktuellen Stand aussehen würde. Somit kann man gegebenfalls noch Änderungen vornehmen, sollte es bei der Vorschau noch Unstimmigkeiten geben. Um wieder zur Bearbeitung zurück zu gelangen, muss der Button "Return" gedrückt werden. Daraufhin wird das Vorschaufenster geschlossen.
 
-   Sollte man nun fertig sein mit dem "gestalten" seiner Produktseite, dann kann man über den Button "Create" schlußendlich sein Produkt erstellen und im Webshop hochladen. 
-   Über den Erfolg des Uploads wird man wie auch wie schon zu vor, über das Pop Up Fenster am oberen Bilschirmrand informiert. Sollte es Probleme währrend des Uploads gegeben haben, dann werden diese dort angezeigt. 
+   Sollte man nun mit der Gestaltung seiner Produktseite fertig sein, kann man über den Button "Create" schlussendlich das Produkt erstellen und im Webshop hochladen. 
+   Über den Erfolg des Uploads wird man, wie auch wie schon zuvor, über das Po-Up-Fenster am oberen Bilschirmrand informiert. Sollte es Probleme während des Uploads gegeben haben, werden diese dort angezeigt. 
 
-   Gesetz dem Fall, dass der Upload erfolgreich war, wird man als User sofort auf die Produkt Page navigiert. Hier kann man nun das erstellte Produkt sehen und überprüfen ob es den Wünschen entsprechend hochgeladen wurde. 
+   Gesetzt den Fall, dass der Upload erfolgreich war, wird man als User sofort auf die Produkt Page navigiert. Hier kann man nun das erstellte Produkt sehen und überprüfen, ob es den Wünschen entsprechend hochgeladen wurde. 
 
-## Logout("general.js")
+## Logout: ("general.js")
 
-Zu guter Letzt hat man als User noch die Möglichkeit sich aus seinem Account auszuloggen, hierbei werden alle Sitzungsdaten gelöscht und die Landing Page wird wieder auf den Ursprungszustand zurückgesetzt.
-Wie bereits erwähnt ist diese Funktion ebenfalls Teil des Menüs und wird hier stets als der letze Menüpunkt angezeigt. 
+Zum Schluss hat man als User noch die Möglichkeit, sich aus seinem Account auszuloggen. Hierbei werden alle Sitzungsdaten gelöscht und die Landing Page wird wieder auf den Ursprungszustand zurückgesetzt.
+Wie bereits erwähnt, ist diese Funktion ebenfalls Teil des Menüs und wird hier stets als der letzte Menüpunkt angezeigt. 
 
 ## Regeln für Devs
-* Pullrequests mit **inline CSS** werden nicht akzeptiert (bitte alle rausnehmen die noch da sind)
-* Pullrequests die nicht der **BEM Convention** folgen werden nicht akzeptiert
+* Pullrequests mit **inline CSS** werden nicht akzeptiert
+* Pullrequests die nicht der **BEM Convention** folgen, werden nicht akzeptiert
 * Pullrequests mit JS Code **ohne ";" am Ende von Lines** werden nicht akzeptiert
 
 ## Neuer Weg für Erstellung von HTML Seiten (nach der Template Engine)
-* Erstellt ein ejs File in views in dem ihr ganz normal euer HTML schreibt, jedoch nur das was im Body stehen würde, das standard Layout wird automatisch eingefügt
+* Erstellt ein ejs File in views, in dem ihr ganz normal euer HTML schreibt, jedoch nur das, was im Body stehen würde, (das Standardlayout wird automatisch eingefügt)
 * Anschließend wird im File *api.js* eine Route erstellt, mit der auf das Dokument zugegriffen werden soll. 
-* Alle Links zu Ressourcen sind relativ zum *public ordner*. Legt neue öffentliche Ressourcen auch darin an.
+* Alle Links zu Ressourcen sind relativ zum *public-Ordner*. Legt neue öffentliche Ressourcen auch darin an.
 
 ## Erstellen von Mock Daten
-* In der .env SETUP_MOCK_DATA="true" setzen um Mockdaten auf die DB zu pushen.
-* Nur einmal machen danach sind die Daten fest auf der MongoDB.
-* Dann SETUP_MOCK_DATA="false" setzen
+* In der .env SETUP_MOCK_DATA = "true" setzen um Mockdaten auf die DB zu pushen.
+* Nur einmal ausführen, danach sind die Daten fest auf der MongoDB.
+* Dann SETUP_MOCK_DATA = "false" setzen
 
 ## Weitere Aufgaben
 * Seite für einzelne Produkte
