@@ -8,9 +8,18 @@ Diese Datei dient auch als Anleitung für die Installation der Software. Weiterh
 serverseitige Infrastruktur und das Javascript für die funktionalität der Webseiten in JSDoc erstellen.
 
 ## Inhalt
+* Dokumentation generieren
 * Server Starten
 * Aufbau des Servers
 * Aufbau der Webseite
+
+## Dokumentation generieren
+Für die Dokumentation der der Webseite wurde [JSDoc](https://jsdoc.app/) verwendet. Diese kann nach Installation mit 
+```bash
+jsdoc -d ./doc -r . -R ./README.md 
+``` 
+generiert werden. Dabei sollte beachtet werden, dass dieser Befehl auch die `node_modules` durchsucht und Dokumentationsseiten für sie generiert.
+Daher wird empfohlen den Befehl auszuführen, bevor die Node Packete installiert werden.
 
 ## Server starten
 

@@ -8,8 +8,8 @@ function login() {
 }
 
 /** Sends a request to the server to check whether the provided `username` and `password` are correct.
- * @param {String} username
- * @param {String} password */
+ * @param {string} username
+ * @param {string} password */
 function sendLoginRequest(username, password) {
     try {
         var xhttp = new XMLHttpRequest();

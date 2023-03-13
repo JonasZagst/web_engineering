@@ -22,8 +22,8 @@ function openProductPage() {
 }
 
 /** Display the information for a product.
- * @param {[Object]} data
- * @param {String} productName */
+ * @param {Object[]} data
+ * @param {string} productName */
 function showProductData(data, productName) {
     const currentData = data.find(e => e.productName == productName);
     if (!currentData) return;

@@ -19,7 +19,7 @@ function getShoppingCartItems() {
 /** Create the content for te shopping cart.
  *
  * For each product ID in the shopping cart a request to the backend is made to get the full content for the product.
- * @param {[String]} shoppingCartProducts The list of product IDs in the shopping cart of the current user. */
+ * @param {string[]} shoppingCartProducts The list of product IDs in the shopping cart of the current user. */
 function createShoppingCart(shoppingCartProducts) {
   for (const productID of shoppingCartProducts) {
     const xhttp = new XMLHttpRequest();
@@ -41,11 +41,11 @@ function createShoppingCart(shoppingCartProducts) {
 }
 
 /** Helper function to display the fill an HTML string with the appropriate information of the product.
- * @param {String} productName
- * @param {String} productDescription
- * @param {Number} productPrice
- * @param {String} productImage The url to the thumbnail image for the product.
- * @param {String} productID */
+ * @param {string} productName
+ * @param {string} productDescription
+ * @param {number} productPrice
+ * @param {string} productImage The url to the thumbnail image for the product.
+ * @param {string} productID */
 function _addProductBoxes(productName, productDescription, productPrice, productImage, productID) {
   // FIXME: Add a shopping cart remove icon.
   document.getElementById("productGrid").innerHTML +=

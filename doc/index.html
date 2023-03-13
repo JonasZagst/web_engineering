@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>web_engineering</h1>
+<p>Repository zur Web Engineering Vorlesung</p>
+<p>Prüfungsleistung für die Vorlesung Web Engineering des Kurses TIK22 und TIM22
+der DHBW Ravensburg (Campus Friedrichshafen)</p>
+<p>Diese Datei dient auch als Anleitung für die Installation der Software. Weiterhin lässt sich eine Dokumentation für die
+serverseitige Infrastruktur und das Javascript für die funktionalität der Webseiten in JSDoc erstellen.</p>
+<h2>Inhalt</h2>
+<ul>
+<li>Dokumentation generieren</li>
+<li>Server Starten</li>
+<li>Aufbau des Servers</li>
+<li>Aufbau der Webseite</li>
+</ul>
+<h2>Dokumentation generieren</h2>
+<p>Für die Dokumentation der der Webseite wurde <a href="https://jsdoc.app/">JSDoc</a> verwendet. Diese kann nach Installation mit</p>
+<pre class="prettyprint source lang-bash"><code>jsdoc -d ./doc -r .
+</code></pre>
+<p>generiert werden. Dabei sollte beachtet werden, dass dieser Befehl auch die <code>node_modules</code> durchsucht und Dokumentationsseiten für sie generiert.
+Daher wird empfohlen den Befehl auszuführen, bevor die Node Packete installiert werden.</p>
+<h2>Server starten</h2>
+<h3>Env Variablen</h3>
+<p>Das File <em>.env</em> im Root Verzeichnis des Projekts definiert wichtige Variablen,
+welche der Server benötigt, um sich mit der Datenbank zu verbinden oder mockdaten zu erstellen.</p>
+<ul>
+<li>Die <strong>PORT</strong> Variable wird verwendet, um den Port zu definieren über den der Webserver
+und auch die Webseite erreichbar sein sollen. Wenn dieser nicht gesetzt wird,
+wird der Standardwert 3000 verwendet.</li>
+<li>Die <strong>SETUP_MOCK_DATA</strong> Variable wird verwendet, um die Daten in der Datenbank zu löschen
+und mit Mockdaten neu aufzusetzen. Diese Methode <strong>löscht die gesamte Datenbank</strong>!
+Hierfür ist ein <strong>Admin User</strong> nötig, ansonsten wird die Methode einen Fehler werfen.
+Wir empfehlen Vorsicht bei der Verwendung dieser Methode, es sollte eine eigene Datenbank
+für die Anwendung verwendet werden und die Methode sollte nur beim ersten Start des
+Webservers verwendet werden, um die Mockdaten aufzusetzen. Bitte setzen Sie die Variable
+anschließend auf <em>false</em>.</li>
+<li>Die <strong>DB_URI</strong> Variable definiert den Pfad, über den der Server sich mit der <em>MongoDB</em>
+Datenbank verbindet. Dieser Pfad ist wie folgt aufgebaut
+<code>mongodb+srv://&lt;username&gt;:&lt;password&gt;@host:port/database?options</code>.
+Der verwendete User sollte wie oben erwähnt ein <strong>Admin</strong> User sein und die Datenbank sollte
+nicht für andere Zwecke verwendet werden, da sie beim Setup der Mockdaten gelöscht wird.</li>
+</ul>
+<h3>Starten des Servers</h3>
+<ul>
+<li><strong>Requirements</strong>: Um den Server zu starten, benötigt man <strong>npm</strong> und eine aktuelle Version von <strong>node.js</strong>.
+<strong>Linux</strong> ist als Betriebssystem empfohlen und getestet, für andere Betriebssysteme können
+keine Garantien ausgesprochen werden, auch wenn eine weite Kompatibilität zu erwarten ist.</li>
+<li>Vor dem ersten Start muss im Root Verzeichnis des Projekts <code>npm install</code> ausgeführt werden.</li>
+<li>Zum Start des Webservers muss im Root Verzeichnis des Projekts <code>npm run prod</code> ausgeführt werden.</li>
+<li>Um die Webseite mit einem Browser anzuzeigen, kann man nach dem Start des Webservers auf die Startseite über
+die URL <code>localhost:PORT</code> zugreifen. Dabei wird der <em>PORT</em> aus dem <em>.env</em> File verwendet. Falls dieser
+nicht angegeben wurde der PORT: 3000.</li>
+</ul>
+<h2>Aufbau des Servers</h2>
+<p>Dieses Kapitel beschreibt den funktionalen Aufbau des Servers.</p>
+<h3>Grundaufbau</h3>
+<p>MVC, Templating Engine, Modelle</p>
+<h3>API</h3>
+<p>Die Webseiten, sowie sonstige Ressourcen wie die Zugriffe auf Users und Products sind mit der API umgesetzt.
+Hierbei wurde sich lose an den <strong>REST</strong> Design Prinzipien orientiert.</p>
+<h4>Webseiten</h4>
+<p>Die <strong>API Endpunkte</strong> für den Zugriff auf die Webseiten sind im <em>routes</em> Ordner in der Datei <em>site.js</em> definiert.
+Die Startseite (index) erreicht man über den &quot;leeren Pfad&quot; <code>/</code>, wobei dieser auch weggelassen werden kann.
+Alle weiteren Webseiten findet man über den Pfad, welcher normalerweise derselben Namenskonvention folgt, wie die
+zugrundeliegende Datei. Auf den genauen Aufbau der Webseiten geht das Kapitel <em>Aufbau der Webseite</em> noch genauer ein.</p>
+<h4>Serverseitige Funktionen</h4>
+<p>Die <strong>API Endpunkte</strong> für den Zugriff auf die serverseitigen Funktionen sind im <em>routes</em> Ordner in der Datei <em>api.js</em> definiert.
+Der Pfad beginnt für alle funktionen mit dem Präfix <code>/api</code>, um die Unterscheidung zu den Webseiten zu vereinfachen.
+Der zweite Teil des Pfads identifiziert die Ressource auf der gearbeitet werden soll. Hier wird zwischen den <em>products</em>, <em>users</em>
+und <em>companies</em> unterschieden. Wobei letzteres den Nutzeraccount von Firmennutzern repräsentiert. Alle Rückgabewerte im
+Erfolgsfall werden in JSON Format gesendet.</p>
+<p>Die <strong>Product API</strong>:</p>
+<ul>
+<li>Eine <strong>GET</strong> Anfrage auf den URI <code>/api/products</code> liefert eine Liste aller Produkte zurück.</li>
+<li>Eine <strong>POST</strong> Anfrage auf den URI <code>/api/products</code> erlaubt es (wenn im Body ein neues Produkt in akzeptierten
+JSON Schema mitgeliefert wird), ein neues Product auf der Datenbank zu speichern. Diesem wird dann serverseitig eine
+eindeutige <em>UUID</em> zugewiesen. Als bestätigung wird der erstellte Eintrag zurückgesendet.</li>
+<li>Eine <strong>GET</strong> Anfrage auf den URI <code>/api/products/{id}</code> liefert ein konkretes Produkt anhand seiner <em>UUID</em> zurück.
+Hierbei wird die <em>UUID</em> des gesuchten Produktes im Pfad übergeben.</li>
+<li>Eine <strong>GET</strong> Anfrage auf den URI <code>/api/products?search={query}</code> liefert alle Produkte, welche in dem Namen, der Beschreibung
+oder sonstigen nicht numerischen Feldern den gegebenen <em>query term</em> beinhalten.
+Diese Funktion dient für die Produktsuche der Nutzer.</li>
+</ul>
+<p>Die <strong>User API</strong>:</p>
+<p>Die <strong>users</strong> und <strong>companies</strong> API funktionieren sehr ähnlich und sind deshalb in diesem Abschnitt zusammengefasst.</p>
+<ul>
+<li>Eine <strong>POST</strong> Anfrage auf den URI <code>/api/users</code> erlaubt es (wenn im Body ein neuer User in akzeptierten JSON Schema
+mitgeliefert wird), einen neuen User anzulegen und auf der Datenbank zu speichern. Diesem wird dann serverseitig eine
+eindeutige <em>UUID</em> zugewiesen. Als bestätigung wird der erstellte Nutzer zurückgesendet.</li>
+<li>Eine <strong>GET</strong> Anfrage auf den URI <code>/api/users/{id}</code> liefert einen konkreten Nutzer anhand seiner <em>UUID</em> zurück, wobei
+das Passwort jedoch nicht mit übergeben wird. Hierbei wird die <em>UUID</em> des gesuchten Users im Pfad übergeben.</li>
+<li>Eine <strong>GET</strong> Anfrage auf den URI <code>/api/users/password</code> mit den Headern <em>username</em> und <em>password</em>, welche die eindeutige
+E-Mail eines Users und das Passwort für seinen Account beinhalten, liefert diese Funktion ähnlich zu der oben genannten Funktion
+den User ohne sein Passwort zurück. Diese Funktion dient der Authentifizierung und überprüfung von Nutzerdaten.</li>
+</ul>
+<p>All diese Funktionen werden zwischen <em>users</em> und <em>compnaies</em> geteilt, für letztere muss nur <em>users</em> im Pfad durch <em>companies</em> ersetzt
+werden. Beispielsweise wäre eine Anfrage eines <em>company Accounts</em> per id: <code>/api/companies/{id}</code>. Die folgenden Funktionen
+lassen sich jecoch nur auf <em>users</em> anwenden.</p>
+<ul>
+<li>Eine <strong>GET</strong> Anfrage auf den URI <code>/api/users/{id}/shoppingCart</code> liefert ein Array aus allen <em>ProductID</em> im Warenkorb des
+Nutzers, anhand der <em>UUID</em> des Nutzers. Diese können anschließend über die <strong>Product API</strong> den Produkten zugeordnet werden.</li>
+<li>Eine <strong>PUT</strong> Anfrage auf den URI <code>/api/users/:id/shoppingCart</code>, bei welcher eine <strong>ProductID</strong> im Body übergeben wird,
+fügt die übergebene <em>Product ID</em> dem Wahrenkorb des mit dem <em>id</em> parameter spezifizierten Nutzers hinzu und sendet das
+aktualisierte Array des Warenkorbs zurück.</li>
+</ul>
+<p>Eine Möglichkeit alle User anzufragen wurde bewusst weggelassen, sodass nicht die Daten aller Nutzer einfach gesammelt
+werden können. In Zukunft wäre für die API Zugriffe allgemein noch eine <strong>Authentication</strong> geplant.</p>
+<h2>Aufbau der Webseite</h2>
+<h2>Regeln für Devs</h2>
+<ul>
+<li>Pullrequests mit <strong>inline CSS</strong> werden nicht akzeptiert (bitte alle rausnehmen die noch da sind)</li>
+<li>Pullrequests die nicht der <strong>BEM Convention</strong> folgen werden nicht akzeptiert</li>
+<li>Pullrequests mit JS Code <strong>ohne &quot;;&quot; am Ende von Lines</strong> werden nicht akzeptiert</li>
+</ul>
+<h2>Neuer Weg für Erstellung von HTML Seiten (nach der Template Engine)</h2>
+<ul>
+<li>Erstellt ein ejs File in views in dem ihr ganz normal euer HTML schreibt, jedoch nur das was im Body stehen würde, das standard Layout wird automatisch eingefügt</li>
+<li>Anschließend wird im File <em>api.js</em> eine Route erstellt, mit der auf das Dokument zugegriffen werden soll.</li>
+<li>Alle Links zu Ressourcen sind relativ zum <em>public ordner</em>. Legt neue öffentliche Ressourcen auch darin an.</li>
+</ul>
+<h2>Erstellen von Mock Daten</h2>
+<ul>
+<li>In der .env SETUP_MOCK_DATA=&quot;true&quot; setzen um Mockdaten auf die DB zu pushen.</li>
+<li>Nur einmal machen danach sind die Daten fest auf der MongoDB.</li>
+<li>Dann SETUP_MOCK_DATA=&quot;false&quot; setzen</li>
+</ul>
+<h2>Weitere Aufgaben</h2>
+<ul>
+<li>Seite für einzelne Produkte</li>
+<li>Bestätigungen beim Erstellen und Einloggen von Usern und Erstellen von Produkten.
+Fehler wenn falsche Eingeaben gemacht werden.</li>
+</ul></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#_addProductBoxes">_addProductBoxes</a></li><li><a href="global.html#_createProductDataList">_createProductDataList</a></li><li><a href="global.html#addItemToUserShoppingCart">addItemToUserShoppingCart</a></li><li><a href="global.html#addNewProduct">addNewProduct</a></li><li><a href="global.html#addNewUser">addNewUser</a></li><li><a href="global.html#addToShoppingCart">addToShoppingCart</a></li><li><a href="global.html#changeAccountUse">changeAccountUse</a></li><li><a href="global.html#changeToSearch">changeToSearch</a></li><li><a href="global.html#checkUserCredentialsValidity">checkUserCredentialsValidity</a></li><li><a href="global.html#createShoppingCart">createShoppingCart</a></li><li><a href="global.html#detectLogin">detectLogin</a></li><li><a href="global.html#fsUploadImage">fsUploadImage</a></li><li><a href="global.html#generateJSON">generateJSON</a></li><li><a href="global.html#getProductById">getProductById</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getProductsQuery">getProductsQuery</a></li><li><a href="global.html#getShoppingCartItems">getShoppingCartItems</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserShoppingCart">getUserShoppingCart</a></li><li><a href="global.html#importProducts">importProducts</a></li><li><a href="global.html#loadProducts">loadProducts</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openPopUpBanner">openPopUpBanner</a></li><li><a href="global.html#openProductPage">openProductPage</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#pushNewUser">pushNewUser</a></li><li><a href="global.html#sendLoginRequest">sendLoginRequest</a></li><li><a href="global.html#setUserShoppingCart">setUserShoppingCart</a></li><li><a href="global.html#showLogin">showLogin</a></li><li><a href="global.html#showPreview">showPreview</a></li><li><a href="global.html#showProductData">showProductData</a></li><li><a href="global.html#switchBannerImageAfterTime">switchBannerImageAfterTime</a></li><li><a href="global.html#userLogout">userLogout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Mar 13 2023 19:50:11 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
