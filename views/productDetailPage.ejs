@@ -15,19 +15,44 @@
             <div class="productDetailDescription">
                 <h3 id="productDetailDescriptionText">productDescription</h3>
             </div>
+            <div class="productDetailPrice">
+                <div id="productDetailPriceText">Das ist der Preis</div>
+                <div id="productDetailPriceUnit">$</div>
+            </div>
             <button id="addToCartButton" type="button" onclick="addToShoppingCart()"><img id="shoppingCartButton" src="img/shoppingCart.png" alt="ShoppingCart"></button>
         </div>
     </div>
     <div class="productDetailInformations">
         <div><h3 id="productDetailDetailsTitle">Product Details</h3></div>
-        <form id="detailsLeft">
-            <label>Name:</label><span id="productDetailName"></span></br>
-            <label>Price:</label><span id="productDetailPrice"></span></br>
-            <label>Operating System</label><span id="productDetailOS"></span></br>
-            <label>Amount RAM</label><span id="productDetailamountRAM"></span></br>
-            <label>Color</label><span id="productDetailColor"></span></br>
-            <label>Type CPU:</label><span id="productDetailTypeCPU"></span></br>
-            <label>Type GPU:</label><span id="productDetailTypeGPU"></span></br>
-        </form>
+        <table id="detailsLeft">
+            <tr>
+                <td><label>Name:</label></td>
+                <td><span id="productDetailName"></span></td>
+            </tr>
+            <tr>
+                <td><label>Price:</label></td>
+                <td><span id="productDetailPrice"></span></td>
+            </tr>
+            <tr>
+                <td><label>Operating System:</label></td>
+                <td><span id="productDetailOS"></span></td>
+            </tr>
+            <tr>
+                <td><label>Amount RAM:</label></td>
+                <td><span id="productDetailamountRAM"></span></td>
+            </tr>
+            <tr>
+                <td><label>Color:</label></td>
+                <td><span id="productDetailColor"></span></td>
+            </tr>
+            <tr>
+                <td><label>Type CPU:</label></td>
+                <td><span id="productDetailTypeCPU"></span></td>
+            </tr>
+            <tr>
+                <td><label>Type GPU:</label></td>
+                <td><span id="productDetailTypeGPU"></span></td>
+            </tr>
+        </table>
     </div>
 </main>

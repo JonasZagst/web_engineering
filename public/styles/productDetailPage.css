@@ -58,12 +58,18 @@
     
 }
 
+#productDetailPriceText, #productDetailPriceUnit {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;  
+}
+
 
 
 #addToCartButton {
         display: inline-block;
         background-color:#8A7D61 ;
-        padding: 20px;
+        padding: 10px;
         width: 50%;
         color: #ffffff;
         text-align: center;
@@ -79,8 +85,8 @@
 }
 
 #shoppingCartButton{
-    width:100px;
-    height:100px;
+    width:70px;
+    height:70px;
     vertical-align:middle"
 
 }
@@ -111,6 +117,8 @@
 }
 
 #detailsLeft {
+    width: 40%;
     text-align: left;
-    margin-left: 1%;
+    margin-left: 2%;
+    border-width: 0px;
 }

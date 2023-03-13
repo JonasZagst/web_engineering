@@ -42,6 +42,8 @@ function showProductData(data, productName) {
 
     document.getElementById("productDetailTitleName").innerText = currentData.productName;
 
+    document.getElementById("productDetailPriceText").innerText = currentData.price;
+
     //On Success
     window.sessionStorage.setItem("productID", currentData._id);
 }
