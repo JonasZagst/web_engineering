@@ -58,6 +58,13 @@
     
 }
 
+
+/*styling of the product Price*/
+.productDetailPrice {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #productDetailPriceText, #productDetailPriceUnit {
     text-align: center;
     font-weight: bold;
