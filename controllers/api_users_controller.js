@@ -120,17 +120,19 @@ async function addItemToUserShoppingCart(req, res) {
 }
 
 async function clearUserShoppingCart(req, res) {
-    const { userId } = req.params;
-    if (!userId) {
+    const { id } = req.params;
+    if (!id) {
         res.sendStatus(400);
     }
-    try {
-        users_service.setUserShoppingCart(userId, []);
-        res.sendStatus(200);
-    } catch (error) {
-        res.statusCode = 500;
-        console.error(error);
-        res.send(error.message);
+    else{
+        try {
+            await users_service.setUserShoppingCart(id, []);
+            res.sendStatus(200);
+        } catch (error) {
+            res.statusCode = 500;
+            console.error(error);
+            res.send(error.message);
+        }
     }
 }
 
