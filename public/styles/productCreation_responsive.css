@@ -1,0 +1,27 @@
+/*Middle Sized Screen*/
+@media screen and (max-width: 1321px) and (min-width: 1250px) {
+
+    .dropTitle {
+        margin-left: 30%;
+    }
+    .dropTitleSecond{
+        position: relative;
+        left: 40%;
+    }
+    input[type= file]::file-selector-button{
+        right: 5%;
+    }
+}
+/*Very Small Sized Screen*/
+@media screen and (max-width: 800px) and (min-width: 0px) {
+    .dropTitle {
+        margin-left: 15%;
+    }
+    .dropTitleSecond{
+        position: relative;
+        left: 40%;
+    }
+    input[type= file]::file-selector-button{
+        right:20%
+    }
+}

@@ -1,0 +1,112 @@
+/*Product Page Grid Designs*/
+.productGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+    margin-top: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.productGrid img {
+   width:2px;
+   height: 2px;
+}
+
+.grid-item {
+    color:black;
+    background: white;
+    border-radius: 12%;
+    border-bottom-left-radius: 18%;
+    border-bottom-right-radius: 18%;
+    height: 600px;
+    border-width: 2px;
+    word-break: break-word;
+    margin-bottom: 20px;
+}
+
+.grid-item img {
+    width: 300px;;
+    height: 300px;
+    object-fit: fill;
+}
+
+.grid-image {
+    height:350px;
+    border-top-left-radius: 18%;
+    border-top-right-radius: 18%;
+}
+
+.grid-image:hover {
+    transform: scale(0.95); 
+}
+
+.grid-text {
+    height: 250px;
+    border-bottom-left-radius: 29%;
+    border-bottom-right-radius: 29%;
+    background-color:cornflowerblue;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/**Product Page Filter Styles **/
+.productFilterGrid{
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr;
+    width: 100%;
+    background-color: cornflowerblue;
+    height:150px;
+    border-top: #1e1f22 solid;
+}
+
+.productFilterGrid input{
+    width: 50%;
+    height: 40%;
+    border: black solid;
+    border-radius: 10px;
+    color: black;
+    margin: 20px;
+    margin-top: 25px;
+}
+
+.productFilterGrid label{
+    font-weight: bold;
+}
+
+#filterPrice{
+    vertical-align: middle;
+    border: solid black;
+}
+
+#currentPrice{
+    margin-right: 10px;
+    margin-left: -5px;
+    font-weight: bold;
+}
+
+#filterIcon{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 
+    30%;
+}
+
+/** Shopping Cart Button**/
+#checkOutShopping
+{
+    margin-top: 30px;
+    background-color: cornflowerblue;
+    width: 20%;
+    height: 100px;
+    color: whitesmoke;
+    font-weight: bold;
+    border-radius: 2%;
+}
+
+#checkOutShopping:hover
+{
+   opacity: 75%;
+}

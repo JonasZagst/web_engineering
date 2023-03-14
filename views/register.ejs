@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="styles/login.css">
+<link rel="stylesheet" href="styles/register.css">
+<link rel="stylesheet" href="styles/register-responsive.css">
+<script src="scripts/register.js"></script>
+<main>
+    <div class="containerLoginForm">
+        <form>
+            <div class="containerLoginText">
+                <div class="registerGrid">
+                    <div class="containerLeft">
+                        <h4>Personal Data</h4></br>
+                        <div class="nameGrid" id="nameGrid">
+                        <div class="InlineGrid" id="inlineGridName">
+                            <div class="leftInlineElement">
+                                <label for="registerInputFirstName" id="registerLabelFirstName">First Name:</label></br>
+                                <input type="text" id="registerInputFirstName" name="first-name"></br>
+                            </div>
+                            <div class="rightInlineElement">
+                                <label for="registerInputLastName" id="registerLabelFirstName">Last Name:</label></br>
+                                <input type="text" id="registerInputLastName" name="last-name"></br>
+                            </div>
+                        </div>
+                        </div>
+                        <label for="registerInputEmail">Email Adress:</label></br>
+                        <input type="text" id="registerInputEmail" name="email"></br>
+                        <label for="registerInputPassword">Password:</label></br>
+                        <input type="password" id="registerInputPassword" name="password"></br>
+                    </div>
+                    <div class="containerRight">
+                        <h4>Adress Information</h4></br>
+                        <label for="country">Country:</label></br>
+                        <input type="text" id="country" name="country"></br>
+                        <div class="AdressInlineGrid">
+                            <div class="leftAdressInlineElement">
+                                <label for="city">City:</label></br>
+                                <input type="text" id="city" name="city"></br>
+                            </div>
+                            <div class="rightAdressInlineElement">
+                                <label for="zip">ZIP:</label></br>
+                                <input type="text" id="zip" name="zip"></br>
+                            </div>
+                        </div>
+                        <div class="AdressInlineGrid">
+                            <div class="leftAdressInlineElement">
+                                <label for="street">Street:</label></br>
+                                <input type="text" id="street" name="street"></br>
+                            </div>
+                            <div class="rightAdressInlineElement">
+                                <label for="houseNumber">Number:</label></br>
+                                <input type="text" id="houseNumber" name="houseNumber"></br>
+                            </div>
+                    </div>
+                    </div>
+                </div>  
+                <label for="typeofUser">Register as Business User:</label>
+                <input type="checkbox" id="typeofUser" onchange="changeAccountUse(event)"></br>
+                <button type="button" value="button" onclick="pushNewUser()" class="loginButton"><img src="img/LoginFormButton.png">
+                </button>
+                </br>
+                <img src="img/Logo.png" id="loginFooterLogo">
+            </div>
+        </form>
+    </div>
+</main>

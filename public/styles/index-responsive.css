@@ -1,0 +1,31 @@
+/*Small Sized Screen*/
+@media screen and (max-width: 1300px) and (min-width: 750px) {
+   
+    #gridContentRight{
+        margin-top: 0;
+    }
+    #gridContentRight p{
+        margin-left: 10%;
+    }
+    #gridContainerInfo {
+        grid-template-columns: 2fr;
+    }
+}
+
+/*Very Small Sized Screen*/
+@media screen and (max-width: 750px) and (min-width: 0px) {
+    #gridContentRight{
+        margin-top: 0;
+    }
+    #gridContentRight p{
+        margin-left: 10%;
+        font-size: large;
+    }
+    #gridContainerInfo {
+        grid-template-columns: 2fr;
+    }
+    #containerMotto p{
+        font-size:large;;
+    }
+
+}

@@ -1,35 +1,72 @@
+import * as products_service from "../services/products_service.js";
+
 async function getProducts(req, res) {
 
-    const {search} = req.params;
+    const { search } = req.query;
 
-    // const products = ...; // List
+    try {
+        let queryResult;
 
-    if (search) {
-        // Return all products matching the search
-    } else {
-        // Return all products
+        if (search) {
+            queryResult = await products_service.getProductsQuery(search);
+        } else {
+            queryResult = await products_service.getProducts();
+        }
+
+        if (!queryResult.length) {
+            res.statusCode = 404;
+            res.send("Not found");
+        } else {
+            res.statusCode = 200;
+            res.json(queryResult);
+        }
+    } catch (error) {
+        res.statusCode = 500;
+        console.error(error);
     }
-
-    // res.json(products) // [ { ... }, { ... } ]
-
 }
 
 async function getProductById(req, res) {
-    const {id} = res.params;
+    const { id } = req.params;
 
-    // const product = ...;
+    if (id !== null) {
+        try {
+            const queryResult = await products_service.getProductById(id);
+            if (!queryResult) {
+                res.statusCode = 404;
+                res.send("Not found");
+            } else {
+                res.statusCode = 200;
+                res.json(queryResult);
+            }
 
-    // res.json(product);
+        } catch (error) {
+            res.statusCode = 500;
+            console.error(error);
+            res.send(error.message);
+        }
+
+    } else {
+        res.statusCode = 400;
+        res.send("Bad Request");
+    }
 }
 
 async function addNewProduct(req, res) {
     const product = req.body;
-
+    console.log("arrived");
     try {
-        // product = services.createProduct(product);
-        // res.json(product)
-    } catch (err) {
-        // TODO: Error handaling, 400 if format is wrong, else 500
+        const newProduct = await products_service.addNewProduct(product);
+        res.statusCode = 201;
+        res.json(newProduct);
+    } catch (error) {
+        if (error.name === "JSONMappingError") {
+            res.statusCode = 400;
+        } else {
+            res.statusCode = 500;
+            console.error(error);
+        }
+        res.send(error.message);
     }
 }
 

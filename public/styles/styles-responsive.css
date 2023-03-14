@@ -1,0 +1,25 @@
+/*Middle Sized Screen*/
+@media screen and (max-width: 1525px) and (min-width: 800px) {
+    #LandingBannerImage{
+        width: 750px;
+    }
+}
+    
+/*Setting for Small Sized Screen --> Search Functionality*/
+@media screen and (max-width: 810px) and (min-width: 0px) {
+    nav ul li img{
+        width: 35px;
+        height: 35px;
+    }
+    nav ul {
+        margin-right: 25px;
+    }
+    span img {
+        width: 225px;
+        height: 50px;
+    }
+    #navLoginGrid span{
+        font-size:small;
+    }
+    
+}

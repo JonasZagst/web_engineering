@@ -1,0 +1,183 @@
+.productCreationBlock {
+    width: 100%;
+    height:800px;
+    display: inline-block;
+    border-radius: 5%;
+}
+
+.productCreationFormCaption {
+    display: inline-block;
+    font-size: x-large;
+    border-bottom: 3px;
+    border-bottom-style: solid
+}
+
+.productGridBox {
+    display: grid;
+    grid-template-columns: 2fr;
+    grid-gap: 1em;
+    margin-top: 50px; 
+    width: 100%;
+    height: 5px;
+}
+
+.productSelectionGridBox{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+.productItem{
+    color:whitesmoke;
+    background-color:#1e1f22;
+    border-radius: 15%;
+    height: 65%;
+    border-width: 2px;
+    word-break: break-word;
+    width: 500px;
+}
+
+#uploadedImage{
+    width: 100%;
+    height: 350px;
+    margin-top: 0px;
+    border-top-right-radius: 15%;
+    border-top-left-radius: 15%;    
+    border: black;
+}
+
+.productCreationForm {
+    border-radius: 5%;
+    font-family: Arial, Helvetica, sans-serif;
+    background: cornflowerblue;
+    height: 700px;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+    color: black;
+}
+
+#formLeft{
+    margin-left: 50px;
+}
+
+#formRight{
+    margin-right: 50px;
+}
+
+.productCreationPreview{
+    height:100%;
+}
+.productCreationForm label{
+    text-align: left;
+    font-size: large;
+    margin-block-end: 0.5em;
+    color: black;
+    width: 70%;
+}
+
+.productCreationForm input{
+    height: 40px;
+    width: 70%;
+    border-radius: 10px;
+    margin-block-start: 1em;
+    margin-block-end: 1.0em;
+    background-color:#1e1f22;
+    color:whitesmoke;
+    text-align: center;
+}
+#productDescription{
+    height: 175px;
+    text-align: start;
+    width: 70%;
+    border-radius: 10px;
+    border: black solid;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-block-start: 1em;
+    margin-block-end: 1.0em;
+    background-color:#1e1f22;
+    color: whitesmoke;
+}
+.fileUpload{
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color:#1e1f22;
+    border-radius: 10px;
+    border-style: dashed;
+    border-color: black;
+    width: 400px;
+    color: whitesmoke;
+    margin-top: 0.5em;
+}
+
+.fileUpload span {
+    color: whitesmoke;
+    font-size: medium;
+}
+
+.fileUpload:hover{
+    background-color:#1e1f22;
+    opacity: 80%;
+}
+
+.dropTitle {
+    position: relative;
+    margin-left: 40%;
+}
+.dropTitleSecond{
+    position: relative;
+    left: 50%;
+}
+.uploadImageBox{
+    width: 100%;
+    position: relative;
+    left: 25%;
+    padding: 4px;
+    height: 28px;
+    margin-top: 10px;
+}
+
+#uploadImage {
+    width: 70%;
+    height: 30px;
+    margin-block-start: 0em
+}
+
+input[type= file]::file-selector-button{
+    max-width: 100%;
+    width: 100px;
+    color: whitesmoke;
+    padding: 5px;
+    background: black;
+    border-radius: 10px;
+    border: 1px solid #555;
+    position: relative;
+}
+
+input[type= file]::file-selector-button:hover{
+   border: white solid;
+}
+
+#productButton, #previewButton{
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: transparent;
+    color: black;
+    margin-block-end: 1em;
+}
+
+#productButton:hover, #previewButton:hover {
+    border:solid #1e1f22
+}
+.productPreviewBox{
+    height: 330px;
+    background-color: #4ed679;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border: black solid; 
+    border-top: none;
+    padding-top: 10px;
+}

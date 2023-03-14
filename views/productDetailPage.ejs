@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="styles/productDetailPage.css">
+<script src="scripts/productDetailPage.js"></script> 
+<script src="scripts/general.js"></script>
+<main>
+    <div class="productDetailGrid">   
+        <div class="productDetailGridBoxLeft">
+            <div class="productDetailsImage">
+                <img id="productDetailImage" src="img\productImages\Dell_Latitude_7420_3.jpg">
+            </div>
+        </div>
+        <div class="productDetailGridBoxRight">
+            <div id="productDetailTitleName">
+                <h3>Amazon</h3>
+            </div>
+            <div class="productDetailDescription">
+                <h3 id="productDetailDescriptionText">productDescription</h3>
+            </div>
+            <table class="productDetailPrice">
+                <tr>
+                    <td><div id="productDetailPriceText">Das ist der Preis</div></td>
+                    <td><div id="productDetailPriceUnit">$</div></td>
+                </tr>
+                
+            </table>
+            <button id="addToCartButton" type="button" onclick="addToShoppingCart()"><img id="shoppingCartButton" src="img/shoppingCart.png" alt="ShoppingCart"></button>
+        </div>
+    </div>
+    <div class="productDetailInformations">
+        <div><h3 id="productDetailDetailsTitle">Product Details</h3></div>
+        <table id="detailsLeft">
+            <tr>
+                <td><label>Name:</label></td>
+                <td><span id="productDetailName"></span></td>
+            </tr>
+            <tr>
+                <td><label>Price:</label></td>
+                <td><span id="productDetailPrice"></span></td>
+            </tr>
+            <tr>
+                <td><label>Operating System:</label></td>
+                <td><span id="productDetailOS"></span></td>
+            </tr>
+            <tr>
+                <td><label>Amount RAM:</label></td>
+                <td><span id="productDetailamountRAM"></span></td>
+            </tr>
+            <tr>
+                <td><label>Color:</label></td>
+                <td><span id="productDetailColor"></span></td>
+            </tr>
+            <tr>
+                <td><label>Type CPU:</label></td>
+                <td><span id="productDetailTypeCPU"></span></td>
+            </tr>
+            <tr>
+                <td><label>Type GPU:</label></td>
+                <td><span id="productDetailTypeGPU"></span></td>
+            </tr>
+        </table>
+    </div>
+</main>

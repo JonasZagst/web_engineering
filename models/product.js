@@ -10,10 +10,14 @@ const productSchema = new mongoose.Schema({
     },
     productDescription: {
         type: String,
-        required: false
+        required: true 
     },
     price: { // Amount in EURO
         type: Number,
+        required: true
+    },
+    image: { // Link to images in public folder
+        type: [String],
         required: true
     },
     // Maybe change the productSpecifications to just a list of tags
@@ -40,14 +44,12 @@ const productSchema = new mongoose.Schema({
         },
         typeGPU: { // not every notebook needs a GPU
             type: String,
-            required: false
+            required: true
         }
     }
 });
 
-productSchema.query.bySearch = function (search) {
-    return undefined;
-}
+productSchema.index({ "$**": "text" });
 
 const Product = mongoose.model("Product", productSchema);
 
