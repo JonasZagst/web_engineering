@@ -13,6 +13,7 @@ wurde, im *doc* Ordner.
 * Server Starten
 * Aufbau des Servers
 * Aufbau der Webseite
+* Quellenverzeichnis
 
 ## Dokumentation generieren
 Für die Dokumentation der der Webseite wurde [JSDoc](https://jsdoc.app/) verwendet. Diese kann nach Installation mit 
@@ -197,3 +198,7 @@ Sollte man sich als gewerblicher Nutzer einloggen, erscheint stattdessen der Men
 
 Zum Schluss hat man als User noch die Möglichkeit, sich aus seinem Account auszuloggen. Hierbei werden alle Sitzungsdaten gelöscht und die Landing Page wird wieder auf den Ursprungszustand zurückgesetzt.
 Wie bereits erwähnt, ist diese Funktion ebenfalls Teil des Menüs und wird hier stets als der letzte Menüpunkt angezeigt. 
+
+## Quellenverzeichnis
+- Startseite Bild 1: [Wirtschaftsforum SPD e.V.](https://www.spd-wirtschaftsforum.de/veranstaltung/arbeitssitzung-fachforum-digitales-plattformoekonomie-mit-falko-mohrs-mdb-und-dr-sabrina-zeplin-otto-group/) 
+- Präsentation Einführungsbild: [Behance](https://www.behance.net/gallery/59192949/Free-Social-Media-Mockups-and-Guidelines) 
