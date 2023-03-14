@@ -1,6 +1,6 @@
 import express from "express"
 //for image Upload
-import expressFileUpload from 'express-fileupload'
+import expressFileUpload from "express-fileupload"
 
 import { addNewProduct, getProductById, getProducts } from "../controllers/api_products_controller.js"
 import {
