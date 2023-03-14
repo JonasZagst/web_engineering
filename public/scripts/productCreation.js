@@ -1,10 +1,6 @@
 /** JS File for /productCreation */
 
-function showPreview() {
-  const previewObject = generateProductPreviewObject();
-  window.open('/productDetailPreviewPage', 'ProductPreview');
-}
-
+/** Stores the imageData in session Storage */
 function getImagePreview(event) {
   const image = event.target.files[0];
   const imageName = image.name;
@@ -15,6 +11,13 @@ function getImagePreview(event) {
   });
 }
 
+/** Opens a  preview of the created Product in a new Window */
+function showPreview() {
+  generateProductPreviewObject();
+  window.open('/productDetailPreviewPage', 'ProductPreview');
+}
+
+/** Generates JSON Array and stores it in Session Storage, So that previewPage can read in the window */
 function generateProductPreviewObject() {
   const previewObject = [];
   try {
@@ -32,7 +35,6 @@ function generateProductPreviewObject() {
 
     //Save data Object for the session
     window.sessionStorage.setItem("previewObject", previewObject);
-    //Save Image for the Session
 
   }
   catch {
@@ -40,10 +42,9 @@ function generateProductPreviewObject() {
   }
 }
 
-//Logic for the actual product Creation
+/** Logic for the actual product Creation*/
 function pushNewProduct() {
   json = generateJSON();
-  console.log(json);
   try {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "api/products", true);
@@ -64,6 +65,7 @@ function pushNewProduct() {
   }
 }
 
+/**Generates the actual JSON, that'll be send to backend. Takes the given values from HTML form as inputs*/
 function generateJSON() {
   const re = new RegExp("(?<=fakepath).*$");
   const imageFile = document.getElementById("uploadImage").value;
@@ -101,13 +103,41 @@ function generateJSON() {
   return jsonReturn;
 }
 
+/** Opens a popUpBanner depending on the success of the ProductCreation
+*   @param {Number|any} error */
+function openPopUpBanner(error) {
+  if (typeof (error) != "string") {
+
+    getImageFile();
+    window.sessionStorage.removeItem("imageData");
+    window.sessionStorage.removeItem("previewObject");
+    //Success Banner
+    document.getElementById("LoginBanner").style.backgroundColor = "green";
+    document.getElementById("LoginBanner").innerText = "You Successfully created your own Product!";
+
+  }
+  else {
+    //Error Banner
+    document.getElementById("LoginBanner").style.backgroundColor = "red";
+    document.getElementById("LoginBanner").innerText = "There was an error while trying to create your account. Please make sure you filled out all necessary fields(*). The fields 'Product Price' has to be of type number! As well make sure that you've added a picture!";
+  }
+  
+  setTimeout(() => {
+    document.getElementById("LoginBanner").style.backgroundColor = "transparent";
+    document.getElementById("LoginBanner").innerText = "";
+  }, "4000");
+}
+
+/** Gets Image Data from Input(type Image) */
 function getImageFile() {
   var file = document.getElementById("uploadImage").files[0];
+  console.log(typeof(file));
   pushFileToServer(file);
 }
 
+/** Stores the uploaded Image locally(img/upload) 
+* @param {object} file The uploaded file object */
 function pushFileToServer(file) {
-  console.log(file);
   try {
     var xhttp = new XMLHttpRequest();
     var formData = new FormData();
@@ -117,32 +147,5 @@ function pushFileToServer(file) {
   }
   catch {
     console.log("something didn't work!");
-  }
-}
-
-function openPopUpBanner(error) {
-  if (typeof (error) != "string") {
-
-    getImageFile();
-    window.sessionStorage.removeItem("imageData");
-    window.sessionStorage.removeItem("previewObject");
-    //Alert Banner
-    document.getElementById("LoginBanner").style.backgroundColor = "green";
-    document.getElementById("LoginBanner").innerText = "You Successfully created your own Product!";
-
-    setTimeout(() => {
-      document.getElementById("LoginBanner").style.backgroundColor = "transparent";
-      document.getElementById("LoginBanner").innerText = "";
-      window.location.href = "/products";
-    }, "4000");
-  }
-  else {
-    //Alert Banner
-    document.getElementById("LoginBanner").style.backgroundColor = "red";
-    document.getElementById("LoginBanner").innerText = "There was an error while trying to create your account. Please make sure you filled out all necessary fields(*). The fields 'Product Price' has to be of type number! As well make sure that you've added a picture!";
-    setTimeout(() => {
-      document.getElementById("LoginBanner").style.backgroundColor = "transparent";
-      document.getElementById("LoginBanner").innerText = "";
-    }, "4000");
   }
 }

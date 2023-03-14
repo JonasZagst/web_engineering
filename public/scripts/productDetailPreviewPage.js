@@ -6,9 +6,7 @@ function showProductData() {
     const previewString = window.sessionStorage.getItem("previewObject");
     const previewArray = previewString.split(',');
     const imageData = window.sessionStorage.getItem("imageData");
-    // console.log(imageData);
-    // console.log(previewArray);
-
+    
     document.getElementById("productDetailPreviewName").innerText = previewArray[0];
     document.getElementById("productDetailPreviewPrice").innerText = previewArray[2];
     document.getElementById("productDetailPreviewOS").innerText = previewArray[5];

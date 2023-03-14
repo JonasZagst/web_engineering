@@ -60,3 +60,22 @@ function _addProductBoxes(productName, productDescription, productPrice, product
         </div>
     </div>`
 }
+
+/**Function to delete current Shopping Cart content */
+function checkoutShoppingCart(){
+  try{
+    const userID = window.sessionStorage.userID;
+    xhttp.open("DELETE", `/api/users/${userID}/shoppingCart`, true);
+    xhttp.onload = () => {
+      const deletionResponse = JSON.parse(xhttp.response)
+      openPopUpBanner(deletionResponse);
+    };
+    xhttp.send();
+  } catch (error) {
+    console.error(`deletionResponse: ${error}`)
+  }
+}
+
+function openPopUpBanner(){
+    alert("You successfully checked out your shopping Cart!");
+}

@@ -50,6 +50,7 @@
 }
 
 #productDetailDescriptionText {
+    text-align: left;
     font-style: normal;
     font-size: 22px;
     margin-left: 5%;
@@ -58,11 +59,24 @@
 }
 
 
+/*styling of the product Price*/
+.productDetailPrice {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#productDetailPriceText, #productDetailPriceUnit {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;  
+}
+
+
 
 #addToCartButton {
         display: inline-block;
-        background-color: #38d885;
-        padding: 20px;
+        background-color:#8A7D61 ;
+        padding: 10px;
         width: 50%;
         color: #ffffff;
         text-align: center;
@@ -70,11 +84,18 @@
         border-radius: 10px; 
         font-size: 28px;
         cursor: pointer; 
-        margin-left: 25%; s
+        margin-left: 25%;
         margin-right: 25%; 
         margin-top: 5%;
         margin-bottom: 5%;
         opacity: 0.9;
+}
+
+#shoppingCartButton{
+    width:70px;
+    height:70px;
+    vertical-align:middle"
+
 }
 
 #addToCartButton:hover {
@@ -103,6 +124,8 @@
 }
 
 #detailsLeft {
+    width: 40%;
     text-align: left;
-    margin-left: 1%;
+    margin-left: 2%;
+    border-width: 0px;
 }

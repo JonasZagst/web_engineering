@@ -17,11 +17,11 @@
     display: inline-block;font-size: x-large;border-bottom: 3px;border-bottom-style: solid
 }
 
-label{
+.containerLoginText label{
     font-size: x-large;
 }   
 
-input{
+.containerLoginText input{
     margin-bottom: 20px;
     margin-top: 10px;
     text-align: left;
@@ -67,5 +67,11 @@ input{
     background-color:transparent;
     border-style: solid;
     border-color: transparent;
+}
+
+#typeofUser{
+    width: 20px;
+    height: 19px;
+    vertical-align: -webkit-baseline-middle;
 }
 
