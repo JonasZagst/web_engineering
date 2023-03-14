@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: public/scripts/productDetailPage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: public/scripts/productDetailPage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** JS File for /productDetailPage */
+
+document.addEventListener("DOMContentLoaded", openProductPage());
+
+/** Opens the product page.
+ *
+ * For this a request to the backend is made. */
+function openProductPage() {
+    const productName = window.sessionStorage.getItem("productName");
+    try {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "api/products", true);
+        xhttp.onload = () => {
+            data = JSON.parse(xhttp.response)
+            showProductData(data, productName);
+        };
+        xhttp.send();
+    }
+    catch (error) {
+        console.error(`openProductPage: ${error}`);
+    }
+}
+
+/** Display the information for a product.
+ * @param {Object[]} data
+ * @param {string} productName */
+function showProductData(data, productName) {
+    const currentData = data.find(e => e.productName == productName);
+    if (!currentData) return;
+
+    document.getElementById("productDetailName").innerText = currentData.productName;
+    document.getElementById("productDetailPrice").innerText = currentData.price;
+    document.getElementById("productDetailOS").innerText = currentData.productSpecification.operatingSystem;
+    document.getElementById("productDetailamountRAM").innerText = currentData.productSpecification.amountRAM;
+    document.getElementById("productDetailColor").innerText = currentData.productSpecification.color;
+    document.getElementById("productDetailTypeCPU").innerText = currentData.productSpecification.typeCPU;
+    document.getElementById("productDetailTypeGPU").innerText = currentData.productSpecification.typeGPU;
+
+    document.getElementById("productDetailDescriptionText").innerText = currentData.productDescription;
+
+    document.getElementById("productDetailImage").src = currentData.image[0]
+
+    document.getElementById("productDetailTitleName").innerText = currentData.productName;
+
+    //On Success
+    window.sessionStorage.setItem("productID", currentData._id);
+}
+
+function addToShoppingCart() {
+    const productID = window.sessionStorage.getItem("productID");
+    const userID = window.sessionStorage.getItem("userID");
+    if (!userID) {
+        alert("You have to be logged in, to add products to your shopping Cart!")
+    }
+
+
+    try {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", `/api/users/${userID}/shoppingCart/${productID}`, true);
+        xhttp.send();
+    }
+    catch (error) {
+        console.error(`addToShoppingCart: ${error}`);
+    }
+}
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#_addProductBoxes">_addProductBoxes</a></li><li><a href="global.html#_createProductDataList">_createProductDataList</a></li><li><a href="global.html#addItemToUserShoppingCart">addItemToUserShoppingCart</a></li><li><a href="global.html#addNewProduct">addNewProduct</a></li><li><a href="global.html#addNewUser">addNewUser</a></li><li><a href="global.html#addToShoppingCart">addToShoppingCart</a></li><li><a href="global.html#changeAccountUse">changeAccountUse</a></li><li><a href="global.html#changeToSearch">changeToSearch</a></li><li><a href="global.html#checkUserCredentialsValidity">checkUserCredentialsValidity</a></li><li><a href="global.html#createShoppingCart">createShoppingCart</a></li><li><a href="global.html#detectLogin">detectLogin</a></li><li><a href="global.html#fsUploadImage">fsUploadImage</a></li><li><a href="global.html#generateJSON">generateJSON</a></li><li><a href="global.html#getProductById">getProductById</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getProductsQuery">getProductsQuery</a></li><li><a href="global.html#getShoppingCartItems">getShoppingCartItems</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserShoppingCart">getUserShoppingCart</a></li><li><a href="global.html#importProducts">importProducts</a></li><li><a href="global.html#loadProducts">loadProducts</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openPopUpBanner">openPopUpBanner</a></li><li><a href="global.html#openProductPage">openProductPage</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#pushNewUser">pushNewUser</a></li><li><a href="global.html#sendLoginRequest">sendLoginRequest</a></li><li><a href="global.html#setUserShoppingCart">setUserShoppingCart</a></li><li><a href="global.html#showLogin">showLogin</a></li><li><a href="global.html#showPreview">showPreview</a></li><li><a href="global.html#showProductData">showProductData</a></li><li><a href="global.html#switchBannerImageAfterTime">switchBannerImageAfterTime</a></li><li><a href="global.html#userLogout">userLogout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Mar 13 2023 19:50:11 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: public/scripts/general.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: public/scripts/general.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** General functions for the whole website. */
+
+// Wait until the page is fully loaded
+window.onload = detectLogin
+
+/** Switches the main banner on the page after an amount of time. */
+function switchBannerImageAfterTime() {
+    let image = document.getElementById("LandingBannerImage").src;
+    const images = ["img/banner.png", "img/banner2.jpeg", "img/banner3.jpeg"];
+
+    let index = 0;
+    let currentImage = 0;
+
+    images.forEach((element) => {
+        if (element == image) {
+            currentImage = index;
+        }
+        index++;
+    });
+
+    if (currentImage == 2) {
+        currentImage = 0;
+    }
+    else {
+        currentImage = currentImage + 1;
+    }
+    document.getElementById("LandingBannerImage").src = images[currentImage];
+}
+
+/** Changes the search icon to the search field
+ *
+ * If the user clicks on the search icon then the icon is hidden and the search field is shown.
+ * @param {Object} event The JavaScript Click-Event object. */
+function changeToSearch(event) {
+    const target = event.target.getAttribute("id");
+    if (target == "searchIcon") {
+        document.getElementById("navSearch").style.visibility = "visible";
+        document.getElementById("startSearch").style.visibility = "visible";
+        document.getElementById("searchIcon").style.visibility = "hidden";
+    }
+    else if (target == "navSearch") {
+        document.getElementById("searchIcon").style.visibility = "visible";
+        document.getElementById("startSearch").style.visibility = "hidden";
+        document.getElementById("navSearch").style.visibility = "hidden";
+    }
+}
+
+/** Requests all products from the backend and displays them. */
+function importProducts() {
+    try {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "api/products", true);
+        xhttp.onload = () => {
+            data = JSON.parse(xhttp.response)
+            _createProductDataList(data);
+        };
+        xhttp.send();
+    }
+    catch (error) {
+        console.error(`Loading products: ${error}`);
+    }
+}
+
+/** Inserts the html search elements based on the response of the server.
+ * @param {Object} data JSON Array of the product objects. */
+function _createProductDataList(data) {
+    document.getElementById("searchItems").innerHTML = "";
+    for (const product of data)
+        document.getElementById("searchItems").innerHTML += `&lt;option value="${product.productName}">`;
+}
+
+/** Detects wether the user is logged in.
+ *
+ * This is done by checking if the session storage contains a value for "userName". */
+function detectLogin() {
+    const userName = window.sessionStorage.getItem("userName");
+    if (userName) {
+        document.getElementById("loginNav").innerHTML = `&lt;img style=" width: 40px;height: 40px;margin-left:15px; margin-top:15px" src="img/Login.png" alt="Account Management">&lt;/img>&lt;/br> ${userName}`;
+        document.getElementById("loginNavButtonImage").innerHTML = `&lt;img src="img/LogoutButton.png" onClick="userLogout()" alt="Account Logout">`;
+
+        for (const e of document.getElementsByClassName("requires-login"))
+            e.style.display = "inline";
+    }
+}
+
+/** Handle when the user is logging out.
+ *
+ * Hides the User icon on the left of the header. */
+function userLogout() {
+    //Alert Banner
+    document.getElementById("LoginBanner").style.backgroundColor = "green";
+    document.getElementById("LoginBanner").innerText = "You Successfully logged out!";
+
+    setTimeout(() => {
+        document.getElementById("LoginBanner").style.backgroundColor = "transparent";
+        document.getElementById("LoginBanner").innerText = "";
+    }, "2500");
+
+    window.sessionStorage.setItem("userName", "");
+    window.sessionStorage.setItem("userID", "");
+
+    document.getElementById("loginNav").innerHTML = ``;
+    document.getElementById("loginNavButtonImage").innerHTML = `&lt;a href="/login">&lt;img src="img/Login.png" alt="Account Management">&lt;/a>`
+}
+
+/** Opens the detailed page for a product. */
+function openProductPage() {
+    const value = document.getElementById("navSearch").value;
+    window.sessionStorage.setItem("productName", value);
+    window.location.href = "/productDetailPage";
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#_addProductBoxes">_addProductBoxes</a></li><li><a href="global.html#_createProductDataList">_createProductDataList</a></li><li><a href="global.html#addItemToUserShoppingCart">addItemToUserShoppingCart</a></li><li><a href="global.html#addNewProduct">addNewProduct</a></li><li><a href="global.html#addNewUser">addNewUser</a></li><li><a href="global.html#addToShoppingCart">addToShoppingCart</a></li><li><a href="global.html#changeAccountUse">changeAccountUse</a></li><li><a href="global.html#changeToSearch">changeToSearch</a></li><li><a href="global.html#checkUserCredentialsValidity">checkUserCredentialsValidity</a></li><li><a href="global.html#createShoppingCart">createShoppingCart</a></li><li><a href="global.html#detectLogin">detectLogin</a></li><li><a href="global.html#fsUploadImage">fsUploadImage</a></li><li><a href="global.html#generateJSON">generateJSON</a></li><li><a href="global.html#getProductById">getProductById</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getProductsQuery">getProductsQuery</a></li><li><a href="global.html#getShoppingCartItems">getShoppingCartItems</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserShoppingCart">getUserShoppingCart</a></li><li><a href="global.html#importProducts">importProducts</a></li><li><a href="global.html#loadProducts">loadProducts</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openPopUpBanner">openPopUpBanner</a></li><li><a href="global.html#openProductPage">openProductPage</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#pushNewUser">pushNewUser</a></li><li><a href="global.html#sendLoginRequest">sendLoginRequest</a></li><li><a href="global.html#setUserShoppingCart">setUserShoppingCart</a></li><li><a href="global.html#showLogin">showLogin</a></li><li><a href="global.html#showPreview">showPreview</a></li><li><a href="global.html#showProductData">showProductData</a></li><li><a href="global.html#switchBannerImageAfterTime">switchBannerImageAfterTime</a></li><li><a href="global.html#userLogout">userLogout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Mar 13 2023 19:50:11 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

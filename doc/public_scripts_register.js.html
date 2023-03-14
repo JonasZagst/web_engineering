@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: public/scripts/register.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: public/scripts/register.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** JS File for /register */
+
+/** Registers a new user based on the user inputs. */
+function pushNewUser() {
+  let typeofuser = ""
+
+  if (document.getElementById("registerInputCompanyName")) {
+    typeofuser = "company";
+  }
+  else if (document.getElementById("registerInputCompanyName")) {
+    typeofuser = "private";
+  }
+
+  let json = generateJSON(typeofuser);
+
+  try {
+    let xhttp = new XMLHttpRequest();
+
+    if (typeofuser == "company") {
+      xhttp.open("POST", "api/companies", true);
+    }
+    else {
+      xhttp.open("POST", "api/users", true);
+    }
+
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.onload = () => {
+      const response = JSON.parse(xhttp.responseText);
+      const responseErr = response.error;
+      openPopUpBanner(responseErr);
+    };
+    xhttp.send(json);
+  }
+  catch (error) {
+    console.error(`pushNewUser: ${error}`);
+  }
+}
+
+/** Open a popup window to inform the user whether the registration of the user account succeeded.
+ * @param {?Number} error */
+function openPopUpBanner(error) {
+  if (error instanceof Number) {
+    // Alert Banner
+    document.getElementById("LoginBanner").style.backgroundColor = "red";
+    if (error == 5) {
+      document.getElementById("LoginBanner").innerText = "There was an error while trying to create your account. Please make sure you filled out all necessary fields(*). The fields 'zip' and 'number' have to be of type number!";
+    }
+    else if (error == 4) {
+      document.getElementById("LoginBanner").innerText = "There was an error while trying to create your account. The username/email-adress you provided already has an existing account!";
+    }
+    setTimeout(() => {
+      document.getElementById("LoginBanner").style.backgroundColor = "transparent";
+      document.getElementById("LoginBanner").innerText = "";
+    }, 4000);
+  }
+  else {
+    // Success Banner
+    document.getElementById("LoginBanner").style.backgroundColor = "green";
+    document.getElementById("LoginBanner").innerText = "You Successfully created your own Account!";
+
+    setTimeout(() => {
+      document.getElementById("LoginBanner").style.backgroundColor = "transparent";
+      document.getElementById("LoginBanner").innerText = "";
+      window.location.href = "/";
+    }, 4000);
+  }
+}
+
+/** Generate the json string for the register user request to the backend.
+ * @param {"company"|"private"} typeofuser*/
+function generateJSON(typeofuser) {
+  let companyName = "";
+  let firstName = "";
+  let lastName = "";
+  if (typeofuser == "company") {
+    companyName = document.getElementById("registerInputCompanyName").value;
+  }
+  else {
+    firstName = document.getElementById("registerInputFirstName").value;
+    lastName = document.getElementById("registerInputLastName").value;
+  }
+  const email = document.getElementById("registerInputEmail").value;
+  const password = document.getElementById("registerInputPassword").value;
+  const country = document.getElementById("country").value;
+  const city = document.getElementById("city").value;
+  const zip = parseInt(document.getElementById("zip").value);
+  const street = document.getElementById("street").value;
+  const houseNumber = document.getElementById("houseNumber").value;
+
+  let mockUser = null;
+  if (typeofuser == "company") {
+    mockUser = {
+      "name": companyName,
+      "email": email,
+      "password": password,
+      "address": {
+        "country": country,
+        "city": city,
+        "zip": zip,
+        "street": street,
+        "houseNumber": houseNumber
+      }
+    };
+  } else {
+    mockUser = {
+      "firstName": firstName,
+      "lastName": lastName,
+      "email": email,
+      "password": password,
+      "address": {
+        "country": country,
+        "city": city,
+        "zip": zip,
+        "street": street,
+        "houseNumber": houseNumber
+      },
+      "shoppingCart": []
+    };
+  }
+  return JSON.stringify(mockUser);
+}
+
+/** Change the form if the user switches from a private user registration form to a company user one or vice versa.
+ * @param {Object} event */
+function changeAccountUse(event) {
+  // console.log(event.path[0].id);
+  if (event.path[0].id == "containerLoginCaptionLeft") {
+
+    document.getElementById("containerLoginCaptionLeft").style.border = "solid black";
+    document.getElementById("containerLoginCaptionRight").style.border = "none";
+    document.getElementById("nameGrid").innerHTML = `&lt;label for="registerInputCompanyName">Company Name:&lt;/label>&lt;/br>
+    &lt;input type="text" id="registerInputCompanyName" name="registerInputCompanyName">&lt;/br>`;
+
+  } else if (event.path[0].id == "containerLoginCaptionRight") {
+
+    document.getElementById("containerLoginCaptionRight").style.border = "solid black";
+    document.getElementById("containerLoginCaptionLeft").style.border = "none";
+    document.getElementById("nameGrid").innerHTML = `&lt;div class="InlineGrid" id="inlineGridName">
+      &lt;div class="leftInlineElement">
+          &lt;label for="registerInputFirstName" id="registerLabelFirstName">First Name:&lt;/label>&lt;/br>
+          &lt;input type="text" id="registerInputFirstName" name="first-name">&lt;/br>
+      &lt;/div>
+      &lt;div class="rightInlineElement">
+          &lt;label for="registerInputLastName" id="registerLabelFirstName">Last Name:&lt;/label>&lt;/br>
+          &lt;input type="text" id="registerInputLastName" name="last-name">&lt;/br>
+      &lt;/div>
+  &lt;/div>`;
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#_addProductBoxes">_addProductBoxes</a></li><li><a href="global.html#_createProductDataList">_createProductDataList</a></li><li><a href="global.html#addItemToUserShoppingCart">addItemToUserShoppingCart</a></li><li><a href="global.html#addNewProduct">addNewProduct</a></li><li><a href="global.html#addNewUser">addNewUser</a></li><li><a href="global.html#addToShoppingCart">addToShoppingCart</a></li><li><a href="global.html#changeAccountUse">changeAccountUse</a></li><li><a href="global.html#changeToSearch">changeToSearch</a></li><li><a href="global.html#checkUserCredentialsValidity">checkUserCredentialsValidity</a></li><li><a href="global.html#createShoppingCart">createShoppingCart</a></li><li><a href="global.html#detectLogin">detectLogin</a></li><li><a href="global.html#fsUploadImage">fsUploadImage</a></li><li><a href="global.html#generateJSON">generateJSON</a></li><li><a href="global.html#getProductById">getProductById</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getProductsQuery">getProductsQuery</a></li><li><a href="global.html#getShoppingCartItems">getShoppingCartItems</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserShoppingCart">getUserShoppingCart</a></li><li><a href="global.html#importProducts">importProducts</a></li><li><a href="global.html#loadProducts">loadProducts</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openPopUpBanner">openPopUpBanner</a></li><li><a href="global.html#openProductPage">openProductPage</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#pushNewUser">pushNewUser</a></li><li><a href="global.html#sendLoginRequest">sendLoginRequest</a></li><li><a href="global.html#setUserShoppingCart">setUserShoppingCart</a></li><li><a href="global.html#showLogin">showLogin</a></li><li><a href="global.html#showPreview">showPreview</a></li><li><a href="global.html#showProductData">showProductData</a></li><li><a href="global.html#switchBannerImageAfterTime">switchBannerImageAfterTime</a></li><li><a href="global.html#userLogout">userLogout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Mar 13 2023 19:50:11 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

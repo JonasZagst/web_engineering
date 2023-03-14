@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: public/scripts/productPage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: public/scripts/productPage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** JS File for /productPage */
+
+document.addEventListener("DOMContentLoaded", loadProducts);
+
+/** Load all products and display them */
+function loadProducts() {
+    try {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "api/products", true);
+        xhttp.onload = () => {
+            window.sessionStorage.setItem("productArray", xhttp.response);
+            data = JSON.parse(xhttp.response);
+            _craeateProductForms(data);
+        };
+        xhttp.send();
+    }
+    catch (error) {
+        console.error(`loadProducts: ${error}`);
+    }
+}
+
+function _craeateProductForms(body) {
+    for (let i = 0; i &lt; body.length; i++) {
+        const productImage = body[i].image[0];
+        const productName = body[i].productName;
+        const productDescription = body[i].productDescription;
+        const productPrice = body[i].price;
+        const productID = body[i]._id;
+        _addProductBoxes(productName, productDescription, productPrice, productImage, productID);
+    }
+}
+
+function _addProductBoxes(productName, productDescription, productPrice, productImage, productID) {
+    document.getElementById("productGrid").innerHTML +=
+        `&lt;div class="grid-item">
+        &lt;div class="grid-image" onclick="openProductPage()" style="background-image:url(`+ productImage + `);background-position:center center;background-size:cover">
+        &lt;/div>
+        &lt;div class="grid-text" id="grid-text1">
+            &lt;strong style="color: black;font-size: large">`+ productName + `&lt;/strong>&lt;br>&lt;br>
+            &lt;strong>`+ productDescription + `&lt;/strong>&lt;br>&lt;br>&lt;br>
+            &lt;strong>`+ productPrice + `€&lt;/strong>
+            &lt;button style="background-color:transparent"id="`+ productID + `" type="button" onclick="addToShoppingCart(event)">&lt;img style="width:30px;height:30px;vertical-align:middle" src="img/shoppingCart.png" alt="Home">&lt;/button>
+        &lt;/div>
+    &lt;/div>`
+}
+
+/** Event handler to add an item to the shopping cart of the user.
+ * @param {Object} event */
+function addToShoppingCart(event) {
+    const currentButton = event.path[1];
+    const productID = currentButton.id;
+
+    const userID = window.sessionStorage.getItem("userID");
+
+    try {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "/api/users/" + userID + "/shoppingCart/" + productID, true);
+        xhttp.send();
+    }
+    catch (error) {
+        console.error(`addToShoppingCart: ${error}`);
+    }
+}
+
+function nameFilter(event) {
+    const filterValue = event.target.value;
+    var data = window.sessionStorage.getItem("productArray");
+    data = JSON.parse(data);
+    const resultManufacturer = data.filter(dataSet => dataSet.productName.includes(filterValue));
+    console.log(resultManufacturer);
+    document.getElementById("productGrid").innerHTML = "";
+    _craeateProductForms(resultManufacturer);
+}
+
+function priceFilter(event) {
+    const filterValue = event.target.value;
+    var data = window.sessionStorage.getItem("productArray");
+    data = JSON.parse(data);
+    const result = data.filter(dataSet => dataSet.price &lt; filterValue);
+    console.log(result);
+    document.getElementById("productGrid").innerHTML = "";
+    _craeateProductForms(result);
+}
+
+function colorFilter(event) {
+    const filterValue = event.target.value;
+    var data = window.sessionStorage.getItem("productArray");
+    data = JSON.parse(data);
+    const resultColor = data.filter(dataSet => dataSet.productSpecification.color.includes(filterValue));
+    console.log(resultColor);
+    document.getElementById("productGrid").innerHTML = "";
+    _craeateProductForms(resultColor);
+}
+
+function OSFilter(event) {
+    const filterValue = event.target.value;
+    var data = window.sessionStorage.getItem("productArray");
+    data = JSON.parse(data);
+    const resultOS = data.filter(dataSet => dataSet.productSpecification.operatingSystem.includes(filterValue));
+    console.log(resultOS);
+    document.getElementById("productGrid").innerHTML = "";
+    _craeateProductForms(resultOS);
+}
+
+function CPUFilter(event) {
+    const filterValue = event.target.value;
+    var data = window.sessionStorage.getItem("productArray");
+    data = JSON.parse(data);
+    const resultTypeCPU = data.filter(dataSet => dataSet.productSpecification.typeCPU.includes(filterValue));
+    console.log(resultTypeCPU);
+    document.getElementById("productGrid").innerHTML = "";
+    _craeateProductForms(resultTypeCPU);
+}
+
+function getCurrentPrice() {
+    document.getElementById("currentPrice").innerText = document.getElementById("filterPrice").value + "€";
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#_addProductBoxes">_addProductBoxes</a></li><li><a href="global.html#_createProductDataList">_createProductDataList</a></li><li><a href="global.html#addItemToUserShoppingCart">addItemToUserShoppingCart</a></li><li><a href="global.html#addNewProduct">addNewProduct</a></li><li><a href="global.html#addNewUser">addNewUser</a></li><li><a href="global.html#addToShoppingCart">addToShoppingCart</a></li><li><a href="global.html#changeAccountUse">changeAccountUse</a></li><li><a href="global.html#changeToSearch">changeToSearch</a></li><li><a href="global.html#checkUserCredentialsValidity">checkUserCredentialsValidity</a></li><li><a href="global.html#createShoppingCart">createShoppingCart</a></li><li><a href="global.html#detectLogin">detectLogin</a></li><li><a href="global.html#fsUploadImage">fsUploadImage</a></li><li><a href="global.html#generateJSON">generateJSON</a></li><li><a href="global.html#getProductById">getProductById</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getProductsQuery">getProductsQuery</a></li><li><a href="global.html#getShoppingCartItems">getShoppingCartItems</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserShoppingCart">getUserShoppingCart</a></li><li><a href="global.html#importProducts">importProducts</a></li><li><a href="global.html#loadProducts">loadProducts</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openPopUpBanner">openPopUpBanner</a></li><li><a href="global.html#openProductPage">openProductPage</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#pushNewUser">pushNewUser</a></li><li><a href="global.html#sendLoginRequest">sendLoginRequest</a></li><li><a href="global.html#setUserShoppingCart">setUserShoppingCart</a></li><li><a href="global.html#showLogin">showLogin</a></li><li><a href="global.html#showPreview">showPreview</a></li><li><a href="global.html#showProductData">showProductData</a></li><li><a href="global.html#switchBannerImageAfterTime">switchBannerImageAfterTime</a></li><li><a href="global.html#userLogout">userLogout</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Mar 13 2023 19:50:11 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

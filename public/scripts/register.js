@@ -37,7 +37,7 @@ function pushNewUser() {
 }
 
 /** Open a popup window to inform the user whether the registration of the user account succeeded.
- * @param {Number|any} error */
+ * @param {?Number} error */
 function openPopUpBanner(error) {
   if (typeof(error)=="number") {
     // Alert Banner

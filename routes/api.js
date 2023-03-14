@@ -2,19 +2,21 @@ import express from "express"
 //for image Upload
 import expressFileUpload from 'express-fileupload'
 
-import {addNewProduct, getProductById, getProducts} from "../controllers/api_products_controller.js"
+import { addNewProduct, getProductById, getProducts } from "../controllers/api_products_controller.js"
 import {
-    addItemToUserShoppingCart,
-    addNewUser,
-    getUserById,
-    getUserCredentialValidity,
-    getUserShoppingCart
+  addItemToUserShoppingCart,
+  addNewUser,
+  getUserById,
+  getUserCredentialValidity,
+  getUserShoppingCart,
+  clearUserShoppingCart
 } from "../controllers/api_users_controller.js"
 import {
-    addNewCompanyUser,
-    getCompanyUserById,
-    getCompanyUserCredentialValidity
+  addNewCompanyUser,
+  getCompanyUserById,
+  getCompanyUserCredentialValidity
 } from "../controllers/api_company_users_controller.js";
+import { uploadImage } from "../controllers/fs_controller"
 
 const apiRouter = express.Router();
 
@@ -48,20 +50,16 @@ apiRouter.post("/api/users", addNewUser);
 
 /** Get the shopping cart of a certain user. */
 apiRouter.get("/api/users/:id/shoppingCart", getUserShoppingCart);
+
+/** Adds an productId to the shopping cart of an user. */
 apiRouter.post("/api/users/:id/shoppingCart/:productID", addItemToUserShoppingCart);
 
-//Image Upload
-apiRouter.post('/api/upload', (req, res) => {
-  // Get the file that was set to our field named "image"
-  const { image } = req.files;
-  // If no image submitted, exit
-  if (!image) return res.sendStatus(400);
+/** Clears the shopping cart of an user. */
+apiRouter.delete("/api/users/:id/shoppingCart", clearUserShoppingCart);
 
-  // Move the uploaded image to our upload folder
-  image.mv('public/img/upload/' + image.name);
-  // All good
-  res.sendStatus(200);
-});
+/** Uploads an image to the filesystem of the server. */
+apiRouter.post('/api/upload', uploadImage);
+
 /** Check whether he credentials of a company user are valid.
  * E-Mail and password are passed in headers. */
 apiRouter.get("/api/companies/password", getCompanyUserCredentialValidity);
@@ -76,5 +74,5 @@ apiRouter.get("/api/companies/:id", getCompanyUserById);
 apiRouter.post("/api/companies", addNewCompanyUser);
 
 export {
-    apiRouter
+  apiRouter
 }
