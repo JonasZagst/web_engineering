@@ -20,7 +20,6 @@ function switchBannerImageAfterTime() {
 
     images.forEach((element) => {
         if (element == image) {
-            console.log("This" +image+ "= Wert in Liste"+ element);
             currentImage = index;
         }
         index++;
@@ -31,7 +30,6 @@ function switchBannerImageAfterTime() {
     }
     else {
         currentImage = currentImage + 1;
-        console.log("Next Image"+ images[currentImage]);
         }
     document.getElementById("LandingBannerImage").src = images[currentImage];
 }

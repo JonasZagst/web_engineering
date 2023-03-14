@@ -58,15 +58,15 @@ function showLogin(data, username, userID,typeOfUser) {
         document.getElementById("LoginBanner").style.backgroundColor = "green";
         document.getElementById("LoginBanner").innerText = "Login Succesfull!";
 
-        setTimeout(() => {
-            document.getElementById("LoginBanner").style.backgroundColor = "transparent";
-            document.getElementById("LoginBanner").innerText = "";
-            window.location.href = "/";
-        }, "3000");
 
         window.sessionStorage.setItem("userName", username);
         window.sessionStorage.setItem("userID", userID);
         window.sessionStorage.setItem("typeOfUser", typeOfUser);
+        setTimeout(() => {
+            document.getElementById("LoginBanner").style.backgroundColor = "transparent";
+            document.getElementById("LoginBanner").innerText = "";
+            window.location.href="/"
+        }, "3000")
     }
     else {
         document.getElementById("loginInputUsername").style.borderColor = "red";
@@ -80,6 +80,7 @@ function showLogin(data, username, userID,typeOfUser) {
             document.getElementById("LoginBanner").style.backgroundColor = "transparent";
             document.getElementById("LoginBanner").innerText = "";
         }, "3000")
+
     }
 }
 

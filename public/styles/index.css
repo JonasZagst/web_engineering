@@ -1,12 +1,12 @@
-/** Styling for the Landing Page Image Banner**/
+/** Styling for the Landing Page Image Banner Old(#8A7D61)**/
 #LandingBanner {
     background-color:#8A7D61 ;margin-bottom: 0%;height: 100%;
 }
 #LandingBannerImage
 {
     width: 75%;
-    height: 50%;
-    max-height: 800px;
+    height: 60%;
+    max-height: 700px;
     border-radius: 30px;
 }
 
@@ -16,7 +16,7 @@
 }
 
 #containerMotto p{
-margin-top:0;color: black;background-color:#8A7D61;text-align: center;font-size: x-large;;
+margin-top:0;color: black;text-align: center;font-size: x-large;;
 }
 
 /** Styling for the Landing Page Information Box**/
@@ -40,7 +40,6 @@ margin-top:0;color: black;background-color:#8A7D61;text-align: center;font-size:
 
 #gridContentRight {
     background-color:#1e1f22;
-    color:white;
     border-radius: 20%;
     margin-top: 6%;
     display:grid;
@@ -48,7 +47,7 @@ margin-top:0;color: black;background-color:#8A7D61;text-align: center;font-size:
 }
 
 #gridContentRight p{
-    background-color:transparent;color:white; width: 30%;border-radius: 20%;margin-top: 6%; width: 75%;font-size: x-large;
+    background-color:transparent;color:whitesmoke; width: 30%;border-radius: 20%;margin-top: 6%; width: 75%;font-size: x-large;
 }
 
 

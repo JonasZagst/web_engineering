@@ -115,21 +115,17 @@ function openPopUpBanner(error) {
     document.getElementById("LoginBanner").style.backgroundColor = "green";
     document.getElementById("LoginBanner").innerText = "You Successfully created your own Product!";
 
-    setTimeout(() => {
-      document.getElementById("LoginBanner").style.backgroundColor = "transparent";
-      document.getElementById("LoginBanner").innerText = "";
-      window.location.href = "/products";
-    }, "4000");
   }
   else {
     //Error Banner
     document.getElementById("LoginBanner").style.backgroundColor = "red";
     document.getElementById("LoginBanner").innerText = "There was an error while trying to create your account. Please make sure you filled out all necessary fields(*). The fields 'Product Price' has to be of type number! As well make sure that you've added a picture!";
-    setTimeout(() => {
-      document.getElementById("LoginBanner").style.backgroundColor = "transparent";
-      document.getElementById("LoginBanner").innerText = "";
-    }, "4000");
   }
+  
+  setTimeout(() => {
+    document.getElementById("LoginBanner").style.backgroundColor = "transparent";
+    document.getElementById("LoginBanner").innerText = "";
+  }, "4000");
 }
 
 /** Gets Image Data from Input(type Image) */

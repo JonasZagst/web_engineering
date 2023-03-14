@@ -57,7 +57,6 @@ function openPopUpBanner(error) {
     // Success Banner
     document.getElementById("LoginBanner").style.backgroundColor = "green";
     document.getElementById("LoginBanner").innerText = "You Successfully created your own Account!";
-
     setTimeout(() => {
       document.getElementById("LoginBanner").style.backgroundColor = "transparent";
       document.getElementById("LoginBanner").innerText = "";
