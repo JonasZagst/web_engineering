@@ -54,13 +54,13 @@ async function addNewUser(req, res) {
 
 async function getUserCredentialValidity(req, res) {
     const { username, passcode } = req.headers;
-    if (username !== null && passcode !== null) {
+    if (username && passcode) {
         try {
             const user = users_service.checkUserCredentialsValidity(PrivateUser, username, passcode);
             if (user) {
                 res.statusCode = 200;
+                res.cookie("credentials", JSON.stringify({ username: username, password: passcode }), { maxAge: 5 * 60 * 60 * 1000 }); // 5 Hours in milliseconds
                 res.json(user);
-                res.cookie("credentials", JSON.dump({ username: username, password: passcode }), { maxAge: 5 * 60 * 60 * 1000 }); // 5 Hours in milliseconds
             } else {
                 res.statusCode = 401;
                 res.send("Invalid Authentication!");

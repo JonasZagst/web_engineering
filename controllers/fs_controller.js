@@ -1,4 +1,4 @@
-import fsService from "../services/fs_service"
+import fsService from "../services/fs_service.js"
 
 function uploadImage(req, res) {
   // Get the file that was set to our field named "image"
