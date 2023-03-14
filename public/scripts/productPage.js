@@ -19,9 +19,10 @@ function loadProducts() {
 }
 
 
-/** Collects all necessary informations foreach given Product
+/** @ignore
+* Collects all necessary informations foreach given Product
 * @param {object} body The Parsed JSON Body, containg all Products */
-function _craeateProductForms(body) {
+function _createProductForms(body) {
     for (let i = 0; i < body.length; i++) {
         const productImage = body[i].image[0];
         const productName = body[i].productName;
@@ -32,7 +33,8 @@ function _craeateProductForms(body) {
     }
 }
 
-/** Adds a product Box to the product Page Body, foreach Product
+/** @ignore
+* Adds a product Box to the product Page Body, foreach Product
 * @param {string} productName 
 * @param {string} productDescription
 * @param {Number} productPrice
@@ -41,7 +43,7 @@ function _craeateProductForms(body) {
 function _addProductBoxes(productName, productDescription, productPrice, productImage, productID) {
     document.getElementById("productGrid").innerHTML +=
         `<div class="grid-item">
-        <div class="grid-image" id="`+ productName + `" onclick="openProductPageClick(event)" style="background-image:url(`+ productImage + `);background-position:center center;background-size:cover">
+        <div class="grid-image" id="`+ productName + `" onclick="openProductPageClick(event)" style="background-image:url(` + productImage + `);background-position:center center;background-size:cover">
         </div>
         <div class="grid-text" id="grid-text1">
             <strong style="color: black;font-size: large">`+ productName + `</strong><br><br>
@@ -107,16 +109,16 @@ function getCurrentPrice() {
 }
 
 /**On Click Function: Collapses the filter, when clicked*/
-function collapseFilter(){
-    for(const d of document.getElementsByClassName("filterItems"))
-        d.style.display ="none";
-    
-    document.getElementById("collapseFilter").innerHTML=`<img src="img/filter.png" alt="Filter" id="filterIcon" onclick="expandFilter()">`
+function collapseFilter() {
+    for (const d of document.getElementsByClassName("filterItems"))
+        d.style.display = "none";
+
+    document.getElementById("collapseFilter").innerHTML = `<img src="img/filter.png" alt="Filter" id="filterIcon" onclick="expandFilter()">`
 }
 
-function expandFilter(){
-    for(const d of document.getElementsByClassName("filterItems"))
-        d.style.display ="inline";
-    
-    document.getElementById("collapseFilter").innerHTML=`<img src="img/filter.png" alt="Filter" id="filterIcon" onclick="collapseFilter()">`
+function expandFilter() {
+    for (const d of document.getElementsByClassName("filterItems"))
+        d.style.display = "inline";
+
+    document.getElementById("collapseFilter").innerHTML = `<img src="img/filter.png" alt="Filter" id="filterIcon" onclick="collapseFilter()">`
 }

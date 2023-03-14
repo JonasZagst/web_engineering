@@ -48,6 +48,7 @@ function showProductData(data, productName) {
     window.sessionStorage.setItem("productID", currentData._id);
 }
 
+/** Add the item currently stored in sessionStorage["productID"] to the users shopping cart */
 function addToShoppingCart() {
     if(window.sessionStorage.getItem("typeOfUser")!="business"){
         const productID = window.sessionStorage.getItem("productID");
@@ -71,9 +72,10 @@ function addToShoppingCart() {
     openPopUpBanner(2);
 }
 
-/**User Feedback: Succesfully added Product to ShoppingCart */
-function openPopUpBanner(error){
-    if(error==0){
+/** Displays a banner for the user based on the error code.
+ * @param {0|1} error 0 is means everything is ok, 1 means that an error has occured. */
+function openPopUpBanner(error) {
+    if (error == 0) {
         document.getElementById("LoginBanner").style.backgroundColor = "green";
         document.getElementById("LoginBanner").innerText = "You successfully added a product to your Shopping Cart!";
     }

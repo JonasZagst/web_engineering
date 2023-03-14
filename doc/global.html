@@ -170,235 +170,6 @@
     
 
     
-    <h4 class="name" id="_addProductBoxes"><span class="type-signature"></span>_addProductBoxes<span class="signature">(productName, productDescription, productPrice, productImage, productID)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Helper function to display the fill an HTML string with the appropriate information of the product.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>productName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>productDescription</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>productPrice</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>productImage</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The url to the thumbnail image for the product.</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>productID</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_shoppingCart.js.html">public/scripts/shoppingCart.js</a>, <a href="public_scripts_shoppingCart.js.html#line49">line 49</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
     <h4 class="name" id="_createProductDataList"><span class="type-signature"></span>_createProductDataList<span class="signature">(data)</span><span class="type-signature"></span></h4>
     
 
@@ -500,7 +271,97 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line66">line 66</a>
+        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line79">line 79</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="addItemToUserShoppingCart"><span class="type-signature">(async) </span>addItemToUserShoppingCart<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    API Endpoint for POST /api/users/:id/shoppingCart/:productID
+
+Adds an productId to the shopping cart of an user.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_api_users_controller.js.html">controllers/api_users_controller.js</a>, <a href="controllers_api_users_controller.js.html#line122">line 122</a>
     </li></ul></dd>
     
 
@@ -718,6 +579,190 @@
     
 
     
+    <h4 class="name" id="addNewCompanyUser"><span class="type-signature">(async) </span>addNewCompanyUser<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Unused API Endpoint POST /api/companies
+
+Create a new company user.
+The information for the company user are passed in the body of the POST request as JSON.
+The layout of the JSON must match the description of the Mongoose Schema in /models/company_user.js
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_api_company_users_controller.js.html">controllers/api_company_users_controller.js</a>, <a href="controllers_api_company_users_controller.js.html#line37">line 37</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="addNewProduct"><span class="type-signature">(async) </span>addNewProduct<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    API Endpoint for POST /api/products/
+
+Create a new product.
+The information for the new product is passed in the body of the POST request as JSON.
+The layout of the JSON must match the description of the Mongoose Schema in /models/product.js
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_api_products_controller.js.html">controllers/api_products_controller.js</a>, <a href="controllers_api_products_controller.js.html#line66">line 66</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="addNewProduct"><span class="type-signature">(async) </span>addNewProduct<span class="signature">(productJSON)</span><span class="type-signature"> &rarr; (nullable) {Object}</span></h4>
     
 
@@ -866,6 +911,98 @@
 </dl>
 
     
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="addNewUser"><span class="type-signature">(async) </span>addNewUser<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    API Endpoint for POST /api/users/
+
+Create a new user.
+The information for the user are passed in the body of the POST request as JSON.
+The layout of the JSON must match the description of the Mongoose Schema in /models/user.js
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_api_users_controller.js.html">controllers/api_users_controller.js</a>, <a href="controllers_api_users_controller.js.html#line37">line 37</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1059,7 +1196,7 @@
     
 
     
-    <h4 class="name" id="addToShoppingCart"><span class="type-signature"></span>addToShoppingCart<span class="signature">(event)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addToShoppingCart"><span class="type-signature"></span>addToShoppingCart<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -1067,7 +1204,7 @@
 
 
 <div class="description">
-    Event handler to add an item to the shopping cart of the user.
+    Add the item currently stored in sessionStorage["productID"] to the users shopping cart
 </div>
 
 
@@ -1076,55 +1213,6 @@
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>event</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -1160,7 +1248,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_productPage.js.html">public/scripts/productPage.js</a>, <a href="public_scripts_productPage.js.html#line49">line 49</a>
+        <a href="public_scripts_productDetailPage.js.html">public/scripts/productDetailPage.js</a>, <a href="public_scripts_productDetailPage.js.html#line52">line 52</a>
     </li></ul></dd>
     
 
@@ -1297,7 +1385,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_register.js.html">public/scripts/register.js</a>, <a href="public_scripts_register.js.html#line125">line 125</a>
+        <a href="public_scripts_register.js.html">public/scripts/register.js</a>, <a href="public_scripts_register.js.html#line124">line 124</a>
     </li></ul></dd>
     
 
@@ -1436,7 +1524,7 @@ If the user clicks on the search icon then the icon is hidden and the search fie
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line34">line 34</a>
+        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line47">line 47</a>
     </li></ul></dd>
     
 
@@ -1680,6 +1768,272 @@ If the user clicks on the search icon then the icon is hidden and the search fie
     
 
     
+    <h4 class="name" id="checkoutShoppingCart"><span class="type-signature"></span>checkoutShoppingCart<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Function to delete current Shopping Cart content
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_shoppingCart.js.html">public/scripts/shoppingCart.js</a>, <a href="public_scripts_shoppingCart.js.html#line66">line 66</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="clearUserShoppingCart"><span class="type-signature">(async) </span>clearUserShoppingCart<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    API Endpoint for DELETE /api/users/:id/shoppingCart
+
+Clears the shopping cart of an user.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_api_users_controller.js.html">controllers/api_users_controller.js</a>, <a href="controllers_api_users_controller.js.html#line144">line 144</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="collapseFilter"><span class="type-signature"></span>collapseFilter<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    On Click Function: Collapses the filter, when clicked
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_productPage.js.html">public/scripts/productPage.js</a>, <a href="public_scripts_productPage.js.html#line112">line 112</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="createShoppingCart"><span class="type-signature"></span>createShoppingCart<span class="signature">(shoppingCartProducts)</span><span class="type-signature"></span></h4>
     
 
@@ -1873,7 +2227,95 @@ This is done by checking if the session storage contains a value for "userName".
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line75">line 75</a>
+        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line88">line 88</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="expandMenu"><span class="type-signature"></span>expandMenu<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Expand the nav bar, when button is clicked.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line152">line 152</a>
     </li></ul></dd>
     
 
@@ -2064,6 +2506,94 @@ This is done by checking if the session storage contains a value for "userName".
     
 
     
+    <h4 class="name" id="generateJSON"><span class="type-signature"></span>generateJSON<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Generates the actual JSON, that'll be send to backend. Takes the given values from HTML form as inputs
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_productCreation.js.html">public/scripts/productCreation.js</a>, <a href="public_scripts_productCreation.js.html#line68">line 68</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="generateJSON"><span class="type-signature"></span>generateJSON<span class="signature">(typeofuser)</span><span class="type-signature"></span></h4>
     
 
@@ -2168,7 +2698,543 @@ This is done by checking if the session storage contains a value for "userName".
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_register.js.html">public/scripts/register.js</a>, <a href="public_scripts_register.js.html#line71">line 71</a>
+        <a href="public_scripts_register.js.html">public/scripts/register.js</a>, <a href="public_scripts_register.js.html#line70">line 70</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="generateProductPreviewObject"><span class="type-signature"></span>generateProductPreviewObject<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Generates JSON Array and stores it in Session Storage, So that previewPage can read in the window
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_productCreation.js.html">public/scripts/productCreation.js</a>, <a href="public_scripts_productCreation.js.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getCompanyUserById"><span class="type-signature">(async) </span>getCompanyUserById<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    API Endpoint GET /api/companies/:id
+
+Returns all information for a compnay user by their `id`.
+The password is not returned.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_api_company_users_controller.js.html">controllers/api_company_users_controller.js</a>, <a href="controllers_api_company_users_controller.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getCompanyUserCredentialValidity"><span class="type-signature">(async) </span>getCompanyUserCredentialValidity<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    API Endpoint /api/users/password/
+
+Check whether the credentials of a user are valid.
+E-Mail and password are passed in headers.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_api_company_users_controller.js.html">controllers/api_company_users_controller.js</a>, <a href="controllers_api_company_users_controller.js.html#line68">line 68</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getImageFile"><span class="type-signature"></span>getImageFile<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Gets Image Data from Input(type Image)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_productCreation.js.html">public/scripts/productCreation.js</a>, <a href="public_scripts_productCreation.js.html#line131">line 131</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getImagePreview"><span class="type-signature"></span>getImagePreview<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Stores the imageData in session Storage
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_productCreation.js.html">public/scripts/productCreation.js</a>, <a href="public_scripts_productCreation.js.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getProductById"><span class="type-signature">(async) </span>getProductById<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    API Endpoint for GET /api/products/:id
+
+Retrieve product information by the `id` of a product.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_api_products_controller.js.html">controllers/api_products_controller.js</a>, <a href="controllers_api_products_controller.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -2352,6 +3418,96 @@ This is done by checking if the session storage contains a value for "userName".
 </dl>
 
     
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getProducts"><span class="type-signature">(async) </span>getProducts<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    API Endpoint for GET /api/products/
+
+Retrieve all products.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_api_products_controller.js.html">controllers/api_products_controller.js</a>, <a href="controllers_api_products_controller.js.html#line6">line 6</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2712,6 +3868,97 @@ This is done by checking if the session storage contains a value for "userName".
     
 
     
+    <h4 class="name" id="getUserById"><span class="type-signature">(async) </span>getUserById<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    API Endpoint for GET /api/users/:id
+
+Returns all information for a user by their `id`.
+The password is not returned.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_api_users_controller.js.html">controllers/api_users_controller.js</a>, <a href="controllers_api_users_controller.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getUserById"><span class="type-signature">(async) </span>getUserById<span class="signature">(model, id)</span><span class="type-signature"> &rarr; {Object|null}</span></h4>
     
 
@@ -2897,6 +4144,187 @@ This is done by checking if the session storage contains a value for "userName".
     
 
     
+    <h4 class="name" id="getUserCredentialValidity"><span class="type-signature">(async) </span>getUserCredentialValidity<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    API Endpoint for GET /api/users/password
+
+Check whether the credentials of a user are valid.
+E-Mail and password are passed in headers.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_api_users_controller.js.html">controllers/api_users_controller.js</a>, <a href="controllers_api_users_controller.js.html#line68">line 68</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getUserShoppingCart"><span class="type-signature">(async) </span>getUserShoppingCart<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    API Endpoint for GET /api/users/:id/shoppingCart
+
+Get the shopping cart of a certain user.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_api_users_controller.js.html">controllers/api_users_controller.js</a>, <a href="controllers_api_users_controller.js.html#line95">line 95</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getUserShoppingCart"><span class="type-signature">(async) </span>getUserShoppingCart<span class="signature">(userId)</span><span class="type-signature"> &rarr; (nullable) {Array.&lt;<a href="global.html#ProductID">ProductID</a>>}</span></h4>
     
 
@@ -3064,7 +4492,7 @@ This is done by checking if the session storage contains a value for "userName".
 
 
 <div class="description">
-    Requests all products from the backend and displays them.
+    Requests all products from the backend.
 </div>
 
 
@@ -3108,7 +4536,7 @@ This is done by checking if the session storage contains a value for "userName".
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line49">line 49</a>
+        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line62">line 62</a>
     </li></ul></dd>
     
 
@@ -3196,7 +4624,7 @@ This is done by checking if the session storage contains a value for "userName".
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_productPage.js.html">public/scripts/productPage.js</a>, <a href="public_scripts_productPage.js.html#line6">line 6</a>
+        <a href="public_scripts_productPage.js.html">public/scripts/productPage.js</a>, <a href="public_scripts_productPage.js.html#line5">line 5</a>
     </li></ul></dd>
     
 
@@ -3285,6 +4713,375 @@ This is done by checking if the session storage contains a value for "userName".
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="public_scripts_login.js.html">public/scripts/login.js</a>, <a href="public_scripts_login.js.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="nameFilter"><span class="type-signature"></span>nameFilter<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Filters the current products Array regarding the specific given filter inputs  
+    One Function for each Filter.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_productPage.js.html">public/scripts/productPage.js</a>, <a href="public_scripts_productPage.js.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="openPopUpBanner"><span class="type-signature"></span>openPopUpBanner<span class="signature">(error)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Opens a popUpBanner depending on the success of the ProductCreation
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">any</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_productCreation.js.html">public/scripts/productCreation.js</a>, <a href="public_scripts_productCreation.js.html#line107">line 107</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="openPopUpBanner"><span class="type-signature"></span>openPopUpBanner<span class="signature">(error)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Displays a banner for the user based on the error code.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">0</span>
+|
+
+<span class="param-type">1</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">0 is means everything is ok, 1 means that an error has occured.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_productDetailPage.js.html">public/scripts/productDetailPage.js</a>, <a href="public_scripts_productDetailPage.js.html#line72">line 72</a>
     </li></ul></dd>
     
 
@@ -3469,7 +5266,7 @@ This is done by checking if the session storage contains a value for "userName".
     
 
     
-    <h4 class="name" id="openProductPage"><span class="type-signature"></span>openProductPage<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="openPopUpBanner"><span class="type-signature"></span>openPopUpBanner<span class="signature">(deletionResponse)</span><span class="type-signature"></span></h4>
     
 
     
@@ -3477,7 +5274,7 @@ This is done by checking if the session storage contains a value for "userName".
 
 
 <div class="description">
-    Opens the detailed page for a product.
+    Displays a banner for the user to let them know about the state of their shopping cart.
 </div>
 
 
@@ -3486,6 +5283,55 @@ This is done by checking if the session storage contains a value for "userName".
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>deletionResponse</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -3521,7 +5367,144 @@ This is done by checking if the session storage contains a value for "userName".
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line107">line 107</a>
+        <a href="public_scripts_shoppingCart.js.html">public/scripts/shoppingCart.js</a>, <a href="public_scripts_shoppingCart.js.html#line83">line 83</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="openProductPage"><span class="type-signature"></span>openProductPage<span class="signature">(event)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Opens the detailed page for a product.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>event</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The JS event object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line139">line 139</a>
     </li></ul></dd>
     
 
@@ -3647,6 +5630,319 @@ For this a request to the backend is made.
     
 
     
+    <h4 class="name" id="openProductPageClick"><span class="type-signature"></span>openProductPageClick<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Opens the detailed page for a product.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_productPage.js.html">public/scripts/productPage.js</a>, <a href="public_scripts_productPage.js.html#line58">line 58</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="pushFileToServer"><span class="type-signature"></span>pushFileToServer<span class="signature">(file)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Stores the uploaded Image locally(img/upload)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>file</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The uploaded file object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_productCreation.js.html">public/scripts/productCreation.js</a>, <a href="public_scripts_productCreation.js.html#line139">line 139</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="pushNewProduct"><span class="type-signature"></span>pushNewProduct<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Logic for the actual product Creation
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="public_scripts_productCreation.js.html">public/scripts/productCreation.js</a>, <a href="public_scripts_productCreation.js.html#line45">line 45</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="pushNewUser"><span class="type-signature"></span>pushNewUser<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -3735,7 +6031,7 @@ For this a request to the backend is made.
     
 
     
-    <h4 class="name" id="sendLoginRequest"><span class="type-signature"></span>sendLoginRequest<span class="signature">(username, password)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="sendLoginRequest"><span class="type-signature"></span>sendLoginRequest<span class="signature">(username, password, typeofUser)</span><span class="type-signature"></span></h4>
     
 
     
@@ -3785,7 +6081,7 @@ For this a request to the backend is made.
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">String</span>
 
 
             
@@ -3808,7 +6104,30 @@ For this a request to the backend is made.
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>typeofUser</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
 
 
             
@@ -3859,7 +6178,7 @@ For this a request to the backend is made.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_login.js.html">public/scripts/login.js</a>, <a href="public_scripts_login.js.html#line13">line 13</a>
+        <a href="public_scripts_login.js.html">public/scripts/login.js</a>, <a href="public_scripts_login.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -4077,7 +6396,7 @@ For this a request to the backend is made.
     
 
     
-    <h4 class="name" id="showLogin"><span class="type-signature"></span>showLogin<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="showLogin"><span class="type-signature"></span>showLogin<span class="signature">(data, username, userID, typeOfUser)</span><span class="type-signature"></span></h4>
     
 
     
@@ -4085,7 +6404,7 @@ For this a request to the backend is made.
 
 
 <div class="description">
-    Displays whether the login succeeded.
+    Displays whether the login succeeded. Saves userName, userID and typeOfUser for later use to session Storage
 </div>
 
 
@@ -4094,6 +6413,127 @@ For this a request to the backend is made.
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+|
+
+<span class="param-type">any</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Response Message from HTTP Request</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>username</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>userID</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>typeOfUser</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -4129,7 +6569,7 @@ For this a request to the backend is made.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_login.js.html">public/scripts/login.js</a>, <a href="public_scripts_login.js.html#line39">line 39</a>
+        <a href="public_scripts_login.js.html">public/scripts/login.js</a>, <a href="public_scripts_login.js.html#line56">line 56</a>
     </li></ul></dd>
     
 
@@ -4173,7 +6613,7 @@ For this a request to the backend is made.
 
 
 <div class="description">
-    JS File for /productCreation
+    Opens a  preview of the created Product in a new Window
 </div>
 
 
@@ -4217,7 +6657,7 @@ For this a request to the backend is made.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_productCreation.js.html">public/scripts/productCreation.js</a>, <a href="public_scripts_productCreation.js.html#line3">line 3</a>
+        <a href="public_scripts_productCreation.js.html">public/scripts/productCreation.js</a>, <a href="public_scripts_productCreation.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -4553,7 +6993,97 @@ For this a request to the backend is made.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line7">line 7</a>
+        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="uploadImage"><span class="type-signature"></span>uploadImage<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    API Endpoint for POST /api/upload
+
+Uploads an image to the filesystem of the server.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_fs_controller.js.html">controllers/fs_controller.js</a>, <a href="controllers_fs_controller.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -4643,7 +7173,7 @@ Hides the User icon on the left of the header.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line89">line 89</a>
+        <a href="public_scripts_general.js.html">public/scripts/general.js</a>, <a href="public_scripts_general.js.html#line108">line 108</a>
     </li></ul></dd>
     
 
@@ -5893,13 +8423,13 @@ Hides the User icon on the left of the header.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#_addProductBoxes">_addProductBoxes</a></li><li><a href="global.html#_createProductDataList">_createProductDataList</a></li><li><a href="global.html#addItemToUserShoppingCart">addItemToUserShoppingCart</a></li><li><a href="global.html#addNewProduct">addNewProduct</a></li><li><a href="global.html#addNewUser">addNewUser</a></li><li><a href="global.html#addToShoppingCart">addToShoppingCart</a></li><li><a href="global.html#changeAccountUse">changeAccountUse</a></li><li><a href="global.html#changeToSearch">changeToSearch</a></li><li><a href="global.html#checkUserCredentialsValidity">checkUserCredentialsValidity</a></li><li><a href="global.html#createShoppingCart">createShoppingCart</a></li><li><a href="global.html#detectLogin">detectLogin</a></li><li><a href="global.html#fsUploadImage">fsUploadImage</a></li><li><a href="global.html#generateJSON">generateJSON</a></li><li><a href="global.html#getProductById">getProductById</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getProductsQuery">getProductsQuery</a></li><li><a href="global.html#getShoppingCartItems">getShoppingCartItems</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserShoppingCart">getUserShoppingCart</a></li><li><a href="global.html#importProducts">importProducts</a></li><li><a href="global.html#loadProducts">loadProducts</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openPopUpBanner">openPopUpBanner</a></li><li><a href="global.html#openProductPage">openProductPage</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#pushNewUser">pushNewUser</a></li><li><a href="global.html#sendLoginRequest">sendLoginRequest</a></li><li><a href="global.html#setUserShoppingCart">setUserShoppingCart</a></li><li><a href="global.html#showLogin">showLogin</a></li><li><a href="global.html#showPreview">showPreview</a></li><li><a href="global.html#showProductData">showProductData</a></li><li><a href="global.html#switchBannerImageAfterTime">switchBannerImageAfterTime</a></li><li><a href="global.html#userLogout">userLogout</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#_createProductDataList">_createProductDataList</a></li><li><a href="global.html#addItemToUserShoppingCart">addItemToUserShoppingCart</a></li><li><a href="global.html#addNewCompanyUser">addNewCompanyUser</a></li><li><a href="global.html#addNewProduct">addNewProduct</a></li><li><a href="global.html#addNewUser">addNewUser</a></li><li><a href="global.html#addToShoppingCart">addToShoppingCart</a></li><li><a href="global.html#changeAccountUse">changeAccountUse</a></li><li><a href="global.html#changeToSearch">changeToSearch</a></li><li><a href="global.html#checkUserCredentialsValidity">checkUserCredentialsValidity</a></li><li><a href="global.html#checkoutShoppingCart">checkoutShoppingCart</a></li><li><a href="global.html#clearUserShoppingCart">clearUserShoppingCart</a></li><li><a href="global.html#collapseFilter">collapseFilter</a></li><li><a href="global.html#createShoppingCart">createShoppingCart</a></li><li><a href="global.html#detectLogin">detectLogin</a></li><li><a href="global.html#expandMenu">expandMenu</a></li><li><a href="global.html#fsUploadImage">fsUploadImage</a></li><li><a href="global.html#generateJSON">generateJSON</a></li><li><a href="global.html#generateProductPreviewObject">generateProductPreviewObject</a></li><li><a href="global.html#getCompanyUserById">getCompanyUserById</a></li><li><a href="global.html#getCompanyUserCredentialValidity">getCompanyUserCredentialValidity</a></li><li><a href="global.html#getImageFile">getImageFile</a></li><li><a href="global.html#getImagePreview">getImagePreview</a></li><li><a href="global.html#getProductById">getProductById</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getProductsQuery">getProductsQuery</a></li><li><a href="global.html#getShoppingCartItems">getShoppingCartItems</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserCredentialValidity">getUserCredentialValidity</a></li><li><a href="global.html#getUserShoppingCart">getUserShoppingCart</a></li><li><a href="global.html#importProducts">importProducts</a></li><li><a href="global.html#loadProducts">loadProducts</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#nameFilter">nameFilter</a></li><li><a href="global.html#openPopUpBanner">openPopUpBanner</a></li><li><a href="global.html#openProductPage">openProductPage</a></li><li><a href="global.html#openProductPageClick">openProductPageClick</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#pushFileToServer">pushFileToServer</a></li><li><a href="global.html#pushNewProduct">pushNewProduct</a></li><li><a href="global.html#pushNewUser">pushNewUser</a></li><li><a href="global.html#sendLoginRequest">sendLoginRequest</a></li><li><a href="global.html#setUserShoppingCart">setUserShoppingCart</a></li><li><a href="global.html#showLogin">showLogin</a></li><li><a href="global.html#showPreview">showPreview</a></li><li><a href="global.html#showProductData">showProductData</a></li><li><a href="global.html#switchBannerImageAfterTime">switchBannerImageAfterTime</a></li><li><a href="global.html#uploadImage">uploadImage</a></li><li><a href="global.html#userLogout">userLogout</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Mar 13 2023 19:50:11 GMT+0100 (Mitteleuropäische Normalzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Mar 14 2023 18:20:13 GMT+0100 (Mitteleuropäische Normalzeit)
 </footer>
 
 <script> prettyPrint(); </script>

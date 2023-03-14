@@ -4,14 +4,16 @@ Repository zur Web Engineering Vorlesung
 Prüfungsleistung für die Vorlesung Web Engineering des Kurses TIK22 und TIM22
 der DHBW Ravensburg (Campus Friedrichshafen)
 
-Diese Datei dient auch als Anleitung für die Installation der Software. Weiterhin lässt sich eine Dokumentation für die
-serverseitige Infrastruktur und das Javascript für die funktionalität der Webseiten in JSDoc erstellen.
+Diese Datei dient auch als Anleitung für die Installation der Software. Weiterhin findet sich eine Dokumentation für die
+serverseitige Infrastruktur und das Javascript für die funktionalität der Webseiten, welche mithilfe von **JSDoc** erstellt
+wurde, im *doc* Ordner.
 
 ## Inhalt
 * Dokumentation generieren
 * Server Starten
 * Aufbau des Servers
 * Aufbau der Webseite
+* Quellenverzeichnis
 
 ## Dokumentation generieren
 Für die Dokumentation der der Webseite wurde [JSDoc](https://jsdoc.app/) verwendet. Diese kann nach Installation mit 
@@ -57,7 +59,20 @@ nicht angegeben wurde gilt der PORT: 3000.
 Dieses Kapitel beschreibt den funktionalen Aufbau des Servers.
 
 ### Grundaufbau
-MVC, Templating Engine, Modelle
+Der Server wurde an einem **Model View Controller** Schema orientiert. Hierbei sind die Modelle für die verschiedenen Nutzer,
+sowie die Produkte im *models* Ordner zu finden. Die *Business Logic*, welche die Speicherung und Verarbeitung der Daten,
+anhand der Modelle übernimmt, findet sich in den *services*. Zuletzt ermöglichen die Controller aus dem Ordner *controllers*,
+den Zugriff auf die Ressourcen durch die Bereitstellung der API Endpunkte.
+
+Die Webseiten selbst werden ebenfalls über vordefinierte API Endpunkte bereitgestellt. Hier kommt die Templating Engine
+*ejs* zum Einsatz, welche es erlaubt, dass das Grundlayout und wiederverwendete Teile von Webseiten nur einmal geschrieben
+und dann als Template in alle Seiten eingefügt werden können. Das Layout und die einzelnen Seiten finden sich im *views*
+Ordner.
+
+Um es Angreifern zu Erschweren ungewollt Quellcode und sonstige Dateien einsehen zu können wird nicht das gesamte Verzeichnis
+geteilt, sondern nur der Teil im *public* Ordner. Hierin finden sich Bilder, clientseitige Scripts und die CSS Dateien.
+Alle Anderen dateien, darunter auch die an Stelle der HTML Dateien verwendeten Templates für die Struktur und Informationen 
+auf der Seite sind ausschließlich dem Server zugänglich und werden über die Controller gezielt und kontrolliert bereitgestellt.
 
 ### API
 Die Webseiten, sowie sonstige Ressourcen wie die Zugriffe auf Users und Products sind mit der API umgesetzt.
@@ -102,13 +117,13 @@ den User ohne sein Passwort zurück. Diese Funktion dient der Authentifizierung 
 
 All diese Funktionen werden zwischen *users* und *compnaies* geteilt, für letztere muss nur *users* im Pfad durch *companies* ersetzt
 werden. Beispielsweise wäre eine Anfrage eines *company Accounts* per id: ``/api/companies/{id}``. Die folgenden Funktionen
-lassen sich jecoch nur auf *users* anwenden.
+lassen sich jedoch nur auf *users* anwenden.
 * Eine **GET** Anfrage auf den URI ``/api/users/{id}/shoppingCart`` liefert ein Array aus allen *ProductID* im Warenkorb des
 Nutzers, anhand der *UUID* des Nutzers. Diese können anschließend über die **Product API** den Produkten zugeordnet werden.
-* Eine **PUT** Anfrage auf den URI ``/api/users/:id/shoppingCart``, bei welcher eine **ProductID** im Body übergeben wird,
+* Eine **PUT** Anfrage auf den URI ``/api/users/{id}/shoppingCart``, bei welcher eine **ProductID** im Body übergeben wird,
 fügt die übergebene *Product ID* dem Wahrenkorb des mit dem *id* parameter spezifizierten Nutzers hinzu und sendet das
 aktualisierte Array des Warenkorbs zurück.
-* Eine **DELETE** Anfrage auf den URI ``/api/users/:id/shoppingCart``, bei welcher das ShoppingCart des Nutzers mit der ID `:id` geleert wird.
+* Eine **DELETE** Anfrage auf den URI ``/api/users/{id}/shoppingCart``, bei welcher das ShoppingCart des Nutzers mit der im Feld *id* übergebenen *UUID* geleert wird.
 
 Eine Möglichkeit alle User anzufragen wurde bewusst weggelassen, sodass nicht die Daten aller Nutzer einfach gesammelt
 werden können. In Zukunft wäre für die API Zugriffe allgemein noch eine **Authentication** geplant.
@@ -183,3 +198,7 @@ Sollte man sich als gewerblicher Nutzer einloggen, erscheint stattdessen der Men
 
 Zum Schluss hat man als User noch die Möglichkeit, sich aus seinem Account auszuloggen. Hierbei werden alle Sitzungsdaten gelöscht und die Landing Page wird wieder auf den Ursprungszustand zurückgesetzt.
 Wie bereits erwähnt, ist diese Funktion ebenfalls Teil des Menüs und wird hier stets als der letzte Menüpunkt angezeigt. 
+
+## Quellenverzeichnis
+- Startseite Bild 1: [Wirtschaftsforum SPD e.V.](https://www.spd-wirtschaftsforum.de/veranstaltung/arbeitssitzung-fachforum-digitales-plattformoekonomie-mit-falko-mohrs-mdb-und-dr-sabrina-zeplin-otto-group/) 
+- Präsentation Einführungsbild: [Behance](https://www.behance.net/gallery/59192949/Free-Social-Media-Mockups-and-Guidelines) 

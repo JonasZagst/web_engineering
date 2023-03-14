@@ -1,5 +1,8 @@
 import fsService from "../services/fs_service.js"
 
+/** API Endpoint for POST /api/upload
+ *
+ * Uploads an image to the filesystem of the server. */
 function uploadImage(req, res) {
   // Get the file that was set to our field named "image"
   const { image } = req.files;

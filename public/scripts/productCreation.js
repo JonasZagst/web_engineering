@@ -35,7 +35,6 @@ function generateProductPreviewObject() {
 
     //Save data Object for the session
     window.sessionStorage.setItem("previewObject", previewObject);
-
   }
   catch {
     alert("Problem while trying to initialize the Product Preview!");
@@ -121,7 +120,7 @@ function openPopUpBanner(error) {
     document.getElementById("LoginBanner").style.backgroundColor = "red";
     document.getElementById("LoginBanner").innerText = "There was an error while trying to create your account. Please make sure you filled out all necessary fields(*). The fields 'Product Price' has to be of type number! As well make sure that you've added a picture!";
   }
-  
+
   setTimeout(() => {
     document.getElementById("LoginBanner").style.backgroundColor = "transparent";
     document.getElementById("LoginBanner").innerText = "";
@@ -131,7 +130,7 @@ function openPopUpBanner(error) {
 /** Gets Image Data from Input(type Image) */
 function getImageFile() {
   var file = document.getElementById("uploadImage").files[0];
-  console.log(typeof(file));
+  console.log(typeof (file));
   pushFileToServer(file);
 }
 

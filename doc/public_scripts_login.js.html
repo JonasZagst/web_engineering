@@ -32,21 +32,34 @@
 function login() {
     username = document.getElementById("loginInputUsername").value;
     password = document.getElementById("loginInputPassword").value;
-    sendLoginRequest(username, password);
+    typeOfUser = document.getElementById("typeofUser").checked;
+    if(typeOfUser==true)
+    {
+        sendLoginRequest(username, password,"business");
+    }
+    else{
+        sendLoginRequest(username, password,"private");
+    }
 }
 
 /** Sends a request to the server to check whether the provided `username` and `password` are correct.
- * @param {string} username
- * @param {string} password */
-function sendLoginRequest(username, password) {
+ * @param {String} username
+ * @param {String} password 
+ * @param {String} typeofUser */
+function sendLoginRequest(username, password,typeofUser) {
     try {
         var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "api/users/password", true);
+        if(typeofUser=="business"){
+            xhttp.open("GET", "api/companies/password", true);
+        }
+        else{
+            xhttp.open("GET", "api/users/password", true);
+        }
         xhttp.onload = () => {
             if (xhttp.responseText != "Invalid Authentication!") {
                 const response = JSON.parse(xhttp.responseText);
                 const userID = response._id;
-                showLogin(xhttp.responseText, username, userID);
+                showLogin(xhttp.responseText, username, userID,typeofUser);
             }
             else {
                 const userID = "";
@@ -63,20 +76,25 @@ function sendLoginRequest(username, password) {
     }
 }
 
-/** Displays whether the login succeeded. */
-function showLogin(data, username, userID) {
+/** Displays whether the login succeeded. Saves userName, userID and typeOfUser for later use to session Storage 
+* @param {Number|any} data Response Message from HTTP Request
+* @param {string} username
+* @param {string} userID
+* @param {string} typeOfUser */
+function showLogin(data, username, userID,typeOfUser) {
     if (data != "Invalid Authentication!") {
         document.getElementById("LoginBanner").style.backgroundColor = "green";
         document.getElementById("LoginBanner").innerText = "Login Succesfull!";
 
-        setTimeout(() => {
-            document.getElementById("LoginBanner").style.backgroundColor = "transparent";
-            document.getElementById("LoginBanner").innerText = "";
-            window.location.href = "/";
-        }, "3000");
 
         window.sessionStorage.setItem("userName", username);
         window.sessionStorage.setItem("userID", userID);
+        window.sessionStorage.setItem("typeOfUser", typeOfUser);
+        setTimeout(() => {
+            document.getElementById("LoginBanner").style.backgroundColor = "transparent";
+            document.getElementById("LoginBanner").innerText = "";
+            window.location.href="/"
+        }, "3000")
     }
     else {
         document.getElementById("loginInputUsername").style.borderColor = "red";
@@ -90,9 +108,7 @@ function showLogin(data, username, userID) {
             document.getElementById("LoginBanner").style.backgroundColor = "transparent";
             document.getElementById("LoginBanner").innerText = "";
         }, "3000")
-        //let windowParams = "scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=400,height=200";
-        //let newWin = window.open("about:blank", "Login Failed", windowParams);
-        //newWin.document.write("Login Failed, Username or Password wrong!");
+
     }
 }
 
@@ -108,13 +124,13 @@ function showLogin(data, username, userID) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#_addProductBoxes">_addProductBoxes</a></li><li><a href="global.html#_createProductDataList">_createProductDataList</a></li><li><a href="global.html#addItemToUserShoppingCart">addItemToUserShoppingCart</a></li><li><a href="global.html#addNewProduct">addNewProduct</a></li><li><a href="global.html#addNewUser">addNewUser</a></li><li><a href="global.html#addToShoppingCart">addToShoppingCart</a></li><li><a href="global.html#changeAccountUse">changeAccountUse</a></li><li><a href="global.html#changeToSearch">changeToSearch</a></li><li><a href="global.html#checkUserCredentialsValidity">checkUserCredentialsValidity</a></li><li><a href="global.html#createShoppingCart">createShoppingCart</a></li><li><a href="global.html#detectLogin">detectLogin</a></li><li><a href="global.html#fsUploadImage">fsUploadImage</a></li><li><a href="global.html#generateJSON">generateJSON</a></li><li><a href="global.html#getProductById">getProductById</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getProductsQuery">getProductsQuery</a></li><li><a href="global.html#getShoppingCartItems">getShoppingCartItems</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserShoppingCart">getUserShoppingCart</a></li><li><a href="global.html#importProducts">importProducts</a></li><li><a href="global.html#loadProducts">loadProducts</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#openPopUpBanner">openPopUpBanner</a></li><li><a href="global.html#openProductPage">openProductPage</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#pushNewUser">pushNewUser</a></li><li><a href="global.html#sendLoginRequest">sendLoginRequest</a></li><li><a href="global.html#setUserShoppingCart">setUserShoppingCart</a></li><li><a href="global.html#showLogin">showLogin</a></li><li><a href="global.html#showPreview">showPreview</a></li><li><a href="global.html#showProductData">showProductData</a></li><li><a href="global.html#switchBannerImageAfterTime">switchBannerImageAfterTime</a></li><li><a href="global.html#userLogout">userLogout</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#_createProductDataList">_createProductDataList</a></li><li><a href="global.html#addItemToUserShoppingCart">addItemToUserShoppingCart</a></li><li><a href="global.html#addNewCompanyUser">addNewCompanyUser</a></li><li><a href="global.html#addNewProduct">addNewProduct</a></li><li><a href="global.html#addNewUser">addNewUser</a></li><li><a href="global.html#addToShoppingCart">addToShoppingCart</a></li><li><a href="global.html#changeAccountUse">changeAccountUse</a></li><li><a href="global.html#changeToSearch">changeToSearch</a></li><li><a href="global.html#checkUserCredentialsValidity">checkUserCredentialsValidity</a></li><li><a href="global.html#checkoutShoppingCart">checkoutShoppingCart</a></li><li><a href="global.html#clearUserShoppingCart">clearUserShoppingCart</a></li><li><a href="global.html#collapseFilter">collapseFilter</a></li><li><a href="global.html#createShoppingCart">createShoppingCart</a></li><li><a href="global.html#detectLogin">detectLogin</a></li><li><a href="global.html#expandMenu">expandMenu</a></li><li><a href="global.html#fsUploadImage">fsUploadImage</a></li><li><a href="global.html#generateJSON">generateJSON</a></li><li><a href="global.html#generateProductPreviewObject">generateProductPreviewObject</a></li><li><a href="global.html#getCompanyUserById">getCompanyUserById</a></li><li><a href="global.html#getCompanyUserCredentialValidity">getCompanyUserCredentialValidity</a></li><li><a href="global.html#getImageFile">getImageFile</a></li><li><a href="global.html#getImagePreview">getImagePreview</a></li><li><a href="global.html#getProductById">getProductById</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getProductsQuery">getProductsQuery</a></li><li><a href="global.html#getShoppingCartItems">getShoppingCartItems</a></li><li><a href="global.html#getUserById">getUserById</a></li><li><a href="global.html#getUserCredentialValidity">getUserCredentialValidity</a></li><li><a href="global.html#getUserShoppingCart">getUserShoppingCart</a></li><li><a href="global.html#importProducts">importProducts</a></li><li><a href="global.html#loadProducts">loadProducts</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#nameFilter">nameFilter</a></li><li><a href="global.html#openPopUpBanner">openPopUpBanner</a></li><li><a href="global.html#openProductPage">openProductPage</a></li><li><a href="global.html#openProductPageClick">openProductPageClick</a></li><li><a href="global.html#productSchema">productSchema</a></li><li><a href="global.html#pushFileToServer">pushFileToServer</a></li><li><a href="global.html#pushNewProduct">pushNewProduct</a></li><li><a href="global.html#pushNewUser">pushNewUser</a></li><li><a href="global.html#sendLoginRequest">sendLoginRequest</a></li><li><a href="global.html#setUserShoppingCart">setUserShoppingCart</a></li><li><a href="global.html#showLogin">showLogin</a></li><li><a href="global.html#showPreview">showPreview</a></li><li><a href="global.html#showProductData">showProductData</a></li><li><a href="global.html#switchBannerImageAfterTime">switchBannerImageAfterTime</a></li><li><a href="global.html#uploadImage">uploadImage</a></li><li><a href="global.html#userLogout">userLogout</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Mar 13 2023 19:50:11 GMT+0100 (Mitteleuropäische Normalzeit)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Mar 14 2023 18:20:13 GMT+0100 (Mitteleuropäische Normalzeit)
 </footer>
 
 <script> prettyPrint(); </script>

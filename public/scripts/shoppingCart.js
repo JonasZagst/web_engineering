@@ -40,7 +40,8 @@ function createShoppingCart(shoppingCartProducts) {
   }
 }
 
-/** Helper function to display the fill an HTML string with the appropriate information of the product.
+/** @ignore
+ * Helper function to display the fill an HTML string with the appropriate information of the product.
  * @param {string} productName
  * @param {string} productDescription
  * @param {number} productPrice
@@ -62,8 +63,8 @@ function _addProductBoxes(productName, productDescription, productPrice, product
 }
 
 /**Function to delete current Shopping Cart content */
-function checkoutShoppingCart(){
-  try{
+function checkoutShoppingCart() {
+  try {
     const userID = window.sessionStorage.userID;
     const xhttp = new XMLHttpRequest();
     xhttp.open("DELETE", `api/users/${userID}/shoppingCart`, true);
@@ -77,20 +78,21 @@ function checkoutShoppingCart(){
   }
 }
 
-function openPopUpBanner(deletionResponse){
-  if(deletionResponse=="OK")
-  {
+/** Displays a banner for the user to let them know about the state of their shopping cart.
+ * @param {String} deletionResponse */
+function openPopUpBanner(deletionResponse) {
+  if (deletionResponse == "OK") {
     document.getElementById("LoginBanner").style.backgroundColor = "green";
     document.getElementById("LoginBanner").innerText = "You succesfully checked out your Shopping Cart!";
   }
-  else{
+  else {
     document.getElementById("LoginBanner").style.backgroundColor = "red";
     document.getElementById("LoginBanner").innerText = "There was a problem when trying to checkout!";
   }
 
   setTimeout(() => {
-      document.getElementById("LoginBanner").style.backgroundColor = "transparent";
-      document.getElementById("LoginBanner").innerText = "";
-      window.location.href="/shoppingCart"
+    document.getElementById("LoginBanner").style.backgroundColor = "transparent";
+    document.getElementById("LoginBanner").innerText = "";
+    window.location.href = "/shoppingCart"
   }, "3000")
 }
