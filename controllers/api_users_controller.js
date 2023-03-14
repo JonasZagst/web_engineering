@@ -81,7 +81,7 @@ async function getUserShoppingCart(req, res) {
 
     if (id !== null) {
         try {
-            const queryResult = users_service.getUserShoppingCart(id);
+            const queryResult = await users_service.getUserShoppingCart(id);
             if (!queryResult) {
                 res.statusCode = 404;
                 res.send("Not found");

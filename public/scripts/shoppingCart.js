@@ -7,6 +7,7 @@ function getShoppingCartItems() {
     const xhttp = new XMLHttpRequest();
     xhttp.open("GET", `api/users/${userID}/shoppingCart`, true);
     xhttp.onload = () => {
+      console.log(JSON.parse(xhttp.responseText));
       const shoppingCartProducts = JSON.parse(xhttp.response)
       createShoppingCart(shoppingCartProducts);
     };
