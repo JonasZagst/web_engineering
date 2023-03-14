@@ -12,11 +12,11 @@
 
 /** Styling for the Landing Page Motto**/
 #containerMotto{
-    margin-top:0;color: black;background-color:cornflowerblue;text-align: center;padding:10px
+    margin-top:0;color: black;background-color:cornflowerblue;text-align: center;padding:10px; padding-top: 25px;
 }
 
 #containerMotto p{
-margin-top:0;color: black;text-align: center;font-size: x-large;;
+margin-top:0;color: black;text-align: center;font-size: x-large;font-family: sans-serif;
 }
 
 /** Styling for the Landing Page Information Box**/
@@ -34,7 +34,7 @@ margin-top:0;color: black;text-align: center;font-size: x-large;;
 }
 
 #gridContentLeft img{
-    border-top: 50px; border-radius: 10%;height: 100%;float: left;margin-right: 0;margin-left: 10%;width: 20px;
+    border-top: 50px; border-radius: 30px;height: 100%;float: left;margin-right: 0;margin-left: 10%;width: 20px;
     width: 75%;
 }
 
@@ -47,7 +47,7 @@ margin-top:0;color: black;text-align: center;font-size: x-large;;
 }
 
 #gridContentRight p{
-    background-color:transparent;color:whitesmoke; width: 30%;border-radius: 20%;margin-top: 6%; width: 75%;font-size: x-large;
+    background-color:transparent;color:whitesmoke; width: 30%;border-radius: 20%;margin-top: 6%; width: 75%;font-size: x-large;font-family: sans-serif;
 }
 
 

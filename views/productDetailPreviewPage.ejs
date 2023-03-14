@@ -1,34 +1,80 @@
-<link rel="stylesheet" href="styles/productDetailPreviewPage.css">
+<link rel="stylesheet" href="styles/productDetailPage.css">
+<link rel="stylesheet" href="styles/productDetailPage_responsive.css">
+<script src="scripts/productDetailPage.js"></script> 
+<script src="scripts/productDetailPreviewPage.js"></script> 
 <script src="scripts/general.js"></script>
 <main>
     <div class="productDetailGrid">   
         <div class="productDetailGridBoxLeft">
             <div class="productDetailsImage">
-                <img id="productDetailPreviewImage" src="img\productImages\Dell_Latitude_7420_3.jpg">
+                <img id="productDetailImage" src="img\productImages\Dell_Latitude_7420_3.jpg">
             </div>
         </div>
         <div class="productDetailGridBoxRight">
-            <div id="productDetailPreviewTitleName">
+            <div id="productDetailTitleName">
                 <h3>Amazon</h3>
             </div>
-            <div class="productDetailDescription">
-                <h3 id="productDetailPreviewDescriptionText">productDescription</h3>
+            <div class="productDetailDescriptionGrid">
+                <div class="productDetailDescription">
+                    <h3 id="productDetailDescriptionText">productDescription</h3>
+                </div>
+                <div class="productDetailPrice">
+                        <div>
+                            <span>Price:</span>
+                            <span id="productDetailPriceText">Das ist der Preis</span>
+                        </div>
+                        <button id="addToCartButton" type="button"><img id="shoppingCartButton" src="img/shoppingCart.png" alt="ShoppingCart"></button>
+                </div>
             </div>
-            <button id="addToCartButton" type="button"><strong>Add to shopping cart</strong></button>
         </div>
     </div>
     <div class="productDetailInformations">
-        <div><h3 id="productDetailDetailsTitle">Product Details</h3></div>
-        <form id="detailsLeft">
-            <label>Name:</label><span id="productDetailPreviewName"></span></br>
-            <label>Price:</label><span id="productDetailPreviewPrice"></span></br>
-            <label>Operating System</label><span id="productDetailPreviewOS"></span></br>
-            <label>Amount RAM</label><span id="productDetailPreviewamountRAM"></span></br>
-            <label>Color</label><span id="productDetailPreviewColor"></span></br>
-            <label>Type CPU:</label><span id="productDetailPreviewTypeCPU"></span></br>
-            <label>Type GPU:</label><span id="productDetailPreviewTypeGPU"></span></br>
-        </form>
-    </div>
+        <div class="productDetailInformationsGrid">
+        <div id="detailsLeft">
+            <h3 id="productDetailDetailsTitle">Product Details</h3>
+            <table id="productDetailTable">
+                <tr>
+                    <th><label>Name:</label></td>
+                    <td><span id="productDetailName"></span></td>
+                </tr>
+                <tr>
+                    <th><label>Price:</label></td>
+                    <td><span id="productDetailPrice"></span></td>
+                </tr>
+                <tr>
+                    <th><label>Operating System:</label></td>
+                    <td><span id="productDetailOS"></span></td>
+                </tr>
+                <tr>
+                    <th><label>Amount RAM:</label></td>
+                    <td><span id="productDetailamountRAM"></span></td>
+                </tr>
+                <tr>
+                    <th><label>Color:</label></td>
+                    <td><span id="productDetailColor"></span></td>
+                </tr>
+                <tr>
+                    <th><label>Type CPU:</label></td>
+                    <td><span id="productDetailTypeCPU"></span></td>
+                </tr>
+                <tr>
+                    <th><label>Type GPU:</label></td>
+                    <td><span id="productDetailTypeGPU"></span></td>
+                </tr>
+            </table>
+        </div>
+        <div id="detailsRight">
+            <h3>Delivery Conditions:</h3>
+            <span>
+                At our online laptop store, we offer fast and reliable delivery to ensure that you receive your order in a timely manner.Shipping times may vary depending on your location, but we always aim to dispatch your order within 24 hours of purchase.
+                We also provide package tracking information so you can stay informed about the status of your delivery.
+                In the unlikely event that you encounter any issues with your delivery, our customer service team is available to assist you promptly.
+                
+                Due to our longtime DHL partnership, all our products will be delivered by DHL Express. 
+                Please note that you won't be able to change this! 
+            </span></br>
+            <img id="deliveryLogo" src="/img/dhl.jpeg">
+        </div>
     <button id="returnToCreation" type="button" onclick="window.close();"><strong>Return</strong></button>
 </main>
 <script src="scripts/productDetailPreviewPage.js"></script> 

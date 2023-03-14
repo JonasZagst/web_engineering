@@ -4,6 +4,13 @@ body {
     margin: 0;
 }
 
+p, span {
+    font-family: sans-serif;
+}
+
+button{
+    cursor: pointer;
+}
 main {
     text-align: center;
 }

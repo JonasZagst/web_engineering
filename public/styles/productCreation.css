@@ -3,6 +3,7 @@
     height:800px;
     display: inline-block;
     border-radius: 5%;
+    margin-bottom: -30px;
 }
 
 .productCreationFormCaption {
@@ -46,7 +47,7 @@
 }
 
 .productCreationForm {
-    border-radius: 5%;
+    border-radius: 15px;
     font-family: Arial, Helvetica, sans-serif;
     background: cornflowerblue;
     height: 700px;
@@ -160,24 +161,33 @@ input[type= file]::file-selector-button:hover{
 }
 
 #productButton, #previewButton{
-    width: 200px;
+    width: 30%;
     height: 50px;
     border-radius: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: transparent;
+    background-color: cornflowerblue;
     color: black;
     margin-block-end: 1em;
+    margin-top: 10px;
+    height: 75px;
 }
 
 #productButton:hover, #previewButton:hover {
-    border:solid #1e1f22
+    border:solid #1e1f22;
+    opacity: 90%;
 }
 .productPreviewBox{
     height: 330px;
-    background-color: #4ed679;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     border: black solid; 
     border-top: none;
     padding-top: 10px;
+}
+.buttonArea{
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    border-radius: 15px;
+    height: 75px;
 }

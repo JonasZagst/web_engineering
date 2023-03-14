@@ -1,0 +1,17 @@
+/*Middle Sized Screen*/
+@media screen and (max-width: 1500px) and (min-width: 0px) {
+
+    .productDetailGrid{
+        grid-template-columns: 2fr;
+    }
+    .productDetailInformationsGrid{
+        grid-template-columns: 2fr;
+    }
+    #detailsRight{
+        height: 800px;
+    }
+    #deliveryLogo{
+        height: 45%;
+    }
+
+}

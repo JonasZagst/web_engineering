@@ -51,7 +51,7 @@ async function addNewCompanyUser(req, res) {
 
 async function getCompanyUserCredentialValidity(req, res) {
     const {username, passcode} = req.headers;
-
+    console.log("arrived");
     if (username !== null && passcode !== null) {
         try {
             const user =  await users_service.checkUserCredentialsValidity(CompanyUser, username, passcode);

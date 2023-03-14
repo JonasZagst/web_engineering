@@ -42,41 +42,48 @@ function showProductData(data, productName) {
 
     document.getElementById("productDetailTitleName").innerText = currentData.productName;
 
-    document.getElementById("productDetailPriceText").innerText = currentData.price;
+    document.getElementById("productDetailPriceText").innerText = currentData.price +" €";
 
     //On Success
     window.sessionStorage.setItem("productID", currentData._id);
 }
 
 function addToShoppingCart() {
-    const productID = window.sessionStorage.getItem("productID");
-    const userID = window.sessionStorage.getItem("userID");
-    if (!userID) {
-        openPopUpBanner(1)
-    }
+    if(window.sessionStorage.getItem("typeOfUser")!="business"){
+        const productID = window.sessionStorage.getItem("productID");
+        const userID = window.sessionStorage.getItem("userID");
+        if (!userID) {
+            openPopUpBanner(1)
+        }
 
-    else{
-        try {
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", `/api/users/${userID}/shoppingCart/${productID}`, true);
-            xhttp.send();
-            openPopUpBanner(0);
-        }
-        catch (error) {
-            console.error(`addToShoppingCart: ${error}`);
+        else{
+            try {
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", `/api/users/${userID}/shoppingCart/${productID}`, true);
+                xhttp.send();
+                openPopUpBanner(0);
+            }
+            catch (error) {
+                console.error(`addToShoppingCart: ${error}`);
+            }
         }
     }
+    openPopUpBanner(2);
 }
 
 /**User Feedback: Succesfully added Product to ShoppingCart */
 function openPopUpBanner(error){
     if(error==0){
         document.getElementById("LoginBanner").style.backgroundColor = "green";
-        document.getElementById("LoginBanner").innerText = "You successfully added a product to your shopping Cart!";
+        document.getElementById("LoginBanner").innerText = "You successfully added a product to your Shopping Cart!";
     }
     else if(error==1){
         document.getElementById("LoginBanner").style.backgroundColor = "red";
         document.getElementById("LoginBanner").innerText = "You have to be logged in, to add products to your shopping Cart!";
+    }
+    else if(error==2){
+        document.getElementById("LoginBanner").style.backgroundColor = "red";
+        document.getElementById("LoginBanner").innerText = "You have to be logged in as private user to add products to your shopping Cart!";
     }
     setTimeout(() => {
         document.getElementById("LoginBanner").style.backgroundColor = "transparent";

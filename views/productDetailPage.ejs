@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="styles/productDetailPage.css">
+<link rel="stylesheet" href="styles/productDetailPage_responsive.css">
 <script src="scripts/productDetailPage.js"></script> 
 <script src="scripts/general.js"></script>
 <main>
@@ -12,50 +13,66 @@
             <div id="productDetailTitleName">
                 <h3>Amazon</h3>
             </div>
-            <div class="productDetailDescription">
-                <h3 id="productDetailDescriptionText">productDescription</h3>
+            <div class="productDetailDescriptionGrid">
+                <div class="productDetailDescription">
+                    <h3 id="productDetailDescriptionText">productDescription</h3>
+                </div>
+                <div class="productDetailPrice">
+                        <div>
+                            <span>Price:</span>
+                            <span id="productDetailPriceText">Das ist der Preis</span>
+                        </div>
+                        <button id="addToCartButton" type="button" onclick="addToShoppingCart()"><img id="shoppingCartButton" src="img/shoppingCart.png" alt="ShoppingCart"></button>
+                </div>
             </div>
-            <table class="productDetailPrice">
-                <tr>
-                    <td><div id="productDetailPriceText">Das ist der Preis</div></td>
-                    <td><div id="productDetailPriceUnit">$</div></td>
-                </tr>
-                
-            </table>
-            <button id="addToCartButton" type="button" onclick="addToShoppingCart()"><img id="shoppingCartButton" src="img/shoppingCart.png" alt="ShoppingCart"></button>
         </div>
     </div>
     <div class="productDetailInformations">
-        <div><h3 id="productDetailDetailsTitle">Product Details</h3></div>
-        <table id="detailsLeft">
-            <tr>
-                <td><label>Name:</label></td>
-                <td><span id="productDetailName"></span></td>
-            </tr>
-            <tr>
-                <td><label>Price:</label></td>
-                <td><span id="productDetailPrice"></span></td>
-            </tr>
-            <tr>
-                <td><label>Operating System:</label></td>
-                <td><span id="productDetailOS"></span></td>
-            </tr>
-            <tr>
-                <td><label>Amount RAM:</label></td>
-                <td><span id="productDetailamountRAM"></span></td>
-            </tr>
-            <tr>
-                <td><label>Color:</label></td>
-                <td><span id="productDetailColor"></span></td>
-            </tr>
-            <tr>
-                <td><label>Type CPU:</label></td>
-                <td><span id="productDetailTypeCPU"></span></td>
-            </tr>
-            <tr>
-                <td><label>Type GPU:</label></td>
-                <td><span id="productDetailTypeGPU"></span></td>
-            </tr>
-        </table>
-    </div>
+        <div class="productDetailInformationsGrid">
+        <div id="detailsLeft">
+            <h3 id="productDetailDetailsTitle">Product Details</h3>
+            <table id="productDetailTable">
+                <tr>
+                    <th><label>Name:</label></td>
+                    <td><span id="productDetailName"></span></td>
+                </tr>
+                <tr>
+                    <th><label>Price:</label></td>
+                    <td><span id="productDetailPrice"></span></td>
+                </tr>
+                <tr>
+                    <th><label>Operating System:</label></td>
+                    <td><span id="productDetailOS"></span></td>
+                </tr>
+                <tr>
+                    <th><label>Amount RAM:</label></td>
+                    <td><span id="productDetailamountRAM"></span></td>
+                </tr>
+                <tr>
+                    <th><label>Color:</label></td>
+                    <td><span id="productDetailColor"></span></td>
+                </tr>
+                <tr>
+                    <th><label>Type CPU:</label></td>
+                    <td><span id="productDetailTypeCPU"></span></td>
+                </tr>
+                <tr>
+                    <th><label>Type GPU:</label></td>
+                    <td><span id="productDetailTypeGPU"></span></td>
+                </tr>
+            </table>
+        </div>
+        <div id="detailsRight">
+            <h3>Delivery Conditions:</h3>
+            <span>
+                At our online laptop store, we offer fast and reliable delivery to ensure that you receive your order in a timely manner.Shipping times may vary depending on your location, but we always aim to dispatch your order within 24 hours of purchase.
+                We also provide package tracking information so you can stay informed about the status of your delivery.
+                In the unlikely event that you encounter any issues with your delivery, our customer service team is available to assist you promptly.
+                
+                Due to our longtime DHL partnership, all our products will be delivered by DHL Express. 
+                Please note that you won't be able to change this! 
+            </span></br>
+            <img id="deliveryLogo" src="/img/dhl.jpeg">
+        </div>
+</div>
 </main>

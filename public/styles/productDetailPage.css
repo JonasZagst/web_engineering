@@ -1,5 +1,9 @@
-
-/*productGrid */
+/*General */
+h3 {
+    text-align: center;
+    font-size: 30px;
+}
+/*Upper Part, Product Description and Image*/
 .productDetailGrid {
     display: grid;
     grid-template-columns: 2fr 3fr;
@@ -18,16 +22,36 @@
     background-color: white;
 }
 
-.productDetailGridBoxLeft, .productDetailGridBoxRight, .productDetailInformations {
+.productDetailGridBoxLeft, .productDetailGridBoxRight {
     border-radius: 10px;
 }
 
-.productDetailInformations {
-    width: 96%;
-    height: 450px;
+#productDetailTitleName {
+    text-align: center;
+    font-size: xx-large;
+    margin: 5%;
+    font-weight: bold;
+}
+
+/** Product Description GridBox*/
+.productDetailDescriptionGrid
+{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+
+#productDetailDescriptionText {
+    text-align: left;
+    font-size: x-large;
+    margin-left: 10%;
+}
+.productDetailPrice {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: x-large;
     margin-top: 2%;
-    margin-left: 2%;
-    background-color: cornflowerblue;
+    font-weight: bold;
 }
 
 /*ProductImage */
@@ -36,66 +60,40 @@
     height: 500px;
 }
 
-/*ProductImage */
 #productDetailImage:hover {
     transform: scale(0.9);
 }
 
-/*ProductDescription GridBox Right*/
-#productDetailTitleName {
-    text-align: left;
-    font-size: 40px;
-    margin: 5%;
-    font-weight: bold;
+/*Lower Part, ProductDescription and Delivery Informations*/
+
+.productDetailInformations {
+    width: 96%;
+    height: 600px;
+    margin-top: 2%;
+    margin-left: 2%;
 }
 
-#productDetailDescriptionText {
-    text-align: left;
-    font-style: normal;
-    font-size: 22px;
-    margin-left: 5%;
-    margin-right: 5%;
+.productDetailInformationsGrid{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    text-align: center;
+    grid-gap: 1em;
+    height: 650px;
     
 }
 
-
-/*styling of the product Price*/
-.productDetailPrice {
-    margin-left: auto;
-    margin-right: auto;
+.productDetailPrice span {
+    font-size: 30px;
 }
-
-#productDetailPriceText, #productDetailPriceUnit {
-    text-align: center;
-    font-weight: bold;
-    font-size: 30px;  
-}
-
-
 
 #addToCartButton {
-        display: inline-block;
-        background-color:cornflowerblue ;
-        padding: 10px;
-        width: 50%;
-        color: #ffffff;
-        text-align: center;
-        border: 4px double #cccccc; 
-        border-radius: 10px; 
-        font-size: 28px;
-        cursor: pointer; 
-        margin-left: 25%;
-        margin-right: 25%; 
-        margin-top: 5%;
-        margin-bottom: 5%;
-        opacity: 0.9;
-}
-
-#shoppingCartButton{
-    width:70px;
-    height:70px;
-    vertical-align:middle"
-
+    background-color:cornflowerblue ;
+    padding: 10px;
+    width: 100%;
+    color: #ffffff;
+    border: 4px double #cccccc; 
+    border-radius: 10px; 
+    margin-top: 10%;
 }
 
 #addToCartButton:hover {
@@ -103,29 +101,66 @@
     box-shadow: 0 0 15px #FF0000;
   }
 
-
-/*Product DetailDetails Stylings*/
-
-#productDetailDetailsTitle {
-    text-align: left;
-    font-size: 30px;
-    margin-left: 3%;
-    margin-bottom: 3%;
-    padding-top: 3%;
-
+#shoppingCartButton{
+    width:70px;
+    height:70px;
+    vertical-align:"middle"
 }
 
 
-#detailsLeft label, #detailsLeft span {
+#detailsLeft label, #detailsLeft span, #detailsRight span {
     font-size: 25px;
     text-align: left;
     margin-left: 2%;
-
+    
 }
 
 #detailsLeft {
-    width: 40%;
+    width: 75%;
     text-align: left;
+}
+
+#deliveryLogo{
+    width: 60%;
+    height: 200px;
+    margin-top: 30px;
+}
+
+
+#detailsLeft, #detailsRight {
+    background-color: cornflowerblue;
+    width: 100%;
+    border-radius: 10px;
+}
+
+/** Styling of the product informations*/
+
+#productDetailTable{
+    margin-left: 1%;
+    border-spacing: 15px;
+}
+
+#productDetailTable td{
     margin-left: 2%;
-    border-width: 0px;
+    width: 20%;
+}
+
+#productDetailTable th{
+    margin-left: 2%;
+    width: 5%;
+}
+
+
+/** Product Preview Page Button*/
+#returnToCreation{
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: cornflowerblue;
+} 
+
+#returnToCreation:hover{
+    opacity: 80%;
 }
