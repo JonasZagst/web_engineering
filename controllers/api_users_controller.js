@@ -56,7 +56,7 @@ async function getUserCredentialValidity(req, res) {
     const { username, passcode } = req.headers;
     if (username && passcode) {
         try {
-            const user = users_service.checkUserCredentialsValidity(PrivateUser, username, passcode);
+            const user = await users_service.checkUserCredentialsValidity(PrivateUser, username, passcode);
             if (user) {
                 res.statusCode = 200;
                 res.cookie("credentials", JSON.stringify({ username: username, password: passcode }), { maxAge: 5 * 60 * 60 * 1000 }); // 5 Hours in milliseconds
