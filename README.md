@@ -202,3 +202,8 @@ Wie bereits erwähnt, ist diese Funktion ebenfalls Teil des Menüs und wird hier
 ## Quellenverzeichnis
 - Startseite Bild 1: [Wirtschaftsforum SPD e.V.](https://www.spd-wirtschaftsforum.de/veranstaltung/arbeitssitzung-fachforum-digitales-plattformoekonomie-mit-falko-mohrs-mdb-und-dr-sabrina-zeplin-otto-group/) 
 - Präsentation Einführungsbild: [Behance](https://www.behance.net/gallery/59192949/Free-Social-Media-Mockups-and-Guidelines) 
+- Zweiter Landing Page Banner: https://static.ivanti.com/sites/marketing/media/images/blog/2017/07/gettyimages-664599098.jpg
+- Dritter Landing Page Banner: https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRhsQ84CqEYFWI8EqrEvcmz7zUy3lc6rBh9u-jS079m38eGz1Wn
+- Landing Page Bereiche Unten Links: https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTaaebmw1dWgFryaI3W3xRVi7dX9BcEfBs5hA52dS2F2kj3KaTQ
+-Menü Icons: https://fontawesome.com/
+-
