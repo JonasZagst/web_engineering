@@ -61,3 +61,7 @@ function _addProductBoxes(productName, productDescription, productPrice, product
         </div>
     </div>`
 }
+
+function checkoutShoppingCart(){
+  
+}

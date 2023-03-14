@@ -5,11 +5,14 @@ window.onload=function(){
     detectLogin();
     detectWindowWidth();
 };
-window.onresize = detectWindowWidth
+//Executes a function, when window resizing is detected 
+window.onresize = detectWindowWidth;
 
 /** Switches the main banner on the page after an amount of time. */
 function switchBannerImageAfterTime() {
-    let image = document.getElementById("LandingBannerImage").src;
+    let image = String(document.getElementById("LandingBannerImage").src);
+    //Regular Expression to only get filepath
+    image = image.match("(?<=localhost:3000\/).*");
     const images = ["img/banner.png", "img/banner2.jpeg", "img/banner3.jpeg"];
 
     let index = 0;
@@ -17,6 +20,7 @@ function switchBannerImageAfterTime() {
 
     images.forEach((element) => {
         if (element == image) {
+            console.log("This" +image+ "= Wert in Liste"+ element);
             currentImage = index;
         }
         index++;
@@ -27,9 +31,15 @@ function switchBannerImageAfterTime() {
     }
     else {
         currentImage = currentImage + 1;
-    }
+        console.log("Next Image"+ images[currentImage]);
+        }
     document.getElementById("LandingBannerImage").src = images[currentImage];
 }
+
+//Switches the banner Image after a given time period
+if(window.location.href=="http://localhost:3000/"){
+    setInterval(switchBannerImageAfterTime,10000);
+} 
 
 /** Changes the search icon to the search field
  *

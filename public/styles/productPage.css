@@ -90,5 +90,23 @@
     width: 50px;
     height: 50px;
     position: relative;
-    top: 30%;
+    top: 
+    30%;
+}
+
+/** Shopping Cart Button**/
+#checkOutShopping
+{
+    margin-top: 30px;
+    background-color: #8A7D61;
+    width: 20%;
+    height: 100px;
+    color: whitesmoke;
+    font-weight: bold;
+    border-radius: 2%;
+}
+
+#checkOutShopping:hover
+{
+   opacity: 75%;
 }
