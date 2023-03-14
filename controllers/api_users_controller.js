@@ -1,40 +1,18 @@
+import { PrivateUser } from "../models/user.js"
 import * as users_service from "../services/users_service.js"
 
 async function getUserById(req, res) {
-    const {id} = req.params;
+    const { id } = req.params;
+
     if (id !== null) {
         try {
-            const queryResult = await users_service.getUserById(id);
-            if (!queryResult) {
+            const user = await users_service.getUserById(PrivateUser, id);
+            if (!user) {
                 res.statusCode = 404;
                 res.send("Not found");
             } else {
                 res.statusCode = 200;
-                res.json(queryResult)
-                res.json(email,password);
-            }
-        } catch (error) {
-            res.statusCode = 500;
-            console.error(error);
-            res.send(error.message);
-        }
-    } else {
-        res.statusCode = 400;
-        res.send("Bad Request");
-    }
-}
-
-async function getUserByName(req, res) {
-    const {name} = req.params;
-    if (name !== null) {
-        try {
-            const queryResult = await users_service.getUserByName(name);
-            if (!queryResult) {
-                res.statusCode = 404;
-                res.send("Not found");
-            } else {
-                res.statusCode = 200;
-                res.json(queryResult)
+                res.json(user)
             }
         } catch (error) {
             res.statusCode = 500;
@@ -49,41 +27,43 @@ async function getUserByName(req, res) {
 
 async function addNewUser(req, res) {
     const user = req.body;
+
     try {
-        const newUser = await users_service.addNewUser(user);
+        const newUser = await users_service.addNewUser(PrivateUser, user);
         res.statusCode = 201;
         res.json(newUser);
     } catch (error) {
         if (error.name === "JSONMappingError") {
             res.statusCode = 400;
+            res.json({
+                error: error.code,
+                message: error.message
+            });
+        } else if (error.name === "DuplicateKeyError") {
+            res.statusCode = 403;
+            res.json({
+                error: error.code,
+                message: error.message
+            });
         } else {
             res.statusCode = 500;
             console.error(error);
         }
-        res.send(error.message);
     }
 }
 
 async function getUserCredentialValidity(req, res) {
-    const {username,passcode} = req.headers;
-    if (username,passcode !== null) {
+    const { username, passcode } = req.headers;
+    if (username !== null && passcode !== null) {
         try {
-            let queryResult = await users_service.getUserByName(username);
-
-            if (queryResult.length==0|| queryResult==null) {
-                res.statusCode = 404;
-                res.send("User Not Found");
-            }
-            else {
-                const password =queryResult[0].password;
-                if(passcode==password){
-                    res.statusCode = 200;
-                    res.send("Login succesfull!")
-                }
-                else {
-                    res.statusCode =200;
-                    res.send("Login failed!")
-                }    
+            const user = users_service.checkUserCredentialsValidity(PrivateUser, username, passcode);
+            if (user) {
+                res.statusCode = 200;
+                res.json(user);
+                res.cookie("credentials", JSON.dump({ username: username, password: passcode }), { maxAge: 5 * 60 * 60 * 1000 }); // 5 Hours in milliseconds
+            } else {
+                res.statusCode = 401;
+                res.send("Invalid Authentication!");
             }
         } catch (error) {
             res.statusCode = 500;
@@ -94,19 +74,14 @@ async function getUserCredentialValidity(req, res) {
         res.statusCode = 400;
         res.send("Bad Request");
     }
-
-
-    // 1. Get user by email from database
-    // 2. Check if password and password in database are the same.
-    // 3. (Optional) Hash the passwords when creating or reading a user
 }
 
 async function getUserShoppingCart(req, res) {
-    const {id} = req.params;
+    const { id } = req.params;
 
     if (id !== null) {
         try {
-            const queryResult = await users_service.getUserShoppingCart(id);
+            const queryResult = users_service.getUserShoppingCart(id);
             if (!queryResult) {
                 res.statusCode = 404;
                 res.send("Not found");
@@ -126,20 +101,33 @@ async function getUserShoppingCart(req, res) {
 }
 
 async function addItemToUserShoppingCart(req, res) {
-    const {id} = req.params;
+    const { id, productID } = req.params;
 
-    if (!req.body || id === null){
+    if (!req.body || id === null) {
         res.statusCode = 400;
         res.send("Bad Request");
         return;
     }
-    const {productId} = req.body;
-
     try {
-        const newShoppingCart = await users_service.addItemToUserShoppingCart(id, productId);
+        const newShoppingCart = users_service.addItemToUserShoppingCart(id, productID);
         res.statusCode = 201;
         res.json(newShoppingCart);
-    } catch (error){
+    } catch (error) {
+        res.statusCode = 500;
+        console.error(error);
+        res.send(error.message);
+    }
+}
+
+async function clearUserShoppingCart(req, res) {
+    const { userId } = req.params;
+    if (!userId) {
+        res.sendStatus(400);
+    }
+    try {
+        users_service.setUserShoppingCart(userId, []);
+        res.sendStatus(200);
+    } catch (error) {
         res.statusCode = 500;
         console.error(error);
         res.send(error.message);
@@ -148,9 +136,9 @@ async function addItemToUserShoppingCart(req, res) {
 
 export {
     getUserById,
-    getUserByName,
     addNewUser,
     getUserCredentialValidity,
     getUserShoppingCart,
-    addItemToUserShoppingCart
+    addItemToUserShoppingCart,
+    clearUserShoppingCart
 }

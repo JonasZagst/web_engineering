@@ -6,6 +6,7 @@ class DbPutError extends Error {
             super("An Error occurred while changing a document on the database");
         }
         this.name = "DbPutError";
+        this.code = 3;
     }
 }
 

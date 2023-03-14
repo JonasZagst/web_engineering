@@ -6,6 +6,7 @@ class DbGetError extends Error {
             super("An Error occurred while querying for your requested data");
         }
         this.name = "DbGetError";
+        this.code = 1;
     }
 }
 

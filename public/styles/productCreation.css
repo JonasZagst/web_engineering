@@ -1,10 +1,8 @@
 .productCreationBlock {
-    width: 80%;
+    width: 100%;
     height:800px;
     display: inline-block;
     border-radius: 5%;
-    margin-top: 2%;
-   
 }
 
 .productCreationFormCaption {
@@ -16,12 +14,16 @@
 
 .productGridBox {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 2fr;
     grid-gap: 1em;
-    margin-top: 5%; 
-    margin-left: 2%;
-    margin-right: 2%;
-    height: 10px;
+    margin-top: 50px; 
+    width: 100%;
+    height: 5px;
+}
+
+.productSelectionGridBox{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
 }
 
 .productItem{
@@ -46,12 +48,22 @@
 .productCreationForm {
     border-radius: 15%;
     font-family: Arial, Helvetica, sans-serif;
-    background: #5866f2;    
+    background: #8A7D61;
     height: 700px;
-    margin-right: 50px;
-    width: 600px;
+    margin-left: 500px;
+    margin-right: 500px;
+    width: 1000px;
     color: black;
 }
+
+#formLeft{
+    margin-left: 50px;
+}
+
+#formRight{
+    margin-right: 50px;
+}
+
 .productCreationPreview{
     height:100%;
 }
@@ -60,11 +72,6 @@
     font-size: large;
     margin-block-end: 0.5em;
     color: black;
-}
-
-.productCreationForm p{
-    font-size: large;
-    margin-block-end: 0.5em;
 }
 
 .productCreationForm input{
@@ -78,7 +85,7 @@
     text-align: center;
 }
 #productDescription{
-    height: 150px;
+    height: 175px;
     text-align: start;
     width: 420px;
     border-radius: 10px;
@@ -100,11 +107,13 @@
     border-color: black;
     width: 400px;
     color: whitesmoke;
+    margin-top: 0.5em;
 }
 
 .fileUpload span {
     color: whitesmoke;
     font-size: medium;
+    margin-left: 0px;
 }
 
 .fileUpload:hover{
@@ -150,7 +159,7 @@ input[type= file]::file-selector-button:hover{
    border: white solid;
 }
 
-#productButton{
+#productButton, #previewButton{
     width: 200px;
     height: 50px;
     border-radius: 10px;
@@ -160,12 +169,12 @@ input[type= file]::file-selector-button:hover{
     margin-block-end: 1em;
 }
 
-#productButton:hover {
+#productButton:hover, #previewButton:hover {
     border:solid #1e1f22
 }
 .productPreviewBox{
     height: 330px;
-    background-color: #5866f2;
+    background-color: #4ed679;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     border: black solid; 

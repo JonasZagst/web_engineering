@@ -4,38 +4,101 @@
     <div class="productCreationBlock">
             <div class="productGridBox">
                 <div class="productCreationForm">
-                    <form>
-                        <h3 class="productCreationFormCaption">Design your own Product:</h3>
-                        <p>Product Image:</p>
-                        <label for="uploadimage" class="fileUpload">
-                            <span class="dropTitle">Drop file here</span></br>
-                            <span class="dropTitleSecond">or</span>
-                            <div class="uploadImageBox">
-                                <input id="uploadImage" type="file" accept="image/*" onchange="preview_image(event)" required>
-                            </div>
-                        </label></br>
+                    <h3 class="productCreationFormCaption">Design your own Product:</h3>
+                    <div class="productSelectionGridBox">
+                        <form id="formLeft">
+                            <label>Product Image:</label>
+                            <label for="uploadimage" class="fileUpload">
+                                <span class="dropTitle">Drop file here</span></br>
+                                <span class="dropTitleSecond">or</span>
+                                <div class="uploadImageBox">
+                                    <input id="uploadImage" type="file" accept="image/*" onchange="getImagePreview(event)" required>
+                                </div>
+                            </label></br>
 
-                        <label for="productTitle">Product Title:</label></br>
-                        <input id="productTitle" type="text"></br>
+                            <label for="productTitle">Product Title:</label></br>
+                            <input id="productTitle" type="text"></br>
 
-                        <label for="productDescription">Product Description:</label></br>
-                        <textarea id="productDescription" type="text"></textarea></br>
+                            <label for="productDescription">Product Description:</label></br>
+                            <textarea id="productDescription" type="text"></textarea></br>
 
-                        <label for="productPrice">Product Price:</label></br>
-                        <input id="productPrice" type="number"></br>
+                            <label for="productPrice">Product Price:</label></br>
+                            <input id="productPrice" type="number"></br>
+                        </form>
+                        <form id="formRight">
+                            <label for="productManufacturer">Manufacturer:</label></br>
+                            <input list="productManufacturers" name="productManufacturer" id="productManufacturer">
+                            <datalist id="productManufacturers">
+                                <option value="Dell">
+                                <option value="Asus">
+                                <option value="Apple">
+                                <option value="HP">
+                                <option value="Lenovo">
+                                <option value="Chromebook">
+                                <option value="Other">
+                              </datalist>
+            
+                            <label for="productColor">Product Color:</label></br>
+                            <input list="productColors" name="productColor" id="productColor">
+                            <datalist id="productColors">
+                                <option value="Black">
+                                <option value="Grey">
+                                <option value="Dark Grey">
+                                <option value="Light Grey">
+                                <option value="Dark Blue">
+                                <option value="Gold">
+                                <option value="Other">
+                              </datalist>
+                            
+                            <label for="productOS">Operating System:</label></br>
+                            <input id="productOS" type="text"></br>
 
-                        <button id="productButton" type="button" onclick="preview_text()"><strong>Preview</strong></button>
-                    </form>
-                </div>
-                <div class="productCreationPreview">
-                    <div class="productItem">
-                        <img id="uploadedImage" alt="">
-                        <div class="productPreviewBox" id="productPreviewBox">
-                            <strong id="productPreviewTitle" style="color: whitesmoke;font-size: large">Amazon Web Services</strong></br></br>
-                            <strong id="productPreviewDescription">Amazon Web Services (AWS) is a comprehensive, evolving cloud computing platform provided by Amazon that offers a mix of infrastructure as a service (IaaS), platform as a service (PaaS) and packaged software as a service (SaaS) offerings.</strong></br></br></br>
-                            <strong id="productPreviewPrice"></strong></br></br></br>
-                        </div>
-                    </div>  
+                            <label for="productRAM">Amount RAM</label></br>
+                            <input list="productRAMs" name="productRAM" id="productRAM">
+                            <datalist id="productRAMs">
+                                <option value="2GB">
+                                <option value="4GB">
+                                <option value="8GB">
+                                <option value="12GB">
+                                <option value="16GB">
+                                <option value="16GB">
+                                <option value="32GB">
+                                <option value="64GB">
+                                <option value="Other">
+                              </datalist>
+
+                            <label for="productTypeCPU">Type CPU:</label></br>
+                            <input list="productTypeCPUS" name="productTypeCPU" id="productTypeCPU">
+                            <datalist id="productTypeCPUS">
+                                <option value="Intel Core i5">
+                                <option value="Intel Core i7">
+                                <option value="Intel Core i9">
+                                <option value="AMD Ryzen 9">
+                                <option value="AMD Ryzen 5">
+                                <option value="Other">
+                              </datalist>
+
+                            <label for="productTypeGPU">Type GPU:</label></br>
+                            <input list="productTypeGPUS" name="productTypeGPU" id="productTypeGPU">
+                            <datalist id="productTypeGPUS">
+                                <option value="NVIDIA GeForce GTX 1650">
+                                <option value="NVIDIA GeForce GTX 1060">
+                                <option value="NVIDIA GeForce RTX 3060">
+                                <option value="NVIDIA GeForce RTX 2060">
+                                <option value="NVIDIA GeForce GTX 1050">
+                                <option value="NVIDIA GeForce RTX 3070">
+                                <option value="NVIDIA GeForce GTX 1660 SUPER">
+                                <option value="NVIDIA GeForce RTX 3050">
+                                <option value="AMD Radeon Graphics">
+                                <option value="NVIDIA GeForce RTX 3080">
+                                <option value="NVIDIA GeForce GTX 1070">
+                                <option value="Intel(R) Iris(R) Xe Graphics">
+                                <option value="Intel(R) UHD Graphics">
+                              </datalist>
+                        </form>
+                    </div>
+                    <button id="previewButton" type="button" onclick="showPreview()"><strong>Preview</strong></button>
+                    <button id="productButton" type="button" onclick="pushNewProduct()"><strong>Create</strong></button>
                 </div>
             </div>  
     </div>

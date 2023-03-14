@@ -6,6 +6,7 @@ import expressLayouts from "express-ejs-layouts"
 import dotenv from "dotenv"
 
 import {apiRouter} from "./routes/api.js"
+import {websiteRouter} from "./routes/site.js"
 import {createMockProducts} from "./mockdata.js";
 
 dotenv.config();
@@ -19,18 +20,20 @@ const main = async () => {
     app.set("layout", "layouts/layout.ejs");
     app.use(expressLayouts);
     app.use(express.static("public"));
+    app.use(express.json());
     app.use(apiRouter);
+    app.use(websiteRouter);
 
     await mongoose.connect(MONGODB_URI);
     const mongooseDb = mongoose.connection;
 
     // Setup mock data based on .env mock flag
-    if (process.env.SETUP_MOCK_DATA) {
+    if (process.env.SETUP_MOCK_DATA === "true") {
         await createMockProducts();
     }
 
     mongooseDb.on("error", error => console.error(error));
-    mongooseDb.once("open", () => console.log("Connected to mongoose database"))
+    mongooseDb.once("open", () => console.log("Connected to mongoose database"));
 
     app.listen(PORT, () => {
         console.log(`Server started on port ${PORT}`);

@@ -2,7 +2,7 @@ import * as products_service from "../services/products_service.js";
 
 async function getProducts(req, res) {
 
-    const {search} = req.params;
+    const { search } = req.query;
 
     try {
         let queryResult;
@@ -27,7 +27,7 @@ async function getProducts(req, res) {
 }
 
 async function getProductById(req, res) {
-    const {id} = req.params;
+    const { id } = req.params;
 
     if (id !== null) {
         try {
@@ -54,7 +54,7 @@ async function getProductById(req, res) {
 
 async function addNewProduct(req, res) {
     const product = req.body;
-
+    console.log("arrived");
     try {
         const newProduct = await products_service.addNewProduct(product);
         res.statusCode = 201;
