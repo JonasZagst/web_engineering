@@ -16,7 +16,7 @@ import {
   getCompanyUserById,
   getCompanyUserCredentialValidity
 } from "../controllers/api_company_users_controller.js";
-import { uploadImage } from "../controllers/fs_controller"
+import { uploadImage } from "../controllers/fs_controller.js"
 
 const apiRouter = express.Router();
 

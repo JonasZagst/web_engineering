@@ -65,9 +65,10 @@ function _addProductBoxes(productName, productDescription, productPrice, product
 function checkoutShoppingCart(){
   try{
     const userID = window.sessionStorage.userID;
-    xhttp.open("DELETE", `/api/users/${userID}/shoppingCart`, true);
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("DELETE", `api/users/${userID}/shoppingCart`, true);
     xhttp.onload = () => {
-      const deletionResponse = JSON.parse(xhttp.response)
+      const deletionResponse = xhttp.responseText;
       openPopUpBanner(deletionResponse);
     };
     xhttp.send();
@@ -76,6 +77,20 @@ function checkoutShoppingCart(){
   }
 }
 
-function openPopUpBanner(){
-    alert("You successfully checked out your shopping Cart!");
+function openPopUpBanner(deletionResponse){
+  if(deletionResponse=="OK")
+  {
+    document.getElementById("LoginBanner").style.backgroundColor = "green";
+    document.getElementById("LoginBanner").innerText = "You succesfully checked out your Shopping Cart!";
+  }
+  else{
+    document.getElementById("LoginBanner").style.backgroundColor = "red";
+    document.getElementById("LoginBanner").innerText = "There was a problem when trying to checkout!";
+  }
+
+  setTimeout(() => {
+      document.getElementById("LoginBanner").style.backgroundColor = "transparent";
+      document.getElementById("LoginBanner").innerText = "";
+      window.location.href="/shoppingCart"
+  }, "3000")
 }

@@ -67,13 +67,13 @@ async function addNewUser(req, res) {
  * E-Mail and password are passed in headers.  */
 async function getUserCredentialValidity(req, res) {
     const { username, passcode } = req.headers;
-    if (username !== null && passcode !== null) {
+    if (username && passcode) {
         try {
-            const user = users_service.checkUserCredentialsValidity(PrivateUser, username, passcode);
+            const user = await users_service.checkUserCredentialsValidity(PrivateUser, username, passcode);
             if (user) {
                 res.statusCode = 200;
+                res.cookie("credentials", JSON.stringify({ username: username, password: passcode }), { maxAge: 5 * 60 * 60 * 1000 }); // 5 Hours in milliseconds
                 res.json(user);
-                res.cookie("credentials", JSON.dump({ username: username, password: passcode }), { maxAge: 5 * 60 * 60 * 1000 }); // 5 Hours in milliseconds
             } else {
                 res.statusCode = 401;
                 res.send("Invalid Authentication!");
@@ -97,7 +97,7 @@ async function getUserShoppingCart(req, res) {
 
     if (id !== null) {
         try {
-            const queryResult = users_service.getUserShoppingCart(id);
+            const queryResult = await users_service.getUserShoppingCart(id);
             if (!queryResult) {
                 res.statusCode = 404;
                 res.send("Not found");
@@ -142,17 +142,19 @@ async function addItemToUserShoppingCart(req, res) {
  *
  * Clears the shopping cart of an user. */
 async function clearUserShoppingCart(req, res) {
-    const { userId } = req.params;
-    if (!userId) {
+    const { id } = req.params;
+    if (!id) {
         res.sendStatus(400);
     }
-    try {
-        users_service.setUserShoppingCart(userId, []);
-        res.sendStatus(200);
-    } catch (error) {
-        res.statusCode = 500;
-        console.error(error);
-        res.send(error.message);
+    else{
+        try {
+            await users_service.setUserShoppingCart(id, []);
+            res.sendStatus(200);
+        } catch (error) {
+            res.statusCode = 500;
+            console.error(error);
+            res.send(error.message);
+        }
     }
 }
 

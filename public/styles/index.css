@@ -1,6 +1,6 @@
 /** Styling for the Landing Page Image Banner Old(#8A7D61)**/
 #LandingBanner {
-    background-color:#8A7D61 ;margin-bottom: 0%;height: 100%;
+    background-color:cornflowerblue ;margin-bottom: 0%;height: 100%;
 }
 #LandingBannerImage
 {
@@ -12,7 +12,7 @@
 
 /** Styling for the Landing Page Motto**/
 #containerMotto{
-    margin-top:0;color: black;background-color:#8A7D61;text-align: center;padding:10px
+    margin-top:0;color: black;background-color:cornflowerblue;text-align: center;padding:10px
 }
 
 #containerMotto p{

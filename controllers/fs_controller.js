@@ -1,4 +1,4 @@
-import fsService from "../services/fs_service"
+import fsService from "../services/fs_service.js"
 
 /** API Endpoint for POST /api/upload
  *

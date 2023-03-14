@@ -1,9 +1,9 @@
 /*Styling for Register and Login*/
 .containerLoginForm {
     width: 700px;
-    height:600px;
+    height:650px;
     display: inline-block;
-    background-color:#8A7D61;
+    background-color:cornflowerblue;
     border-radius: 10%;
     margin-top: 5%;
 }
