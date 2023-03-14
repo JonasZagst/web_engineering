@@ -9,7 +9,7 @@ function loadProducts() {
         xhttp.onload = () => {
             window.sessionStorage.setItem("productArray", xhttp.response);
             data = JSON.parse(xhttp.response);
-            _craeateProductForms(data);
+            _createProductForms(data);
         };
         xhttp.send();
     }
