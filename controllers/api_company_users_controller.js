@@ -29,7 +29,7 @@ async function getCompanyUserById(req, res) {
     }
 }
 
-/** @ignore Unused API Endpoint POST /api/companies
+/** Unused API Endpoint POST /api/companies
  *
  * Create a new company user.
  * The information for the company user are passed in the body of the POST request as JSON.

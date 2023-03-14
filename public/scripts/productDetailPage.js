@@ -48,14 +48,13 @@ function showProductData(data, productName) {
     window.sessionStorage.setItem("productID", currentData._id);
 }
 
+/** Add the item currently stored in sessionStorage["productID"] to the users shopping cart */
 function addToShoppingCart() {
     const productID = window.sessionStorage.getItem("productID");
     const userID = window.sessionStorage.getItem("userID");
     if (!userID) {
         openPopUpBanner(1)
-    }
-
-    else{
+    } else {
         try {
             var xhttp = new XMLHttpRequest();
             xhttp.open("POST", `/api/users/${userID}/shoppingCart/${productID}`, true);
@@ -68,16 +67,17 @@ function addToShoppingCart() {
     }
 }
 
-/**User Feedback: Succesfully added Product to ShoppingCart */
-function openPopUpBanner(error){
-    if(error==0){
+/** Displays a banner for the user based on the error code.
+ * @param {0|1} error 0 is means everything is ok, 1 means that an error has occured. */
+function openPopUpBanner(error) {
+    if (error == 0) {
         document.getElementById("LoginBanner").style.backgroundColor = "green";
         document.getElementById("LoginBanner").innerText = "You successfully added a product to your shopping Cart!";
-    }
-    else if(error==1){
+    } else if (error == 1) {
         document.getElementById("LoginBanner").style.backgroundColor = "red";
         document.getElementById("LoginBanner").innerText = "You have to be logged in, to add products to your shopping Cart!";
     }
+
     setTimeout(() => {
         document.getElementById("LoginBanner").style.backgroundColor = "transparent";
         document.getElementById("LoginBanner").innerText = "";
