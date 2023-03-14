@@ -69,7 +69,8 @@ function addToShoppingCart() {
             }
         }
     }
-    openPopUpBanner(2);
+    else
+        openPopUpBanner(2);
 }
 
 /** Displays a banner for the user based on the error code.
