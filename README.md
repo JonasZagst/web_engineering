@@ -108,6 +108,7 @@ Nutzers, anhand der *UUID* des Nutzers. Diese können anschließend über die **
 * Eine **PUT** Anfrage auf den URI ``/api/users/:id/shoppingCart``, bei welcher eine **ProductID** im Body übergeben wird,
 fügt die übergebene *Product ID* dem Wahrenkorb des mit dem *id* parameter spezifizierten Nutzers hinzu und sendet das
 aktualisierte Array des Warenkorbs zurück.
+* Eine **DELETE** Anfrage auf den URI ``/api/users/:id/shoppingCart``, bei welcher das ShoppingCart des Nutzers mit der ID `:id` geleert wird.
 
 Eine Möglichkeit alle User anzufragen wurde bewusst weggelassen, sodass nicht die Daten aller Nutzer einfach gesammelt
 werden können. In Zukunft wäre für die API Zugriffe allgemein noch eine **Authentication** geplant.
@@ -182,23 +183,3 @@ Sollte man sich als gewerblicher Nutzer einloggen, erscheint stattdessen der Men
 
 Zum Schluss hat man als User noch die Möglichkeit, sich aus seinem Account auszuloggen. Hierbei werden alle Sitzungsdaten gelöscht und die Landing Page wird wieder auf den Ursprungszustand zurückgesetzt.
 Wie bereits erwähnt, ist diese Funktion ebenfalls Teil des Menüs und wird hier stets als der letzte Menüpunkt angezeigt. 
-
-## Regeln für Devs
-* Pullrequests mit **inline CSS** werden nicht akzeptiert
-* Pullrequests die nicht der **BEM Convention** folgen, werden nicht akzeptiert
-* Pullrequests mit JS Code **ohne ";" am Ende von Lines** werden nicht akzeptiert
-
-## Neuer Weg für Erstellung von HTML Seiten (nach der Template Engine)
-* Erstellt ein ejs File in views, in dem ihr ganz normal euer HTML schreibt, jedoch nur das, was im Body stehen würde, (das Standardlayout wird automatisch eingefügt)
-* Anschließend wird im File *api.js* eine Route erstellt, mit der auf das Dokument zugegriffen werden soll. 
-* Alle Links zu Ressourcen sind relativ zum *public-Ordner*. Legt neue öffentliche Ressourcen auch darin an.
-
-## Erstellen von Mock Daten
-* In der .env SETUP_MOCK_DATA = "true" setzen um Mockdaten auf die DB zu pushen.
-* Nur einmal ausführen, danach sind die Daten fest auf der MongoDB.
-* Dann SETUP_MOCK_DATA = "false" setzen
-
-## Weitere Aufgaben
-* Seite für einzelne Produkte
-* Bestätigungen beim Erstellen und Einloggen von Usern und Erstellen von Produkten.
-Fehler wenn falsche Eingeaben gemacht werden.
