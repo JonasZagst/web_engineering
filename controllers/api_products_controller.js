@@ -1,5 +1,8 @@
 import * as products_service from "../services/products_service.js";
 
+/** API Endpoint for GET /api/products/
+ *
+ * Retrieve all products. */
 async function getProducts(req, res) {
 
     const { search } = req.query;
@@ -26,6 +29,9 @@ async function getProducts(req, res) {
     }
 }
 
+/** API Endpoint for GET /api/products/:id
+ *
+ * Retrieve product information by the `id` of a product. */
 async function getProductById(req, res) {
     const { id } = req.params;
 
@@ -52,6 +58,11 @@ async function getProductById(req, res) {
     }
 }
 
+/** API Endpoint for POST /api/products/
+ *
+ * Create a new product.
+ * The information for the new product is passed in the body of the POST request as JSON.
+ * The layout of the JSON must match the description of the Mongoose Schema in /models/product.js */
 async function addNewProduct(req, res) {
     const product = req.body;
     console.log("arrived");

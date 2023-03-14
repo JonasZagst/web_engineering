@@ -57,10 +57,7 @@ apiRouter.post("/api/users/:id/shoppingCart/:productID", addItemToUserShoppingCa
 /** Clears the shopping cart of an user. */
 apiRouter.delete("/api/users/:id/shoppingCart", clearUserShoppingCart);
 
-/** Uploads an image to the filesystem of the server. */
-apiRouter.post('/api/upload', uploadImage);
-
-/** Check whether he credentials of a company user are valid.
+/** Check whether the credentials of a company user are valid.
  * E-Mail and password are passed in headers. */
 apiRouter.get("/api/companies/password", getCompanyUserCredentialValidity);
 
@@ -72,6 +69,10 @@ apiRouter.get("/api/companies/:id", getCompanyUserById);
  * The information for the company user are passed in the body of the POST request as JSON.
  * The layout of the JSON must match the description of the Mongoose Schema in /models/company_user.js */
 apiRouter.post("/api/companies", addNewCompanyUser);
+
+
+/** Uploads an image to the filesystem of the server. */
+apiRouter.post('/api/upload', uploadImage);
 
 export {
   apiRouter

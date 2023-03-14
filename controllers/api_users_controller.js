@@ -1,6 +1,10 @@
 import { PrivateUser } from "../models/user.js"
 import * as users_service from "../services/users_service.js"
 
+/** API Endpoint for GET /api/users/:id
+ *
+ * Returns all information for a user by their `id`.
+ * The password is not returned. */
 async function getUserById(req, res) {
     const { id } = req.params;
 
@@ -25,6 +29,11 @@ async function getUserById(req, res) {
     }
 }
 
+/** API Endpoint for POST /api/users/
+ *
+ * Create a new user.
+ * The information for the user are passed in the body of the POST request as JSON.
+ * The layout of the JSON must match the description of the Mongoose Schema in /models/user.js */
 async function addNewUser(req, res) {
     const user = req.body;
 
@@ -52,6 +61,10 @@ async function addNewUser(req, res) {
     }
 }
 
+/** API Endpoint for GET /api/users/password
+ *
+ * Check whether the credentials of a user are valid.
+ * E-Mail and password are passed in headers.  */
 async function getUserCredentialValidity(req, res) {
     const { username, passcode } = req.headers;
     if (username !== null && passcode !== null) {
@@ -76,6 +89,9 @@ async function getUserCredentialValidity(req, res) {
     }
 }
 
+/** API Endpoint for GET /api/users/:id/shoppingCart
+ *
+ * Get the shopping cart of a certain user. */
 async function getUserShoppingCart(req, res) {
     const { id } = req.params;
 
@@ -100,6 +116,9 @@ async function getUserShoppingCart(req, res) {
     }
 }
 
+/** API Endpoint for POST /api/users/:id/shoppingCart/:productID
+ *
+ * Adds an productId to the shopping cart of an user. */
 async function addItemToUserShoppingCart(req, res) {
     const { id, productID } = req.params;
 
@@ -119,6 +138,9 @@ async function addItemToUserShoppingCart(req, res) {
     }
 }
 
+/** API Endpoint for DELETE /api/users/:id/shoppingCart
+ *
+ * Clears the shopping cart of an user. */
 async function clearUserShoppingCart(req, res) {
     const { userId } = req.params;
     if (!userId) {
