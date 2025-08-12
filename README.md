@@ -1,3 +1,6 @@
+# Archived
+This repository is archived and should no longer be used.
+
 # web_engineering
 Repository zur Web Engineering Vorlesung
 
